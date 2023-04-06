@@ -40,3 +40,62 @@ app.get('/allProductsFromDB', (req, res) => {
         res.send(result)
     })
 })
+
+// ------ PRODUCT END POINTS START -------------
+// ------ PRODUCT END POINTS END ---------------
+
+
+
+// ------- USER END POINTS START -------------
+
+// Register User
+app.post('/registerUser', (req, res) => {
+    User.findOne({
+        username: req.body.username,
+    }, (err, userExists) => {
+        if (userExists) {
+            res.send('username already taken');
+        } else {
+            const hash = bcrypt.hashSync(req.body.password);
+            const user = new User({
+                _id: new mongoose.Types.ObjectId,
+                fullname: req.body.fullname,
+                username: req.body.username,
+                email: req.body.email,
+                password: hash,
+                about: req.body.about
+            });
+            user.save()
+                .then(result => {
+                    console.log(user, result);
+                    res.send(result);
+                }).catch(err => {
+                    res.send(err)
+                });
+        } // end of else
+    }) // end of findone
+}); // end of register user
+
+// Login User
+app.post('/loginUser', (req, res) => {
+    User.findOne({
+        username: req.body.username
+    }, (err, userResult) => {
+        if (userResult) {
+            if (bcrypt.compareSync(req.body.password, userResult.password)) {
+                res.send(userResult);
+            } else {
+                res.send('not authorized');
+            } // inner if
+        } else {
+            res.send('User not found. Please register');
+        } // outer if
+    }); // end of findOne
+}); // end of post for login
+
+// ------- USER END POINTS END -------------
+
+
+
+// ------ COMMENT END POINTS START ---------
+// ------ COMMENT END POINTS END -----------
