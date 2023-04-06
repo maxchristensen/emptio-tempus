@@ -16,7 +16,103 @@
 </head>
 
 <body>
-    <h1>Testing</h1>
+    <!-- Body Container -->
+    <div class="container">
+
+        <!-- Left Section -->
+        <!-- Logo -->
+        <img src="" alt="">
+        <!-- Logo ENDS -->
+
+        <!-- Clock -->
+        <div class="clock">
+            <div class="hand hour" id="hour"></div>
+            <div class="hand minutes" id="minutes"></div>
+            <div class="hand seconds" id="seconds"></div>
+            <div class="number number1">1</div>
+            <div class="number number2">2</div>
+            <div class="number number3">3</div>
+            <div class="number number4">4</div>
+            <div class="number number5">5</div>
+            <div class="number number6">6</div>
+            <div class="number number7">7</div>
+            <div class="number number8">8</div>
+            <div class="number number9">9</div>
+            <div class="number number10">10</div>
+            <div class="number number11">11</div>
+            <div class="number number12">12</div>
+        </div>
+        <!-- Clock ENDS -->
+
+        <!-- Login -->
+        <button>Login/Signup</button>
+        <!-- Left Section ENDS -->
+
+        <!-- Right Section -->
+        <div class="tabs tab-right">
+            <nav>
+                <a href="#browse">Browse</a>
+                <a href="#listing">Listing</a> <!-- Hide/Show -->
+                <a href="#seller">Seller</a> <!-- Hide/Show -->
+            </nav>
+            <!-- Browse Content -->
+            <div class="content" id="browse">
+                <!-- Filters/Search -->
+                <div class="container" id="filters">
+                    <!-- Category -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" id="category" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item wrist" href="">Wrist</a></li>
+                            <li><a class="dropdown-item pocket" href="">Pocket</a></li>
+                            <li><a class="dropdown-item wall" href="">Wall</a></li>
+                            <li><a class="dropdown-item desk" href="">Desk</a></li>
+                            <li><a class="dropdown-item all" href="">All</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Condition -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" id="category" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Condition
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item new" href="">New</a></li>
+                            <li><a class="dropdown-item like-new" href="">Used - Like New</a></li>
+                            <li><a class="dropdown-item good" href="">Used - Good</a></li>
+                            <li><a class="dropdown-item fair" href="">Used - Fair</a></li>
+                            <li><a class="dropdown-item needs-fixing" href="">Used - Needs Fixing</a></li>
+                            <li><a class="dropdown-item all" href="">All</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Search -->
+                    <input class="form-control" type="text" placeholder="Search" aria-label="default input example"><i class="fa-solid fa-magnifying-glass"></i></input>
+                </div>
+                <!-- Filters/Search ENDS -->
+            </div>
+            <!-- Browse Content ENDS -->
+
+            <!-- Listing Content -->
+            <div class="content" id="listing">Content2</div>
+            <!-- Listing Content ENDS -->
+
+            <!-- Seller Content -->
+            <div class="content" id="seller">Content3</div>
+            <!-- Seller Content ENDS -->
+
+        </div>
+        <!-- Right Section ENDS -->
+
+    </div>
+    <!-- Body Container ENDS -->
+
+    <!-- Footer -->
+    <!-- Footer ENDS -->
 
 
 
@@ -32,6 +128,7 @@
     </script>
 
     <!-- Custom JS -->
+    <script src="https://kit.fontawesome.com/add8ac9e42.js" crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
 
 </body>
