@@ -15,7 +15,7 @@ $(document).ready(function () {
             console.log(configData.SERVER_URL, configData.SERVER_PORT);
             url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
             console.log(url);
-            getAllProducts();
+            // getAllProducts();
         },
         error: function (error) {
             console.log(error);
