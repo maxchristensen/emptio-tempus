@@ -22,3 +22,26 @@ $(document).ready(function () {
         }
     });
 })
+
+// Get All products Function
+function getAllProducts() {
+    $.ajax({
+        url: `http://${url}/allProducts`,
+        type: 'GET',
+        dataType: 'json',
+
+        success: function(productsFromMongo) {
+            let results = document.getElementById(''); // Patricia - enter id name please :)
+            results.innerHTML = '';
+            for (let i = 0; i < productsFromMongo.length; i++){
+                results.innerHTML +=
+                `` // Patricia - can you please paste in the card here :)
+            } // end of for loop
+        }, // end of success
+
+        error: function() {
+            alert('unable to get products');
+        }, // end of error
+
+    }) // end of ajax function
+} // end of getAllProducts function
