@@ -34,6 +34,13 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@cl
 
 app.listen(port, () => console.log(`My fullstack app is listening on port ${port}`))// sent to nodemon - checking server
 
+// Get All Products from the Database
+app.get('/allProductsFromDB', (req, res) => {
+    Product.find().then(result => {
+        res.send(result)
+    })
+})
+
 // ------ PRODUCT END POINTS START -------------
 // ------ PRODUCT END POINTS END ---------------
 
@@ -92,4 +99,3 @@ app.post('/loginUser', (req, res) => {
 
 // ------ COMMENT END POINTS START ---------
 // ------ COMMENT END POINTS END -----------
-
