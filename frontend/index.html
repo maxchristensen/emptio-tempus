@@ -46,7 +46,46 @@
 
         <!-- Login -->
         <button>Login/Signup</button>
+
+        <!-- *** Maz added 7 April start *** -->
+        <h1>REGISTER USER</h1>
+        <!-- Register Form -->
+        <!-- <form action="/loginUser" method="post"> -->
+        <form id="registerForm" class="bg-light py-3 px-3 mt-5">
+            <div class="form-group">
+                <label for="r-username">Username</label>
+                <input type="text" name="r-username" class="form-control" id="r-username" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="r-email">Email</label>
+                <input type="email" autocomplete="new-password" name="r-email" class="form-control" id="r-email">
+            </div>
+            <div class="form-group">
+                <label for="r-password">Password</label>
+                <input type="password" autocomplete="new-password" name="r-password" class="form-control"
+                    id="r-password">
+            </div>
+            <button id="r-submit" name="r-button" type="button" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- LOGIN SECTION START -->
+        <h1 class="mt-5">LOGIN FORM</h1>
+        <!-- login form -->
+        <form id="loginForm" class="my-5 rounded-pill">
+            <label for="login-username" class=""> Username: </label>
+            <input type="text" id="login-username" name="username" class="form-control" value="">
+            <br> <br>
+            <label for="login-password" class=""> Password: </label>
+            <input type="password" name="password" id="login-password" class="form-control" value="">
+            <button id="login-submit" name="button" type="submit" class="btn bg-light text-dark btn-lg btn-dark mt-4">
+                Submit </button>
+        </form>
+
+        <button id="logout" class="btn btn-primary" type="button" name="button">Log Out</button>
+        <!-- LOGIN SECTION END -->
+        <!-- *** Maz added 7 April start *** -->
         <!-- Left Section ENDS -->
+
 
         <!-- Right Section -->
         <div class="tabs tab-right">
@@ -91,7 +130,8 @@
                     </div>
 
                     <!-- Search -->
-                    <input class="form-control" type="text" placeholder="Search" aria-label="default input example"><i class="fa-solid fa-magnifying-glass"></i></input>
+                    <input class="form-control" type="text" placeholder="Search" aria-label="default input example"><i
+                        class="fa-solid fa-magnifying-glass"></i></input>
                 </div>
                 <!-- Filters/Search ENDS -->
             </div>
@@ -103,6 +143,11 @@
 
             <!-- Seller Content -->
             <div class="content" id="seller">Content3</div>
+            <!-- *** Maz added 7 April end *** -->
+            <button id="viewProducts" class="btn btn-primary" type="button">View All</button>
+            <div class="row" id="result">
+            </div>
+            <!-- *** Maz added 7 April end *** -->
             <!-- Seller Content ENDS -->
 
         </div>
