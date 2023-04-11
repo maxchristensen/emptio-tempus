@@ -161,8 +161,14 @@ $(document).ready(function () {
         let productName = $('#productName').val();
         let productPrice = $('#productPrice').val();
         let productImage1 = $('#image1').val();
+        let productImage2 = $('#image2').val();
+        let productImage3 = $('#image3').val();
+        let productImage4 = $('#image4').val();
+        let description = $('#a-description').val();
+        let category = $('a#-category').val();
+        let condition = $('a#-condition').val();
         let userid = sessionStorage.getItem('userID');
-        console.log(productId, productName, productPrice, productImage1);
+        console.log(productId, productName, productPrice, productImage1, product, Image2, productImage3, productImage4, productDescription, productCategory, productCondition);
         if (productId == '' || !userid) {
             alert('Please enter a product to update');
         } else {
@@ -172,7 +178,13 @@ $(document).ready(function () {
                 data: {
                     productName: productName,
                     price: productPrice,
-                    image1: productImage1
+                    image1: productImage1,
+                    image2: productimage2,
+                    image3: productimage3,
+                    image4: productimage4,
+                    description: productDescription,
+                    category: productCategory,
+                    condition: productCondition
                 },
                 success: function (data) {
                     console.log(data);
