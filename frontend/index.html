@@ -54,16 +54,19 @@
         <form id="registerForm" class="bg-light py-3 px-3 mt-5">
             <div class="form-group">
                 <label for="r-username">Username</label>
-                <input type="text" name="r-username" class="form-control" id="r-username" aria-describedby="emailHelp">
+                <input type="text" name="r-username" class="form-control" id="r-username" placeholder="Create your username here for public view" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="r-about">About</label>
+                <input type="text" name="r-about" class="form-control" id="r-about" placeholder="Add a brief description about yourself for buyers">
             </div>
             <div class="form-group">
                 <label for="r-email">Email</label>
-                <input type="email" autocomplete="new-password" name="r-email" class="form-control" id="r-email">
+                <input type="email" autocomplete="new-password" name="r-email" class="form-control" id="r-email" placeholder="Add your email here" >
             </div>
             <div class="form-group">
                 <label for="r-password">Password</label>
-                <input type="password" autocomplete="new-password" name="r-password" class="form-control"
-                    id="r-password">
+                <input type="password" autocomplete="new-password" name="r-password" class="form-control" placeholder="Create your password here"                   id="r-password">
             </div>
             <button id="r-submit" name="r-button" type="button" class="btn btn-primary">Submit</button>
         </form>
@@ -72,12 +75,12 @@
         <h1 class="mt-5">LOGIN FORM</h1>
         <!-- login form -->
         <form id="loginForm" class="my-5 rounded-pill">
-            <label for="login-username" class=""> Username: </label>
-            <input type="text" id="login-username" name="username" class="form-control" value="">
+            <label for="login-username" class="">Username: </label>
+            <input type="text" id="login-username" name="username" class="form-control" placeholder="Please type your username" value="">
             <br> <br>
-            <label for="login-password" class=""> Password: </label>
-            <input type="password" name="password" id="login-password" class="form-control" value="">
-            <button id="login-submit" name="button" type="submit" class="btn bg-light text-dark btn-lg btn-dark mt-4"> Submit </button>
+            <label for="login-password" class="">Password: </label>
+            <input type="password" name="password" id="login-password" class="form-control" placeholder="Please type your password" value="">
+            <button id="login-submit" name="button" type="submit" class="btn btn-primary">Submit </button>
         </form>
 
         <button id="logout" class="btn btn-primary" type="button" name="button">Log Out</button>
@@ -291,6 +294,48 @@
                     </div>
                 </div>
 
+                <!-- Seller Add Product From Start-->
+                <form id="addProductForm" class="p-5">
+                    <h2 > Add Product</h2>     
+                    <label class="mr-3" for="a-name">Product name</label>
+                    <input type="text" id="a-name" name="productName" class="form-control" placeholder="Include brand and model in name">
+                    <br><br>
+    
+                    <label class="mr-3" for="a-price">Product price</label>
+                    <input type="text" id="a-price" name="productPrice" class="form-control">
+                    <br><br>
+    
+                    <label class="mr-3" for="a-description">Product description</label>
+                    <input type="text" class="form-control" id="a-description" name="a-description">
+                    <br><br>
+    
+                    <label class="mr-3" for="a-imageurl">Add main image url</label>
+                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                    <br><br>
+    
+                    <label class="mr-3" for="a-imageurl">Add additional image url </label>
+                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                    <br><br>
+    
+                    <label class="mr-3" for="a-imageurl">Add additional image url</label>
+                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                    <br><br>
+    
+                    <label class="mr-3" for="a-imageurl">Add additional image url</label>
+                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                    <br><br>
+                    
+                    <label class="mr-3" for="a-name"> Cateogry</label>
+                    <input type="text" id="a-name" name="productCategory" class="form-control" placeholder="Type Wrist, Pocket, Wall, Desk or All">
+                    <br><br>
+                    
+                    <label class="mr-3" for="a-name">Product Condition</label>
+                    <input type="text" id="a-name" name="productCondition" class="form-control" placeholder="Type New, Used - Like New, Used - Good, Used - Fair, Used - Needs Fixing">
+                    <br><br>
+    
+                    <button id="addProduct" name="productButton" type="submit" class="btn btn-primary">Add product</button>
+                </form>
+                <!-- Seller Add Product Form End-->                
             </div>
             <!-- *** Maz added 7 April end *** -->
             <button id="viewProducts" class="btn btn-primary" type="button">View All</button>
