@@ -16,22 +16,21 @@ $(document).ready(function () {
         let sellerTab = document.getElementById('seller-tab');
         listingTab.style.display = "inline-block";
         sellerTab.style.display = "inline-block";
-    })
+    });
 
     // Register on-click -  To make the add button appear when a user registers
     $('#r-submit').click(function(){
         console.log('ayo this is working');
         let addTab = document.getElementById('add-tab');
         addTab.style.display = "inline-block";
-    })
+    });
 
     // Login on-click - To make the add button appear when a user registers
     $('#login-submit').click(function(){
         console.log('ayo this is working');
         let addTab = document.getElementById('add-tab');
         addTab.style.display = "inline-block";
-    })
-
+    });
 
     // Get Config.Json and variable from it
     $.ajax({
@@ -52,55 +51,33 @@ $(document).ready(function () {
     // Get All products Function
     function getAllProducts() {
 
-        /// *** Maz added 7 April ****** ///
-        let userid = sessionStorage.getItem('userID');
-        if (!userid) {
-            alert('Please log in.');
-        } else { /// *** Maz added 7 April ****** ///
-
         $.ajax({
             url: `http://${url}/allProductsFromDB`,
             type: 'GET',
             dataType: 'json',
 
             success: function (productsFromMongo) {
-                let results = document.getElementById('result'); // Patricia - enter id name please :)
+                let results = document.getElementById('result');
                 results.innerHTML = '';
                 for (let i = 0; i < productsFromMongo.length; i++) { 
-                    /// *** Maz added 7 April start ****** ///
-                    let createdBy = productsFromMongo[i].user_id;
-                    console.log(productsFromMongo[i]);
-                    if (createdBy === userid) {
                         results.innerHTML += 
                         ` 
-                        <div class="col-4 mt-3 mb-3">
-                        <div class="card">
-                        <img class="card-img-top" src="${productsFromMongo[i].image1}" alt="${productsFromMongo[i].productName} image">
-                            <div class="card-body">
-                                <h5 class="card-title">${productsFromMongo[i].productName}</h5>
-                                 <p class="card-text">${productsFromMongo[i].price}</p>
-                                 <button value="${productsFromMongo[i]._id}" class="btn delete btn-primary" type="button" name="button">Delete</button>
-                                 <button value="${productsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#editModal" class="btn edit btn-primary" type="button" name="button">Edit</button>
-                                 <button value="${productsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#readmoreModal" class="btn readmore btn-primary" type="button" name="button">Read More</button>
-                            </div>
-                        </div>
-                    </div>
-                    `;
-                    } else {
-                        results.innerHTML += `
-                        <div class="col-4 mt-3 mb-3">
-                            <div class="card">
-                            <img class="card-img-top" src="${productsFromMongo[i].image1}" alt="${productsFromMongo[i].productName} image">
+                        <!-- Product Card -->
+                        <div class="col-4 listing">
+                            <div class="card" style="width: 18rem;">
+                                <a href="#productListing"><img
+                                        src="${productsFromMongo[i].image1}"
+                                        class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}"></a>
                                 <div class="card-body">
-                                    <h5 class="card-title">${productsFromMongo[i].productName}</h5>
-                                    <p class="card-text">${productsFromMongo[i].price}</p>
-                                    <button value="${productsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#readmoreModal" class="btn readmore btn-primary" type="button" name="button">Read More</button>
+                                    <div class="row">
+                                        <h5  href="#productListing">${productsFromMongo[i].productName}</h5>
+                                        <h6 href="#productListing">${productsFromMongo[i].price}</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div> 
-                        `; // Patricia - can you please paste in the card here :)
-                        /// *** Maz added 7 April end ****** ///
-                    } // end of for loop
+                        </div>
+                        <!-- Product Card Ends -->
+                    `;
 
                     editProducts(); /// *** Maz added 7 April ****** ///
                     deleteButtons(); /// *** Maz added 7 April ****** ///
@@ -112,8 +89,7 @@ $(document).ready(function () {
                 alert('unable to get products');
             }, // end of error
         }); // end of ajax function
-    } // end of getAllProducts function
-}
+} // end of getAllProducts function
 
     //View Products onclick of View Products Button
     $('#viewProducts').click(function () {
@@ -153,7 +129,6 @@ $(document).ready(function () {
             }); // End of ajax
         } // End of else
     }); // End of add Product Click
-
 
     // Giving our "Save Changes" button an id for each product
     function editProducts() {
@@ -334,7 +309,6 @@ $(document).ready(function () {
         } // end of else
     }); // end of submit user click
 
-
     //Login User
     $('#login-submit').click(function (event) {
         event.preventDefault();
@@ -388,7 +362,5 @@ $(document).ready(function () {
         window.location.href = '#';
     });
     /// *** Maz added 7 April ****** ///
-
-
 
 }); // Doc Ready function Ends

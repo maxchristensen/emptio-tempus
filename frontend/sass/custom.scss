@@ -38,7 +38,7 @@ h5 {
 }
 
 h6 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 300;
 }
 
@@ -50,5 +50,9 @@ p {
 
 // TAB STYLING
  #listing-tab, #seller-tab, #add-tab {
+  display: none;
+ }
+
+ #listing, #seller {
   display: none;
  }
