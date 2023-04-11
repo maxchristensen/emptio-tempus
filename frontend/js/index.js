@@ -103,10 +103,16 @@ $(document).ready(function () {
         let productName = $('#a-productName').val();
         let price = $('#a-price').val();
         let image1 = $('#a-image1').val();
+        let image2 = $('#a-image2').val();
+        let image3 = $('#a-image3').val();
+        let image4 = $('#a-image4').val();
+        let description = $('#a-description').val();
+        let category = $('a#-category').val();
+        let condition = $('a#-condition').val();
         let userid = sessionStorage.getItem('userID');
         console.log(userid);
-        console.log(productName, price, image1);
-        if (productName == '' || price == '' || image1 == '' || !userid) {
+        console.log(productName, price, image1, image2, image3, image4, description, category, condition);
+        if (productName == '' || price == '' || image1 == '' || image2 == '' || image3 == '' || image4 == '' || category == '' || condition == '' || !userid) {
             alert('Please login and enter all details');
         } else {
             $.ajax({
@@ -116,6 +122,12 @@ $(document).ready(function () {
                     productName: productName,
                     price: price,
                     image1: image1,
+                    image2: image2,
+                    image3: image3,
+                    image4: image4,
+                    description: description,
+                    category: category,
+                    condition: condition,
                     user_id: userid
                 },
                 success: function (product) {
