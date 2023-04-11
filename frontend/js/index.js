@@ -65,13 +65,13 @@ $(document).ready(function () {
                         <!-- Product Card -->
                         <div class="col-4 listing">
                             <div class="card" style="width: 18rem;">
-                                <a href="#productListing"><img
+                                <a href="#listing"><img
                                         src="${productsFromMongo[i].image1}"
                                         class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}"></a>
                                 <div class="card-body">
                                     <div class="row">
-                                        <h5  href="#productListing">${productsFromMongo[i].productName}</h5>
-                                        <h6 href="#productListing">${productsFromMongo[i].price}</h6>
+                                        <h5  href="#listing">${productsFromMongo[i].productName}</h5>
+                                        <h6 href="#listing">${productsFromMongo[i].price}</h6>
                                     </div>
                                 </div>
                             </div>

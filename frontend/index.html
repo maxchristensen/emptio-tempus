@@ -77,8 +77,7 @@
             <br> <br>
             <label for="login-password" class=""> Password: </label>
             <input type="password" name="password" id="login-password" class="form-control" value="">
-            <button id="login-submit" name="button" type="submit" class="btn bg-light text-dark btn-lg btn-dark mt-4">
-                Submit </button>
+            <button id="login-submit" name="button" type="submit" class="btn bg-light text-dark btn-lg btn-dark mt-4"> Submit </button>
         </form>
 
         <button id="logout" class="btn btn-primary" type="button" name="button">Log Out</button>
@@ -223,14 +222,15 @@
 
                         <!-- Q&A's -->
                         <div id="questions">
-                            <!--  -->
+                            <h4>Q & As</h4>
                             <div class='new-question'>
                                 <p>${question[i].text}</p>
-                                <h6 class='test-muted'>Posted by: <span>${question[i].username}</span><br><span>${formattedDate}</span></h6>
-                            </div>            
+                                <h6 class='test-muted'>Posted by:
+                                    <span>${question[i].username}</span><br><span>${formattedDate}</span></h6>
+                            </div>
                         </div>
                         <div class="add-question">
-                            <label for="exampleFormControlTextarea1" class="form-label">New Question</label>
+                            <label for="newQuestionText" class="form-label">New Question</label>
                             <textarea id="newQuestionText" class="form-control" rows="3"></textarea>
                             <button id="saveQuestion" class="btn btn-primary mt-3">Submit Question</button>
                         </div>
@@ -242,11 +242,59 @@
 
             <!-- Seller Content -->
             <div class="content" id="seller">
-            <h2>SELLER CONTENT</h2>
-            Content3
+                <h2>SELLER CONTENT</h2>
+
+                <div class="container">
+                    <div class="row">
+                        <h4>About the Seller</h4>
+                        <p>Text goes here.</p>
+                        <br>
+                        <br>
+                        <h4>Current Listings</h4>
+                        <div class="col-3">
+                            <div class="card" style="width: 18rem;">
+                                <a href="#listing"><img
+                                        src="https://drive.google.com/uc?export=view&id=1soSjFqVQqi8l32JY8WhLs3tJjT-c6X6g"
+                                        class="card-img-top" alt="..."></a>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <a href="#listing" class="btn btn-primary card-title">Product Name</a>
+                                        <a href="#listing" class="btn btn-primary">Price</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                        <!-- Comments -->
+                        <div id="comments">
+                            <h4>Comments</h4>
+                            <div class='new-comment'>
+                                <p>${question[i].text}</p>
+                                <h6 class='test-muted'>Posted by:
+                                    <span>${question[i].username}</span><br><span>${formattedDate}</span></h6>
+                            </div>
+                        </div>
+                        <div class="add-comment">
+                            <label for="newCommentText" class="form-label">New Comment</label>
+                            <textarea id="newCommentText" class="form-control" rows="3"></textarea>
+                            <button id="saveComment" class="btn btn-primary mt-3">Submit Comment</button>
+                        </div>
+                        <!-- Comments ENDS -->
+                    </div>
+                </div>
+
             </div>
             <!-- *** Maz added 7 April end *** -->
             <button id="viewProducts" class="btn btn-primary" type="button">View All</button>
+
             <div class="row" id="result">
             </div>
             <!-- *** Maz added 7 April end *** -->
