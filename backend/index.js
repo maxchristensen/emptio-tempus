@@ -175,4 +175,60 @@ app.post('/loginUser', (req, res) => {
 
 
 // ------ COMMENT END POINTS START ---------
+
+// Get all comments
+
+app.get('/allComments', (req, res) => {
+    Comment.find().then(result => {
+        res.send(result);
+    })
+})
+
+// ----create comment endpoint-----
+
+app.post('/createComment', (req, res) => {
+    const newComment = new Comment({
+        _id: new mongoose.Types.ObjectId,
+        text: req.body.text,
+        time: new Date(),
+        username: req.body.username,
+        product_id: req.body.product_id
+    }) //end of const
+    newComment.save()
+        .then(result => {
+            Product.updateOne({
+                _id: req.body.product_id
+            }).then(result => {
+                res.send(newComment);
+            }).catch(err => {
+                res.send(err);
+            })
+        });
+}); // end of create
+
+// --------delete comments----
+
+app.delete('deleteComments/:id', (req, res) => {
+    Comment.findOne({
+        _id: req.params.id
+    }, (err, comment) => {
+        if (comment && comment['username'] == req.body.username) {
+            Product.updateOne({
+                _id: comment.product_id
+            }).then(result => {
+                Comment.deleteOne({
+                    _id: req.params.id
+                }, err => {
+                    res.send('deleted');
+                })
+            }).catch(err => {
+                res.send(err);
+            })
+        } // end of if
+        else {
+            res.send('not found/not authorised')
+        }
+    });
+});
+
 // ------ COMMENT END POINTS END -----------

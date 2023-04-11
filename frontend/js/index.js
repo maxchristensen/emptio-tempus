@@ -387,4 +387,73 @@ $(document).ready(function () {
     });
     /// *** Maz added 7 April ****** ///
 
+    // --------COMMENT AJAX FUNCTIONALITY---------
+
+    // Get Comments
+
+    function getComments(){
+        let commentsContainer = document.getElementById('comments');
+        let productId = $('#viewComments').val();
+        $.ajax({
+            url: `http://${url}/allComments`,
+            type: 'GET',
+            dataType: 'json',
+            success: function(comments) {
+                console.log(comments);
+                commentsContainer.innerHTML = '';
+                for (i = 0; i < comments.length; i++) {
+                    if (productId === comments[i].product_id){
+                        console.log(comments[i]);
+                        let date = comments[i].time;
+                        commentsContainer.innerHTML += `
+                        <div class="new-comment">
+                        <p>${comments[i].text}</p>
+                        <h6 class="text-muted">Posted by: <span>${comments[i].username}</span><br><span>${comments[i].time}</span></h6>
+                        </div>
+                        `;
+                    }                  
+                }
+            },
+            error: function(){
+                console.log('error: cannot call comments api');
+            }
+        }); //end of ajax
+    } //end of get comments
+
+    //--------View comments------
+
+    function viewComments(){
+        $('#viewComments').click(function(){
+            getComments();
+        });
+    }
+
+    // ------add comment------
+    function addComment(){
+        $('#saveComment').click(function () {
+            let comment = $('#newCommentText').val();
+            let user = sessionStorage.getItem('userName');
+            let productId = $('#viewComments').val();
+            console.log(user);
+            console.log(comment);
+            console.log(productId);
+            $.ajax({
+                url: `http://${url}/createComment`,
+                type: 'POST',
+                data: {
+                    text: comment,
+                    username: user,
+                    product_id: productId,
+                },
+                success: function(comment) {
+                    console.log(comment);
+                    getComments();
+                },
+                error: function(){
+                    console.log('error: cannot post comment');
+                }//end of error
+            });//end of ajax
+        });//end of click
+    }//end of function
+
 }); // Doc Ready function Ends
