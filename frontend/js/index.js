@@ -7,6 +7,32 @@ $(document).ready(function () {
 
     let url;
 
+    // ON CLICKS
+
+    // Browse on-click - To make the listing & seller tab appear when a user clicks into a listing
+    $('#browse-tab').click(function(){
+        console.log('ayo this is working');
+        let listingTab = document.getElementById('listing-tab');
+        let sellerTab = document.getElementById('seller-tab');
+        listingTab.style.display = "inline-block";
+        sellerTab.style.display = "inline-block";
+    })
+
+    // Register on-click -  To make the add button appear when a user registers
+    $('#r-submit').click(function(){
+        console.log('ayo this is working');
+        let addTab = document.getElementById('add-tab');
+        addTab.style.display = "inline-block";
+    })
+
+    // Login on-click - To make the add button appear when a user registers
+    $('#login-submit').click(function(){
+        console.log('ayo this is working');
+        let addTab = document.getElementById('add-tab');
+        addTab.style.display = "inline-block";
+    })
+
+
     // Get Config.Json and variable from it
     $.ajax({
         url: 'config.json',
