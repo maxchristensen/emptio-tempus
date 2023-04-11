@@ -137,7 +137,23 @@
                 </div>
 
                 <div class="container text-center">
+
                     <div class="row" id="result">
+                        <!-- Product Card -->
+                        <div class="col-4">
+                            <div class="card" style="width: 18rem;">
+                                <a href="#listing"><img
+                                        src="https://drive.google.com/uc?export=view&id=1soSjFqVQqi8l32JY8WhLs3tJjT-c6X6g"
+                                        class="card-img-top" alt="..."></a>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <a href="#listing" class="btn btn-primary card-title">Product Name</a>
+                                        <a href="#listing" class="btn btn-primary">Price</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product Card Ends -->
 
                     </div>
                 </div>
@@ -147,7 +163,80 @@
 
             <!-- Listing Content -->
             <div class="content" id="listing">
-            <h2>LISTING CONTENT</h2>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <!-- Product Image Carousel -->
+                            <div id="carouselExampleIndicators" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide-to="0" class="active" aria-current="true"
+                                        aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="https://drive.google.com/uc?export=view&id=1qBtXnWt8JAQEHlDEnDoBSwnsHr56lrtz"
+                                            class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://drive.google.com/uc?export=view&id=1d1PaIwuBtjaXA1mTOfbtush8xLnftkFp"
+                                            class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://drive.google.com/uc?export=view&id=1ISQ-RzfBljdOM8WkkYTpDxH27fIbz9_a"
+                                            class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://drive.google.com/uc?export=view&id=1T2JPPwvJ_nV-BHjsRvvDq4LC88pI41MV"
+                                            class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            <!-- Product Image Carousel ENDS -->
+                        </div>
+
+                        <!-- Product Info -->
+                        <div class="col-8">
+                            <h4>Product Name</h4>
+                            <h5>Product Price</h5>
+                            <h6>Specs:</h6>
+                            <p>Text goes here.</p>
+                        </div>
+                        <!-- Product Info ENDS -->
+
+                        <!-- Q&A's -->
+                        <div id="questions">
+                            <!--  -->
+                            <div class='new-question'>
+                                <p>${question[i].text}</p>
+                                <h6 class='test-muted'>Posted by: <span>${question[i].username}</span><br><span>${formattedDate}</span></h6>
+                            </div>            
+                        </div>
+                        <div class="add-question">
+                            <label for="exampleFormControlTextarea1" class="form-label">New Question</label>
+                            <textarea id="newQuestionText" class="form-control" rows="3"></textarea>
+                            <button id="saveQuestion" class="btn btn-primary mt-3">Submit Question</button>
+                        </div>
+                        <!-- Q&A's ENDS -->
+                    </div>
+                </div>
             </div>
             <!-- Listing Content ENDS -->
 
