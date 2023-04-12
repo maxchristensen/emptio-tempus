@@ -147,7 +147,7 @@
         <!-- Logout Btn -->
         <button id="logout" class="btn btn-primary" type="button" name="button">Log Out</button>
         <!-- Account Modal Btn -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accountModal">
+        <button id="account-details" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accountModal">
             Account
         </button>
 
@@ -159,50 +159,8 @@
                         <h4 class="modal-title fs-5" id="accountModalLabel">Account</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-8">
-                                    <!-- Account Information -->
-                                    <div class="account-fullname">
-                                        <h5>Full Name:</h5>
-                                        <p>Text goes here.</p>
-                                    </div>
-                                    <div class="account-username">
-                                        <h5>Username:</h5>
-                                        <p>textgoeshere</p>
-                                    </div>
-                                    <div class="account-email">
-                                        <h5>Email:</h5>
-                                        <p>text-goes@here.</p>
-                                    </div>
-                                    <div class="account-password">
-                                        <h5>Password:</h5>
-                                        <p>******</p>
-                                    </div>
-                                    <div class="account-about">
-                                        <h5>About:</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non deleniti
-                                            quod, repellat aliquid rem eum molestiae magnam, ducimus unde voluptatum
-                                            provident? Recusandae beatae tempore nesciunt aliquam officia? Architecto,
-                                            voluptatem.</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <h5>Current Listings</h5>
-                                    <div class="editCurrentListing">
-                                        <h6>Product Name</h6>
-                                        <p>Product Price</p>
-                                        <!-- Edit Modal Btn -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editModal">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </button>
-                                        <i class="fa-solid fa-trash"></i>
-                                    </div>
-
-                                </div>
-                            </div>
+                    <div class="modal-body" id="accountModalBody">
+ 
                         </div>
                     </div>
                 </div>
