@@ -106,8 +106,8 @@ $(document).ready(function () {
         let image3 = $('#a-image3').val();
         let image4 = $('#a-image4').val();
         let description = $('#a-description').val();
-        let category = $('a#-category').val();
-        let condition = $('a#-condition').val();
+        let category = $('#a-category').val();
+        let condition = $('#a-condition').val();
         let userid = sessionStorage.getItem('userID');
         console.log(userid);
         console.log(productName, price, image1, image2, image3, image4, description, category, condition);
@@ -157,17 +157,17 @@ $(document).ready(function () {
     $('.saveChange').click(function (event) {
         event.preventDefault();
         let productId = this.value;
-        let productName = $('#productName').val();
-        let productPrice = $('#productPrice').val();
-        let productImage1 = $('#image1').val();
-        let productImage2 = $('#image2').val();
-        let productImage3 = $('#image3').val();
-        let productImage4 = $('#image4').val();
-        let description = $('#a-description').val();
-        let category = $('a#-category').val();
-        let condition = $('a#-condition').val();
+        let productNameUpdate = $('#e-productNameUpdate').val();
+        let productPrice = $('#e-productPrice').val();
+        let productImage1 = $('#e-productImage1').val();
+        let productImage2 = $('#e-productImage2').val();
+        let productImage3 = $('#e-productImage3').val();
+        let productImage4 = $('#e-productImage4').val();
+        let productDescription = $('#e-productDescription').val();
+        let productCategory = $('#e-productCategory').val();
+        let productCondition = $('#e-productCondition').val();
         let userid = sessionStorage.getItem('userID');
-        console.log(productId, productName, productPrice, productImage1, product, Image2, productImage3, productImage4, productDescription, productCategory, productCondition);
+        console.log(productId, productNameUpdate, productPrice, productImage1, productImage2, productImage3, productImage4, productDescription, productCategory, productCondition);
         if (productId == '' || !userid) {
             alert('Please enter a product to update');
         } else {
