@@ -44,13 +44,13 @@
         </div>
         <!-- Clock ENDS -->
 
-        <!-- Login -->
-        <!-- Button trigger modal -->
+        <!-- MODALS -->
+        <!-- Login Modal Btn -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
             Login/Signup
         </button>
 
-        <!-- Modal -->
+        <!-- LOGIN MODAL -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -80,6 +80,7 @@
                                 </div>
                                 <div class="col-4">
                                     <h5>Would you like to create an account?</h5>
+                                    <!-- Register Modal Btn -->
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#registerModal">
                                         Register
@@ -93,6 +94,8 @@
             </div>
         </div>
 
+
+        <!-- REGISTER MODAL -->
         <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -107,25 +110,33 @@
                         <!-- <form action="/loginUser" method="post"> -->
                         <form id="registerForm" class="bg-light py-3 px-3 mt-5">
                             <div class="form-group">
-                                <label for="r-username">Full Name</label>
-                                <input type="text" name="r-username" class="form-control" id="r-username"
-                                    aria-describedby="emailHelp">
+                                <label for="r-fullname">Full Name</label>
+                                <input type="text" name="r-fullname" class="form-control" id="r-fullname">
                             </div>
                             <div class="form-group">
                                 <label for="r-username">Username</label>
-                                <input type="text" name="r-username" class="form-control" id="r-username"
-                                    aria-describedby="emailHelp">
+                                <input type="text" name="r-username" class="form-control" id="r-username">
                             </div>
+
                             <div class="form-group">
                                 <label for="r-email">Email</label>
-                                <input type="email" autocomplete="new-password" name="r-email" class="form-control"
-                                    id="r-email">
+                                <input type="email" name="r-email" class="form-control" id="r-email">
                             </div>
+
                             <div class="form-group">
                                 <label for="r-password">Password</label>
                                 <input type="password" autocomplete="new-password" name="r-password"
                                     class="form-control" id="r-password">
                             </div>
+
+                            <div class="form-group">
+                                <label for="r-about">About</label>
+                                <input type="text" name="r-about" class="form-control" id="r-about">
+                            </div>
+
+                            <label class="mr-3" for="a-description">Product description</label>
+                            <input type="text" class="form-control" id="a-description" name="a-description">
+
                             <button id="r-submit" name="r-button" type="button" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -133,12 +144,14 @@
             </div>
         </div>
 
+        <!-- Logout Btn -->
         <button id="logout" class="btn btn-primary" type="button" name="button">Log Out</button>
+        <!-- Account Modal Btn -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accountModal">
             Account
         </button>
 
-        <!-- Modal -->
+        <!-- ACCOUNT MODAL -->
         <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -180,6 +193,7 @@
                                     <div class="editCurrentListing">
                                         <h6>Product Name</h6>
                                         <p>Product Price</p>
+                                        <!-- Edit Modal Btn -->
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                             data-bs-target="#editModal">
                                             <i class="fa-solid fa-pen"></i>
@@ -195,6 +209,7 @@
             </div>
         </div>
 
+        <!-- EDIT LISTING MODAL -->
         <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -249,28 +264,24 @@
                                     </div>
                                 </div>
                                 <div class="col-8">
-                                    <!-- Add Product From -->
-                                    <form id="addProductForm" class="p-5">
+                                    <!-- Edit Product Form -->
+                                    <form id="editProductForm" class="p-5">
                                         <label class="mr-4" for="a-name"> Product Name: </label>
                                         <input type="text" id="a-name" name="productName" class="form-control">
                                         <label class="mr-4" for="a-price"> Product Price: </label>
                                         <input type="text" id="a-price" name="productPrice" class="form-control">
                                         <label class="mr-5" for="a-imageurl"> Product Description </label>
                                         <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
-                                        <!-- <label class="mr-4" for="a-name"> Cateogry (Wrist, Pocket, Wall. Desk, All)
-                                        </label>
-                                        <input type="text" id="a-name" name="productCategory" class="form-control"> -->
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select id="selectCategory" class="form-select"
+                                            aria-label="Default select example">
                                             <option selected>Category</option>
                                             <option value="1">Wrist</option>
                                             <option value="2">Pocket</option>
                                             <option value="3">Wall</option>
                                             <option value="4">Desk</option>
                                         </select>
-                                        <!-- <label class="mr-4" for="a-name"> Condition (New, Used - Like New, Used - Good,
-                                            Used - Fair, Used - Needs Fixing, All) </label>
-                                        <input type="text" id="a-name" name="productCondition" class="form-control"> -->
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select id="selectCondition" class="form-select"
+                                            aria-label="Default select example">
                                             <option selected>Condition</option>
                                             <option value="5">New</option>
                                             <option value="6">Used - Like New</option>
@@ -278,9 +289,10 @@
                                             <option value="8">Used - Fair</option>
                                             <option value="9">Used - Needs Fixing</option>
                                         </select>
-                                        <button id="addProduct" name="productButton" type="submit"
+                                        <button id="editProduct" name="productButton" type="submit"
                                             class="btn btn-primary">Add product</button>
-                                    </form> <!-- Add Form Ends -->
+                                    </form>
+                                    <!-- Edit Form Ends -->
                                 </div>
                             </div>
                         </div>
@@ -292,14 +304,74 @@
 
 
         <!-- Right Section -->
+        <!-- ADD PRODUCT FORM -->
+        <div class="collapse" id="collapseAddForm">
+            <div class="card card-body">
+                <form id="addProductForm" class="p-5">
+                    <h4>Add Listing</h4>
+                    <label class="mr-3" for="a-name">Product name</label>
+                    <input type="text" id="a-name" name="productName" class="form-control"
+                        placeholder="Include brand and model in name">
+                    <br><br>
+        
+                    <label class="mr-3" for="a-price">Product price</label>
+                    <input type="text" id="a-price" name="productPrice" class="form-control">
+                    <br><br>
+        
+                    <label class="mr-3" for="a-description">Product description</label>
+                    <input type="text" class="form-control" id="a-description" name="a-description">
+                    <br><br>
+        
+                    <label class="mr-3" for="a-imageurl">Add main image url</label>
+                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                    <br><br>
+        
+                    <label class="mr-3" for="a-imageurl">Add additional image url </label>
+                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                    <br><br>
+        
+                    <label class="mr-3" for="a-imageurl">Add additional image url</label>
+                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                    <br><br>
+        
+                    <label class="mr-3" for="a-imageurl">Add additional image url</label>
+                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                    <br><br>
+        
+                    <select id="selectCategory" class="form-select" aria-label="Default select example">
+                        <option selected>Category</option>
+                        <option value="1">Wrist</option>
+                        <option value="2">Pocket</option>
+                        <option value="3">Wall</option>
+                        <option value="4">Desk</option>
+                    </select>
+                    <select id="selectCondition" class="form-select" aria-label="Default select example">
+                        <option selected>Condition</option>
+                        <option value="5">New</option>
+                        <option value="6">Used - Like New</option>
+                        <option value="7">Used - Good</option>
+                        <option value="8">Used - Fair</option>
+                        <option value="9">Used - Needs Fixing</option>
+                    </select>
+        
+                    <button id="addProduct" name="productButton" type="submit" class="btn btn-primary">Add
+                        product</button>
+                </form>
+            </div>
+          </div>
+        <!-- ADD LISTING FORM ENDS-->
+
+
         <div class="tabs tab-right">
             <nav>
                 <a href="#browse" id="browse-tab">Browse</a>
                 <a href="#listing" id="listing-tab">Listing</a> <!-- Hide/Show -->
                 <a href="#seller" id="seller-tab">Seller</a> <!-- Hide/Show -->
-                <a href="#add" id="add-tab"><i class="fa-solid fa-plus"></i>Add</a>
+                <a href="#add" id="add-tab"></a>
+                <a href="#collapseAddForm" id="add-tab" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                    aria-controls="collapseAddForm"><i class="fa-solid fa-plus"></i>Add</a>
             </nav>
-            <!-- Browse Content -->
+            <!-- BROWSE CONTENT -->
             <h2>BROWSE CONTENT</h2>
             <div class="content" id="browse">
                 <!-- Filters/Search -->
@@ -363,11 +435,10 @@
                 </div>
                 <!-- Filters/Search ENDS -->
             </div>
-            <!-- Browse Content ENDS -->
+            <!-- BROWSE CONTENT ENDS -->
 
-            <!-- Listing Content -->
+            <!-- LISTING CONTENT -->
             <div class="content" id="listing">
-
                 <div class="container">
                     <div class="row">
                         <div class="col-4">
@@ -443,16 +514,15 @@
                     </div>
                 </div>
             </div>
-            <!-- Listing Content ENDS -->
+            <!-- LISTING CONTENT ENDS -->
 
-            <!-- Seller Content -->
+            <!-- SELLER CONTENT -->
             <div class="content" id="seller">
                 <h2>SELLER CONTENT</h2>
-
                 <div class="container">
                     <div class="row">
-                        <h4>About the Seller</h4>
-                        <p>Text goes here.</p>
+                        <h4>About <span>USERNAME Goes Here</span></h4>
+                        <p>Text goes here (ABOUT).</p>
                         <br>
                         <br>
                         <h4>Current Listings</h4>
@@ -495,57 +565,17 @@
                         <!-- Comments ENDS -->
                     </div>
                 </div>
-
-                <!-- Seller Add Product From Start-->
-                <form id="addProductForm" class="p-5">
-                    <h2 > Add Product</h2>     
-                    <label class="mr-3" for="a-name">Product name</label>
-                    <input type="text" id="a-name" name="productName" class="form-control" placeholder="Include brand and model in name">
-                    <br><br>
-    
-                    <label class="mr-3" for="a-price">Product price</label>
-                    <input type="text" id="a-price" name="productPrice" class="form-control">
-                    <br><br>
-    
-                    <label class="mr-3" for="a-description">Product description</label>
-                    <input type="text" class="form-control" id="a-description" name="a-description">
-                    <br><br>
-    
-                    <label class="mr-3" for="a-imageurl">Add main image url</label>
-                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
-                    <br><br>
-    
-                    <label class="mr-3" for="a-imageurl">Add additional image url </label>
-                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
-                    <br><br>
-    
-                    <label class="mr-3" for="a-imageurl">Add additional image url</label>
-                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
-                    <br><br>
-    
-                    <label class="mr-3" for="a-imageurl">Add additional image url</label>
-                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
-                    <br><br>
-                    
-                    <label class="mr-3" for="a-name"> Cateogry</label>
-                    <input type="text" id="a-name" name="productCategory" class="form-control" placeholder="Type Wrist, Pocket, Wall, Desk or All">
-                    <br><br>
-                    
-                    <label class="mr-3" for="a-name">Product Condition</label>
-                    <input type="text" id="a-name" name="productCondition" class="form-control" placeholder="Type New, Used - Like New, Used - Good, Used - Fair, Used - Needs Fixing">
-                    <br><br>
-    
-                    <button id="addProduct" name="productButton" type="submit" class="btn btn-primary">Add product</button>
-                </form>
-                <!-- Seller Add Product Form End-->                
             </div>
+            <!-- SELLER CONTENT ENDS -->
+
+
             <!-- *** Maz added 7 April end *** -->
             <button id="viewProducts" class="btn btn-primary" type="button">View All</button>
 
             <div class="row" id="result">
             </div>
             <!-- *** Maz added 7 April end *** -->
-            <!-- Seller Content ENDS -->
+
 
         </div>
         <!-- Right Section ENDS -->
@@ -574,4 +604,5 @@
     <script src="js/index.js"></script>
 
 </body>
+
 </html>
