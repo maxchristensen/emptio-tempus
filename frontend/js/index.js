@@ -81,7 +81,6 @@ $(document).ready(function () {
 
                     editProducts(); /// *** Maz added 7 April ****** ///
                     deleteButtons(); /// *** Maz added 7 April ****** ///
-                    readmore(); /// *** Maz added 7 April ****** ///
                 }
             }, // end of success
 
@@ -226,69 +225,6 @@ $(document).ready(function () {
             });
         });
     }
-
-    // Get Single Product Data on Read More click and populate Read More Modal
-    function readmore() {
-        let readmoreButtons = document.querySelectorAll('.readmore');
-        let buttons = Array.from(readmoreButtons);
-        buttons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                console.log(`readmore with an id of ${this.value}`);
-                let productId = this.value;
-                $.ajax({
-                    url: `http://${url}/singleProduct/${productId}`,
-                    type: `GET`,
-                    dataType: `json`,
-                    success: function (product) {
-                        console.log(product);
-                        let readmoreBody = document.getElementById('readMoreBody');
-                        readmoreBody.innerHTML = `
-                        <div class="row featurette">
-                        <div class="col-md-7">
-                            <h2 class="featurette-heading fw-normal lh-1">${product.productName} <span
-                                    class="text-muted">$${product.price}</span></h2>
-                            <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>                                
-                        </div>
-                        <div class="col-md-5 ">
-                            <img src="${product.image1}" class="w-100" alt="${product.name}">
-                        </div>
-                        <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                            <button id="viewComments" value="${product._id}" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            View Comments
-                            </button>
-                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <div id="comments">
-                                        
-                                    </div>
-                                    <div class="add-comment">
-                                        <label for="exampleFormControlTextarea1" class="form-label">New Comment</label>
-                                        <textarea id="newCommentText" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                        <button id="saveComment" class="btn btn-primary mt-3">Save Comment</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                        `;
-                        viewComments();
-                        addComment();
-                    },
-                    error: function () {
-                        alert('Unable to find product');
-                    }
-
-                }); // End of Ajax
-            }); // End of button onClcik
-        }); // End of forEach
-    } // End of readMore function
-
 
     /// *** Maz added 7 April ****** ///
     // ---------------------- ADD USER API CALLS -------------------
