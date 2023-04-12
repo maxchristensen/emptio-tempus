@@ -65,7 +65,7 @@
                                     <!-- Login Section -->
                                     <h5 class="mt-5">Login</h5>
                                     <!-- Login Form -->
-                                    <form id="loginForm" class="my-5 rounded-pill">
+                                    <form id="loginForm" class="my-5">
                                         <label for="login-username" class=""> Username: </label>
                                         <input type="text" id="login-username" name="username" class="form-control"
                                             value="">
@@ -133,9 +133,6 @@
                                 <label for="r-about">About</label>
                                 <input type="text" name="r-about" class="form-control" id="r-about">
                             </div>
-
-                            <label class="mr-3" for="a-description">Product description</label>
-                            <input type="text" class="form-control" id="a-description" name="a-description">
 
                             <button id="r-submit" name="r-button" type="button" class="btn btn-primary">Submit</button>
                         </form>
@@ -309,56 +306,47 @@
             <div class="card card-body">
                 <form id="addProductForm" class="p-5">
                     <h4>Add Listing</h4>
-                    <label class="mr-3" for="a-name">Product name</label>
-                    <input type="text" id="a-name" name="productName" class="form-control"
-                        placeholder="Include brand and model in name">
-                    <br><br>
-        
-                    <label class="mr-3" for="a-price">Product price</label>
-                    <input type="text" id="a-price" name="productPrice" class="form-control">
-                    <br><br>
-        
-                    <label class="mr-3" for="a-description">Product description</label>
-                    <input type="text" class="form-control" id="a-description" name="a-description">
-                    <br><br>
-        
-                    <label class="mr-3" for="a-imageurl">Add main image url</label>
-                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
-                    <br><br>
-        
-                    <label class="mr-3" for="a-imageurl">Add additional image url </label>
-                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
-                    <br><br>
-        
-                    <label class="mr-3" for="a-imageurl">Add additional image url</label>
-                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
-                    <br><br>
-        
-                    <label class="mr-3" for="a-imageurl">Add additional image url</label>
-                    <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
-                    <br><br>
-        
-                    <select id="selectCategory" class="form-select" aria-label="Default select example">
-                        <option selected>Category</option>
-                        <option value="1">Wrist</option>
-                        <option value="2">Pocket</option>
-                        <option value="3">Wall</option>
-                        <option value="4">Desk</option>
-                    </select>
-                    <select id="selectCondition" class="form-select" aria-label="Default select example">
-                        <option selected>Condition</option>
-                        <option value="5">New</option>
-                        <option value="6">Used - Like New</option>
-                        <option value="7">Used - Good</option>
-                        <option value="8">Used - Fair</option>
-                        <option value="9">Used - Needs Fixing</option>
-                    </select>
-        
-                    <button id="addProduct" name="productButton" type="submit" class="btn btn-primary">Add
-                        product</button>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                            </div>
+                            <div class="col-4">
+                                <label class="mr-3" for="a-name">Product name</label>
+                                <input type="text" id="a-name" name="productName" class="form-control"
+                                    placeholder="Include brand and model in name">
+
+                                <label class="mr-3" for="a-price">Product price</label>
+                                <input type="text" id="a-price" name="productPrice" class="form-control">
+
+                                <select id="selectCategory" class="form-select" aria-label="Default select example">
+                                    <option selected>Category</option>
+                                    <option value="1">Wrist</option>
+                                    <option value="2">Pocket</option>
+                                    <option value="3">Wall</option>
+                                    <option value="4">Desk</option>
+                                </select>
+
+                                <select id="selectCondition" class="form-select" aria-label="Default select example">
+                                    <option selected>Condition</option>
+                                    <option value="5">New</option>
+                                    <option value="6">Used - Like New</option>
+                                    <option value="7">Used - Good</option>
+                                    <option value="8">Used - Fair</option>
+                                    <option value="9">Used - Needs Fixing</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label class="mr-3" for="a-description">Product description</label>
+                                <input type="text" class="form-control" id="a-description" name="a-description">
+                                <button id="addProduct" name="productButton" type="submit" class="btn btn-primary">Add
+                                    product</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
-          </div>
+        </div>
         <!-- ADD LISTING FORM ENDS-->
 
 
