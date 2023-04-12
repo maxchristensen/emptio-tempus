@@ -45,44 +45,251 @@
         <!-- Clock ENDS -->
 
         <!-- Login -->
-        <button>Login/Signup</button>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Login/Signup
+        </button>
 
-        <!-- *** Maz added 7 April start *** -->
-        <h1>REGISTER USER</h1>
-        <!-- Register Form -->
-        <!-- <form action="/loginUser" method="post"> -->
-        <form id="registerForm" class="bg-light py-3 px-3 mt-5">
-            <div class="form-group">
-                <label for="r-username">Username</label>
-                <input type="text" name="r-username" class="form-control" id="r-username" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <label for="r-email">Email</label>
-                <input type="email" autocomplete="new-password" name="r-email" class="form-control" id="r-email">
-            </div>
-            <div class="form-group">
-                <label for="r-password">Password</label>
-                <input type="password" autocomplete="new-password" name="r-password" class="form-control"
-                    id="r-password">
-            </div>
-            <button id="r-submit" name="r-button" type="button" class="btn btn-primary">Submit</button>
-        </form>
+        <!-- Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title fs-5" id="loginModalLabel">Account</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-8">
+                                    <!-- Login Section -->
+                                    <h5 class="mt-5">Login</h5>
+                                    <!-- Login Form -->
+                                    <form id="loginForm" class="my-5 rounded-pill">
+                                        <label for="login-username" class=""> Username: </label>
+                                        <input type="text" id="login-username" name="username" class="form-control"
+                                            value="">
+                                        <br> <br>
+                                        <label for="login-password" class=""> Password: </label>
+                                        <input type="password" name="password" id="login-password" class="form-control"
+                                            value="">
+                                        <button id="login-submit" name="button" type="submit"
+                                            class="btn bg-light text-dark btn-lg btn-dark mt-4">
+                                            Submit </button>
+                                    </form>
+                                </div>
+                                <div class="col-4">
+                                    <h5>Would you like to create an account?</h5>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#registerModal">
+                                        Register
+                                    </button>
 
-        <!-- LOGIN SECTION START -->
-        <h1 class="mt-5">LOGIN FORM</h1>
-        <!-- login form -->
-        <form id="loginForm" class="my-5 rounded-pill">
-            <label for="login-username" class=""> Username: </label>
-            <input type="text" id="login-username" name="username" class="form-control" value="">
-            <br> <br>
-            <label for="login-password" class=""> Password: </label>
-            <input type="password" name="password" id="login-password" class="form-control" value="">
-            <button id="login-submit" name="button" type="submit" class="btn bg-light text-dark btn-lg btn-dark mt-4"> Submit </button>
-        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title fs-5" id="registerModalLabel">New Account</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Register</h5>
+                        <!-- Register Form -->
+                        <!-- <form action="/loginUser" method="post"> -->
+                        <form id="registerForm" class="bg-light py-3 px-3 mt-5">
+                            <div class="form-group">
+                                <label for="r-username">Full Name</label>
+                                <input type="text" name="r-username" class="form-control" id="r-username"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="r-username">Username</label>
+                                <input type="text" name="r-username" class="form-control" id="r-username"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="r-email">Email</label>
+                                <input type="email" autocomplete="new-password" name="r-email" class="form-control"
+                                    id="r-email">
+                            </div>
+                            <div class="form-group">
+                                <label for="r-password">Password</label>
+                                <input type="password" autocomplete="new-password" name="r-password"
+                                    class="form-control" id="r-password">
+                            </div>
+                            <button id="r-submit" name="r-button" type="button" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <button id="logout" class="btn btn-primary" type="button" name="button">Log Out</button>
-        <!-- LOGIN SECTION END -->
-        <!-- *** Maz added 7 April start *** -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accountModal">
+            Account
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title fs-5" id="accountModalLabel">Account</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-8">
+                                    <!-- Account Information -->
+                                    <div class="account-fullname">
+                                        <h5>Full Name:</h5>
+                                        <p>Text goes here.</p>
+                                    </div>
+                                    <div class="account-username">
+                                        <h5>Username:</h5>
+                                        <p>textgoeshere</p>
+                                    </div>
+                                    <div class="account-email">
+                                        <h5>Email:</h5>
+                                        <p>text-goes@here.</p>
+                                    </div>
+                                    <div class="account-password">
+                                        <h5>Password:</h5>
+                                        <p>******</p>
+                                    </div>
+                                    <div class="account-about">
+                                        <h5>About:</h5>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non deleniti
+                                            quod, repellat aliquid rem eum molestiae magnam, ducimus unde voluptatum
+                                            provident? Recusandae beatae tempore nesciunt aliquam officia? Architecto,
+                                            voluptatem.</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <h5>Current Listings</h5>
+                                    <div class="editCurrentListing">
+                                        <h6>Product Name</h6>
+                                        <p>Product Price</p>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#editModal">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                        <i class="fa-solid fa-trash"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title fs-5" id="editModalLabel">Edit Listing</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div id="editListingCarouselIndicators" class="carousel slide">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#editListingCarouselIndicators"
+                                                data-bs-slide-to="0" class="active" aria-current="true"
+                                                aria-label="Slide 1"></button>
+                                            <button type="button" data-bs-target="#editListingCarouselIndicators"
+                                                data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                            <button type="button" data-bs-target="#editListingCarouselIndicators"
+                                                data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                            <button type="button" data-bs-target="#editListingCarouselIndicators"
+                                                data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                        </div>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="https://drive.google.com/uc?export=view&id=1qBtXnWt8JAQEHlDEnDoBSwnsHr56lrtz"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="https://drive.google.com/uc?export=view&id=1d1PaIwuBtjaXA1mTOfbtush8xLnftkFp"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="https://drive.google.com/uc?export=view&id=1ISQ-RzfBljdOM8WkkYTpDxH27fIbz9_a"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="https://drive.google.com/uc?export=view&id=1T2JPPwvJ_nV-BHjsRvvDq4LC88pI41MV"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#editListingCarouselIndicators" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-bs-target="#editListingCarouselIndicators" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <!-- Add Product From -->
+                                    <form id="addProductForm" class="p-5">
+                                        <label class="mr-4" for="a-name"> Product Name: </label>
+                                        <input type="text" id="a-name" name="productName" class="form-control">
+                                        <label class="mr-4" for="a-price"> Product Price: </label>
+                                        <input type="text" id="a-price" name="productPrice" class="form-control">
+                                        <label class="mr-5" for="a-imageurl"> Product Description </label>
+                                        <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                                        <!-- <label class="mr-4" for="a-name"> Cateogry (Wrist, Pocket, Wall. Desk, All)
+                                        </label>
+                                        <input type="text" id="a-name" name="productCategory" class="form-control"> -->
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Category</option>
+                                            <option value="1">Wrist</option>
+                                            <option value="2">Pocket</option>
+                                            <option value="3">Wall</option>
+                                            <option value="4">Desk</option>
+                                        </select>
+                                        <!-- <label class="mr-4" for="a-name"> Condition (New, Used - Like New, Used - Good,
+                                            Used - Fair, Used - Needs Fixing, All) </label>
+                                        <input type="text" id="a-name" name="productCondition" class="form-control"> -->
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Condition</option>
+                                            <option value="5">New</option>
+                                            <option value="6">Used - Like New</option>
+                                            <option value="7">Used - Good</option>
+                                            <option value="8">Used - Fair</option>
+                                            <option value="9">Used - Needs Fixing</option>
+                                        </select>
+                                        <button id="addProduct" name="productButton" type="submit"
+                                            class="btn btn-primary">Add product</button>
+                                    </form> <!-- Add Form Ends -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Left Section ENDS -->
 
 
