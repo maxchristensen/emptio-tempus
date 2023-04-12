@@ -365,31 +365,30 @@ $(document).ready(function () {
     }
 
     // ------add comment------
-    function addComment(){
-        $('#saveComment').click(function () {
-            let comment = $('#newCommentText').val();
-            let user = sessionStorage.getItem('userName');
-            let productId = $('#viewComments').val();
-            console.log(user);
-            console.log(comment);
-            console.log(productId);
-            $.ajax({
-                url: `http://${url}/createComment`,
-                type: 'POST',
-                data: {
-                    text: comment,
-                    username: user,
-                    product_id: productId,
-                },
-                success: function(comment) {
-                    console.log(comment);
-                    getComments();
-                },
-                error: function(){
-                    console.log('error: cannot post comment');
-                }//end of error
-            });//end of ajax
-        });//end of click
-    }//end of function
+    $('#saveComment').click(function () {
+        console.log("not working comments");
+        let comment = $('#newCommentText').val();
+        let user = sessionStorage.getItem('userName');
+        let productId = $('#viewComments').val();
+        console.log(user);
+        console.log(comment);
+        console.log(productId);
+        $.ajax({
+            url: `http://${url}/createComment`,
+            type: 'POST',
+            data: {
+                text: comment,
+                username: user,
+                product_id: productId,
+            },
+            success: function(comment) {
+                console.log(comment);
+                getComments();
+            },
+            error: function(){
+                console.log('error: cannot post comment');
+            }//end of error
+        });//end of ajax
+    });//end of click
 
 }); // Doc Ready function Ends
