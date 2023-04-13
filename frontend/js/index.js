@@ -72,7 +72,7 @@ $('#account-details').click(function(){
                 <h6>Product Name</h6>
                 <p>Product Price</p>
                 <!-- Edit Modal Btn -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary edit" data-bs-toggle="modal"
                     data-bs-target="#editModal">
                     <i class="fa-solid fa-pen"></i>
                 </button>
@@ -80,8 +80,8 @@ $('#account-details').click(function(){
             </div>
         </div>
     </div>                              
-    `
-})
+    `;
+});
 
     // Get Config.Json and variable from it
     $.ajax({
@@ -141,29 +141,30 @@ $('#account-details').click(function(){
         }); // end of ajax function
 } // end of getAllProducts function
 
-    //View Products onclick of View Products Button
-    $('#viewProducts').click(function () {
-        getAllProducts();
-    }); // End of View Products
+     //add a product form a click
+ $('#addProduct').click(function (event) {
+    event.preventDefault();
+    // Create variables that link to each section in our form and grab the value from that
+    let productName = $('#a-productName').val();
+    let price = $('#a-price').val();
+    let image1 = $('#a-image1').val();
+    let image2 = $('#a-image2').val();
+    let image3 = $('#a-image3').val();
+    let image4 = $('#a-image4').val();
+    let description = $('#a-description').val();
+    let category = $('#a-category').val();
+    let condition = $('#a-condition').val();
+    let userid = sessionStorage.getItem('userID');
+    console.log(userid);
 
-
-    //add a product form a click
-    $('#addProduct').click(function (event) {
-        event.preventDefault();
-        let productName = $('#a-productName').val();
-        let price = $('#a-price').val();
-        let image1 = $('#a-image1').val();
-        let image2 = $('#a-image2').val();
-        let image3 = $('#a-image3').val();
-        let image4 = $('#a-image4').val();
-        let description = $('#a-description').val();
-        let category = $('#a-category').val();
-        let condition = $('#a-condition').val();
-        let userid = sessionStorage.getItem('userID');
-        console.log(userid);
+    // run a check to make sure the user is logged in before it validates our form
+    if (!userid) {
+       alert('Please login or register before trying to create a listing');
+    } else {
+       // once login is verified, have the javascript check if all the fields are entered before pushing to the mongo
         console.log(productName, price, image1, image2, image3, image4, description, category, condition);
-        if (productName == '' || price == '' || image1 == '' || image2 == '' || image3 == '' || image4 == '' || category == '' || condition == '' || !userid) {
-            alert('Please login and enter all details');
+        if (productName == '' || price == '' || image1 == '' || category == '' || condition == '') {
+            alert('Please enter all the required fields');
         } else {
             $.ajax({
                 url: `http://${url}/addProduct`,
@@ -190,7 +191,8 @@ $('#account-details').click(function(){
                 } // End of error
             }); // End of ajax
         } // End of else
-    }); // End of add Product Click
+    }
+}); // End of add Product Click
 
     // Giving our "Save Changes" button an id for each product
     function editProducts() {
@@ -198,14 +200,14 @@ $('#account-details').click(function(){
         let buttons = Array.from(editButtons);
         buttons.forEach(function (button) {
             button.addEventListener('click', function () {
-                let saveChange = document.querySelector('.saveChange');
+                let saveChange = document.querySelector('#editProduct');
                 saveChange.value = this.value;
             });
         });
     }
 
     // UPDATE PRODUCT from Modal Save Button
-    $('.saveChange').click(function (event) {
+    $('#editProduct').click(function (event) {
         event.preventDefault();
         let productId = this.value;
         let productNameUpdate = $('#e-productNameUpdate').val();
@@ -352,8 +354,6 @@ $('#account-details').click(function(){
                         sessionStorage.setItem('userName', user['username']);
                         sessionStorage.setItem('userEmail', user['email']);
                         console.log(sessionStorage);
-                        let loggedIn = document.querySelector('.logged-in');
-                        loggedIn.innerHTML = `<p>Logged in as <span class="text-danger">${username.toUpperCase()}</span></p>`;
                         alert(`Welcome back ${username.toUpperCase()}!`);
                     } // end of ifs
                 }, //success
