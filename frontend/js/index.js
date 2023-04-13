@@ -442,15 +442,17 @@ $('#account-details').click(function(){
         });//end of ajax
     });//end of click
 
-    // filter functionality
+    // filter functionality - By category
 
         $('#categorySelect').change(function () {
             let categoryChange = $('#categorySelect').val();
             console.log(categoryChange);
             $.ajax({
-                url: `http://${url}/productCategoryFilter`,
+                url: `http://${url}/allProductsFromDB`,
                 type: 'GET',
-                dataType: 'json',
+                data:{
+                    filter: $('#categorySelect').val()
+                },
     
                 success: function (productsFromMongo) {
                     let results = document.getElementById('result');
@@ -485,5 +487,49 @@ $('#account-details').click(function(){
             });
         });
     
+            // filter functionality - By Condition
+
+            $('#conditionSelect').change(function () {
+                let conditionChange = $('#conditionSelect').val();
+                console.log(conditionChange);
+                $.ajax({
+                    url: `http://${url}/allProductsFromDB`,
+                    type: 'GET',
+                    data:{
+                        filter: $('#conditionSelect').val()
+                    },
+        
+                    success: function (productsFromMongo) {
+                        let results = document.getElementById('result');
+                        results.innerHTML = '';
+                        for (let i = 0; i < productsFromMongo.length; i++) { 
+                            let mongoCondition = productsFromMongo[i].condition;
+                            console.log(mongoCondition);
+                            if (conditionChange === mongoCondition) {
+                                results.innerHTML += `
+                                <!-- Product Card -->
+                            <div class="col-4 listing">
+                                <div class="card" style="width: 18rem;">
+                                    <a href="#listing"><img
+                                            src="${productsFromMongo[i].image1}"
+                                            class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}"></a>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <h5  href="#listing">${productsFromMongo[i].productName}</h5>
+                                            <h6 href="#listing">${productsFromMongo[i].price}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Card Ends -->
+                            `;
+                            }
+                        }
+                    },
+                    error: function () {
+                        alert('unable to filter products by condition');
+                    }, // end of error    
+                });
+            });
 
 }); // Doc Ready function Ends
