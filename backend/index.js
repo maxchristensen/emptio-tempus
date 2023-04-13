@@ -118,8 +118,16 @@ app.delete('/deleteProduct/:id', (req, res) => {
     }).catch(err => res.send(err));
 });
 // End of DELETE End Point
-// ------ PRODUCT END POINTS END ---------------
 /// *** Maz added 7 April end *** ///
+
+// get single product by id
+
+app.get('/singleProduct/:id', (req,res) => {
+    const idParam = req.params.id;
+    Product.findById(idParam).then(result => {
+        res.send(result)
+    });
+});
 
 
 
