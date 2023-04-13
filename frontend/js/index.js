@@ -532,4 +532,47 @@ $('#account-details').click(function(){
                 });
             });
 
+    $('#searchInput').keyup(function () {
+        let search = $('#searchInput').val();
+        console.log(search);
+                $.ajax({
+                    url: `http://${url}/allProductsFromDB`,
+                    type: 'GET',
+                    data:{
+                        filter: $('#searchInput').val()
+                    },
+        
+                    success: function (filteredSearch) {
+                        let results = document.getElementById('result');
+                        results.innerHTML = '';
+                        for (let i = 0; i < filteredSearch.length; i++) {                            
+                            if ((filteredSearch[i].productName.toLowerCase().includes(search.toLowerCase())) === true) {
+                                console.log('searchbar working');
+                                results.innerHTML += `
+                                <!-- Product Card -->
+                            <div class="col-4 listing">
+                                <div class="card" style="width: 18rem;">
+                                    <a href="#listing"><img
+                                            src="${filteredSearch[i].image1}"
+                                            class="card-img-top" img="card-img" alt="${filteredSearch[i].productName}"></a>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <h5  href="#listing">${filteredSearch[i].productName}</h5>
+                                            <h6 href="#listing">${filteredSearch[i].price}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Card Ends -->
+                            `;
+                            }
+                        }
+                    },
+                    error: function () {
+                        alert('unable to filter products using Search Bar');
+                    }, // end of error    
+                });
+            });
+    
+
 }); // Doc Ready function Ends
