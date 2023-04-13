@@ -442,4 +442,48 @@ $('#account-details').click(function(){
         });//end of ajax
     });//end of click
 
+    // filter functionality
+
+        $('#categorySelect').change(function () {
+            let categoryChange = $('#categorySelect').val();
+            console.log(categoryChange);
+            $.ajax({
+                url: `http://${url}/productCategoryFilter`,
+                type: 'GET',
+                dataType: 'json',
+    
+                success: function (productsFromMongo) {
+                    let results = document.getElementById('result');
+                    results.innerHTML = '';
+                    for (let i = 0; i < productsFromMongo.length; i++) { 
+                        let mongoCategory = productsFromMongo[i].category;
+                        console.log(mongoCategory);
+                        if (categoryChange === mongoCategory) {
+                            results.innerHTML += `
+                            <!-- Product Card -->
+                        <div class="col-4 listing">
+                            <div class="card" style="width: 18rem;">
+                                <a href="#listing"><img
+                                        src="${productsFromMongo[i].image1}"
+                                        class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}"></a>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <h5  href="#listing">${productsFromMongo[i].productName}</h5>
+                                        <h6 href="#listing">${productsFromMongo[i].price}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product Card Ends -->
+                        `;
+                        }
+                    }
+                },
+                error: function () {
+                    alert('unable to filter products by category');
+                }, // end of error    
+            });
+        });
+    
+
 }); // Doc Ready function Ends

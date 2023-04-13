@@ -232,3 +232,10 @@ app.delete('deleteComments/:id', (req, res) => {
 });
 
 // ------ COMMENT END POINTS END -----------
+
+// Get All Products from the Database for category filter
+app.get('/productCategoryFilter', (req, res) => {
+    Product.find().then(result => {
+        res.send(result)
+    })
+})
