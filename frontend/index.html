@@ -19,173 +19,203 @@
     <!-- Body Container -->
     <div class="container">
 
-        <!-- Left Section -->
-        <!-- Logo -->
-        <img src="img/emptio-tempus-logo.png" alt="Emptio Tempus Logo">
-        <!-- Logo ENDS -->
+        <div class="row">
 
-        <!-- Clock -->
-        <div class="clock">
-            <div class="hand hour" id="hour"></div>
-            <div class="hand minutes" id="minutes"></div>
-            <div class="hand seconds" id="seconds"></div>
-            <div class="number number1">1</div>
-            <div class="number number2">2</div>
-            <div class="number number3">3</div>
-            <div class="number number4">4</div>
-            <div class="number number5">5</div>
-            <div class="number number6">6</div>
-            <div class="number number7">7</div>
-            <div class="number number8">8</div>
-            <div class="number number9">9</div>
-            <div class="number number10">10</div>
-            <div class="number number11">11</div>
-            <div class="number number12">12</div>
-        </div>
-        <!-- Clock ENDS -->
+            <!-- Left Section -->
+            <div class="col-4">
 
-        <!-- MODALS -->
-        <!-- Login Modal Btn -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-            Login/Signup
-        </button>
+                <!-- Logo -->
+                <img src="img/emptio-tempus-logo.png" alt="Emptio Tempus Logo">
+                <!-- Logo ENDS -->
 
-        <!-- LOGIN MODAL -->
-        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title fs-5" id="loginModalLabel">Account</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-8">
-                                    <!-- Login Section -->
-                                    <h5 class="mt-5">Login</h5>
-                                    <!-- Login Form -->
-                                    <form id="loginForm" class="my-5">
-                                        <label for="login-username" class=""> Username: </label>
-                                        <input type="text" id="login-username" name="username" class="form-control"
-                                            value="">
-                                        <br> <br>
-                                        <label for="login-password" class=""> Password: </label>
-                                        <input type="password" name="password" id="login-password" class="form-control"
-                                            value="">
-                                        <button id="login-submit" name="button" type="submit"
-                                            class="btn bg-light text-dark btn-lg btn-dark mt-4">
-                                            Submit </button>
-                                    </form>
-                                </div>
-                                <div class="col-4">
-                                    <h5>Would you like to create an account?</h5>
-                                    <!-- Register Modal Btn -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#registerModal">
-                                        Register
-                                    </button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Clock -->
+                <div class="clock">
+                    <div class="hand hour" id="hour"></div>
+                    <div class="hand minutes" id="minutes"></div>
+                    <div class="hand seconds" id="seconds"></div>
+                    <div class="number number1">1</div>
+                    <div class="number number2">2</div>
+                    <div class="number number3">3</div>
+                    <div class="number number4">4</div>
+                    <div class="number number5">5</div>
+                    <div class="number number6">6</div>
+                    <div class="number number7">7</div>
+                    <div class="number number8">8</div>
+                    <div class="number number9">9</div>
+                    <div class="number number10">10</div>
+                    <div class="number number11">11</div>
+                    <div class="number number12">12</div>
                 </div>
+                <!-- Clock ENDS -->
+
+                <!-- MODALS BTN -->
+                <!-- Login Modal Btn -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#loginModal">Login/Signup</button>
+                <!-- Logout Btn -->
+                <button id="logout" class="btn btn-primary" type="button" name="button">Log Out</button>
+                <!-- Account Modal Btn -->
+                <button id="account-details" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#accountModal">Account</button>
+                <!-- MODALS BTN ENDS -->
+
             </div>
-        </div>
+            <!-- Left Section ENDS -->
 
+            <!-- Right Section -->
+            <div class="col-8">
+                <!-- ADD PRODUCT FORM -->
+                <div class="collapse" id="collapseAddForm">
+                    <div class="card card-body">
+                        <form id="addProductForm" class="p-5">
+                            <h4>Add Product</h4>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label class="mr-3" for="a-image1">Update main image url</label>
+                                        <input type="text" class="form-control" id="a-image1" name="a-image1">
 
-        <!-- REGISTER MODAL -->
-        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title fs-5" id="registerModalLabel">New Account</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h5>Register</h5>
-                        <!-- Register Form -->
-                        <!-- <form action="/loginUser" method="post"> -->
-                        <form id="registerForm" class="bg-light py-3 px-3 mt-5">
-                            <div class="form-group">
-                                <label for="r-fullname">Full Name</label>
-                                <input type="text" name="r-fullname" class="form-control" id="r-fullname">
+                                        <label class="mr-3" for="a-image2">Update additional image url </label>
+                                        <input type="text" class="form-control" id="a-image2" name="a-image2">
+
+                                        <label class="mr-3" for="a-image3">Update additional image url </label>
+                                        <input type="text" class="form-control" id="a-image3" name="a-image3">
+
+                                        <label class="mr-3" for="a-image4">Update additional image url </label>
+                                        <input type="text" class="form-control" id="a-image4" name="a-image4">
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="mr-3" for="a-productName">Product Name</label>
+                                        <input type="text" id="a-productName" name="a-productName" class="form-control"
+                                            placeholder="Include brand and model in name">
+
+                                        <label class="mr-3" for="a-price">Product Price</label>
+                                        <input type="text" id="a-price" name="productPrice" class="form-control">
+
+                                        <select id="a-category" class="form-select" aria-label="Default select example">
+                                            <option selected>Category</option>
+                                            <option value="1">Wrist</option>
+                                            <option value="2">Pocket</option>
+                                            <option value="3">Wall</option>
+                                            <option value="4">Desk</option>
+                                        </select>
+
+                                        <select id="a-condition" class="form-select"
+                                            aria-label="Default select example">
+                                            <option selected>Condition</option>
+                                            <option value="5">New</option>
+                                            <option value="6">Used - Like New</option>
+                                            <option value="7">Used - Good</option>
+                                            <option value="8">Used - Fair</option>
+                                            <option value="9">Used - Needs Fixing</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="mr-3" for="a-description">Product Description</label>
+                                        <input type="text" class="form-control" id="a-description" name="a-description">
+                                        <button id="addProduct" name="productButton" type="submit"
+                                            class="btn btn-primary">Add Product</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="r-username">Username</label>
-                                <input type="text" name="r-username" class="form-control" id="r-username">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="r-email">Email</label>
-                                <input type="email" name="r-email" class="form-control" id="r-email">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="r-password">Password</label>
-                                <input type="password" autocomplete="new-password" name="r-password"
-                                    class="form-control" id="r-password">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="r-about">About</label>
-                                <input type="text" name="r-about" class="form-control" id="r-about">
-                            </div>
-
-                            <button id="r-submit" name="r-button" type="button" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
+                <!-- ADD LISTING FORM ENDS-->
 
-        <!-- Logout Btn -->
-        <button id="logout" class="btn btn-primary" type="button" name="button">Log Out</button>
-        <!-- Account Modal Btn -->
-        <button id="account-details" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accountModal">
-            Account
-        </button>
 
-        <!-- ACCOUNT MODAL -->
-        <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title fs-5" id="accountModalLabel">Account</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="accountModalBody">
- 
+                <div class="tabs tab-right">
+                    <nav>
+                        <a href="#browse" id="browse-tab">Browse</a>
+                        <a href="#listing" id="listing-tab">Listing</a> <!-- Hide/Show -->
+                        <a href="#seller" id="seller-tab">Seller</a> <!-- Hide/Show -->
+                        <a href="#add" id="add-tab"></a>
+                        <a href="#collapseAddForm" id="add-tab" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="collapseAddForm"><i
+                                class="fa-solid fa-plus"></i>Add</a>
+                    </nav>
+                    <!-- BROWSE CONTENT -->
+                    <h2>BROWSE CONTENT</h2>
+                    <div class="content" id="browse">
+                        <!-- Filters/Search -->
+                        <div class="container" id="filters">
+                            <!-- Category -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" id="category" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Category
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item wrist" href="">Wrist</a></li>
+                                    <li><a class="dropdown-item pocket" href="">Pocket</a></li>
+                                    <li><a class="dropdown-item wall" href="">Wall</a></li>
+                                    <li><a class="dropdown-item desk" href="">Desk</a></li>
+                                    <li><a class="dropdown-item all" href="">All</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Condition -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" id="category" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Condition
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item new" href="">New</a></li>
+                                    <li><a class="dropdown-item like-new" href="">Used - Like New</a></li>
+                                    <li><a class="dropdown-item good" href="">Used - Good</a></li>
+                                    <li><a class="dropdown-item fair" href="">Used - Fair</a></li>
+                                    <li><a class="dropdown-item needs-fixing" href="">Used - Needs Fixing</a></li>
+                                    <li><a class="dropdown-item all" href="">All</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Search -->
+                            <input class="form-control" type="text" placeholder="Search"
+                                aria-label="default input example"><i class="fa-solid fa-magnifying-glass"></i></input>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- EDIT LISTING MODAL -->
-        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title fs-5" id="editModalLabel">Edit Listing</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="container text-center">
+
+                            <div class="row" id="result">
+                                <!-- Product Card -->
+                                <div class="col-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <a href="#listing"><img
+                                                src="https://drive.google.com/uc?export=view&id=1soSjFqVQqi8l32JY8WhLs3tJjT-c6X6g"
+                                                class="card-img-top" alt="..."></a>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <a href="#listing" class="btn btn-primary card-title">Product Name</a>
+                                                <a href="#listing" class="btn btn-primary">Price</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Product Card Ends -->
+
+                            </div>
+                        </div>
+                        <!-- Filters/Search ENDS -->
                     </div>
-                    <div class="modal-body">
+                    <!-- BROWSE CONTENT ENDS -->
+
+                    <!-- LISTING CONTENT -->
+                    <div class="content" id="listing">
                         <div class="container">
                             <div class="row">
                                 <div class="col-4">
-                                    <div id="editListingCarouselIndicators" class="carousel slide">
+                                    <!-- Product Image Carousel -->
+                                    <div id="carouselExampleIndicators" class="carousel slide">
                                         <div class="carousel-indicators">
-                                            <button type="button" data-bs-target="#editListingCarouselIndicators"
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
                                                 data-bs-slide-to="0" class="active" aria-current="true"
                                                 aria-label="Slide 1"></button>
-                                            <button type="button" data-bs-target="#editListingCarouselIndicators"
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
                                                 data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                            <button type="button" data-bs-target="#editListingCarouselIndicators"
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
                                                 data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                            <button type="button" data-bs-target="#editListingCarouselIndicators"
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
                                                 data-bs-slide-to="3" aria-label="Slide 4"></button>
                                         </div>
                                         <div class="carousel-inner">
@@ -207,324 +237,276 @@
                                             </div>
                                         </div>
                                         <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#editListingCarouselIndicators" data-bs-slide="prev">
+                                            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Previous</span>
                                         </button>
                                         <button class="carousel-control-next" type="button"
-                                            data-bs-target="#editListingCarouselIndicators" data-bs-slide="next">
+                                            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Next</span>
                                         </button>
                                     </div>
+                                    <!-- Product Image Carousel ENDS -->
                                 </div>
+
+                                <!-- Product Info -->
                                 <div class="col-8">
-
-                                    <!-- Edit Product Form Start -->
-                                    <form id="editProductForm" class="p-5">
-                                        <label class="mr-4" for="e-productNameUpdate">Product Name: </label>
-                                        <input type="text" id="e-productNameUpdate" name="e-productNameUpdate" class="form-control">
-
-                                        <label class="mr-4" for="e-productPrice"> Product Price: </label>
-                                        <input type="text" id="e-productPrice" name="e-productPrice" class="form-control">
-
-                                        <label class="mr-3" for="e-productImage1">Update main image url</label>
-                                        <input type="text" class="form-control" id="e-productImage1" name="e-productImage1">
-
-                                        <label class="mr-3" for="e-productImage2">Update additional image url </label>
-                                        <input type="text" class="form-control" id="e-productImage2" name="e-productImage2">
-
-                                        <label class="mr-3" for="e-productImage3">Update additional image url </label>
-                                        <input type="text" class="form-control" id="e-productImage3" name="e-productImage3">
-
-                                        <label class="mr-3" for="e-productImage4">Update additional image url </label>
-                                        <input type="text" class="form-control" id="e-productImage4" name="e-productImage4">
-
-                                        <label class="mr-5" for="e-productDescription">Product Description: </label>
-                                        <input type="text" class="form-control" id="e-productDescription" name="e-productDescription">
-
-                                        <select id="selectCategory" class="form-select"
-                                            aria-label="Default select example">
-                                            <option selected>Category</option>
-                                            <option value="1">Wrist</option>
-                                            <option value="2">Pocket</option>
-                                            <option value="3">Wall</option>
-                                            <option value="4">Desk</option>
-                                        </select>
-                                        <select id="selectCondition" class="form-select"
-                                            aria-label="Default select example">
-                                            <option selected>Condition</option>
-                                            <option value="5">New</option>
-                                            <option value="6">Used - Like New</option>
-                                            <option value="7">Used - Good</option>
-                                            <option value="8">Used - Fair</option>
-                                            <option value="9">Used - Needs Fixing</option>
-                                        </select>
-                                        <button id="editProduct" name="productButton" type="submit"
-                                            class="btn btn-primary">Add product</button>
-                                    </form>
-                                    <!-- Edit Form Ends -->
+                                    <h4>Product Name</h4>
+                                    <h5>Product Price</h5>
+                                    <h6>Specs:</h6>
+                                    <p>Text goes here.</p>
                                 </div>
+                                <!-- Product Info ENDS -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- LISTING CONTENT ENDS -->
+
+                    <!-- SELLER CONTENT -->
+                    <div class="content" id="seller">
+                        <h2>SELLER CONTENT</h2>
+                        <div class="container">
+                            <div class="row">
+                                <h4>About <span>USERNAME Goes Here</span></h4>
+                                <p>Text goes here (ABOUT).</p>
+                                <br>
+                                <br>
+                                <h4>Current Listings</h4>
+                                <div class="col-3">
+                                    <div class="card" style="width: 18rem;">
+                                        <a href="#listing"><img
+                                                src="https://drive.google.com/uc?export=view&id=1soSjFqVQqi8l32JY8WhLs3tJjT-c6X6g"
+                                                class="card-img-top" alt="..."></a>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <a href="#listing" class="btn btn-primary card-title">Product Name</a>
+                                                <a href="#listing" class="btn btn-primary">Price</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comments -->
+                                <div id="comments">
+                                    <h4>Comments</h4>
+                                    <div class='new-comment'>
+                                        <p>${question[i].text}</p>
+                                        <h6 class='test-muted'>Posted by:
+                                            <span>${question[i].username}</span><br><span>${formattedDate}</span></h6>
+                                    </div>
+                                </div>
+                                <div class="add-comment">
+                                    <label for="newCommentText" class="form-label">New Comment</label>
+                                    <textarea id="newCommentText" class="form-control" rows="3"></textarea>
+                                    <button id="saveComment" class="btn btn-primary mt-3">Submit Comment</button>
+                                </div>
+                                <!-- Comments ENDS -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SELLER CONTENT ENDS -->
+
+
+                    <!-- *** Maz added 7 April end *** -->
+                    <button id="viewProducts" class="btn btn-primary" type="button">View All</button>
+
+                    <div class="row" id="result">
+                    </div>
+                    <!-- *** Maz added 7 April end *** -->
+
+
+                </div>
+            </div>
+            <!-- Right Section ENDS -->
+        </div>
+    </div>
+
+
+
+
+    <!-- MODALS -->
+    <!-- LOGIN MODAL -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="loginModalLabel">Account</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-8">
+                                <!-- Login Section -->
+                                <h5 class="mt-5">Login</h5>
+                                <!-- Login Form -->
+                                <form id="loginForm" class="my-5">
+                                    <label for="login-username" class="">Username</label>
+                                    <input type="text" id="login-username" name="login-username" class="form-control"
+                                        value="">
+                                    <br> <br>
+                                    <label for="login-password" class="">Password</label>
+                                    <input type="password" name="login-password" id="login-password"
+                                        class="form-control" value="">
+                                    <button id="login-submit" name="button" type="submit"
+                                        class="btn bg-light text-dark btn-lg btn-dark mt-4">Login</button>
+                                </form>
+                            </div>
+                            <div class="col-4">
+                                <h5>Would you like to create an account?</h5>
+                                <!-- Register Modal Btn -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#registerModal">Register</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Left Section ENDS -->
+    </div>
 
 
-        <!-- Right Section -->
-        <!-- ADD PRODUCT FORM -->
-        <div class="collapse" id="collapseAddForm">
-            <div class="card card-body">
-                <form id="addProductForm" class="p-5">
-                    <h4>Add Listing</h4>
+    <!-- REGISTER MODAL -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="registerModalLabel">New Account</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>Register</h5>
+                    <!-- Register Form -->
+                    <!-- <form action="/loginUser" method="post"> -->
+                    <form id="registerForm" class="bg-light py-3 px-3 mt-5">
+                        <div class="form-group">
+                            <label for="r-fullname">Full Name</label>
+                            <input type="text" name="r-fullname" class="form-control" id="r-fullname">
+                        </div>
+                        <div class="form-group">
+                            <label for="r-username">Username</label>
+                            <input type="text" name="r-username" class="form-control" id="r-username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="r-email">Email</label>
+                            <input type="email" name="r-email" class="form-control" id="r-email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="r-password">Password</label>
+                            <input type="password" autocomplete="new-password" name="r-password" class="form-control"
+                                id="r-password">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="r-about">About</label>
+                            <input type="text" name="r-about" class="form-control" id="r-about">
+                        </div>
+
+                        <button id="r-submit" name="r-button" type="button" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACCOUNT MODAL -->
+    <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="accountModalLabel">Account</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="accountModalBody">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- EDIT LISTING MODAL -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="editModalLabel">Edit Product</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Edit Product Form Start -->
                     <div class="container">
                         <div class="row">
                             <div class="col-4">
-                                <input type="text" class="form-control" id="a-imageurl" name="a-imageurl">
+                                <form id="editProductForm" class="p-5">
+                                    <label class="mr-3" for="e-productImage1">Update main image url</label>
+                                    <input type="text" class="form-control" id="e-productImage1" name="e-productImage1">
+
+                                    <label class="mr-3" for="e-productImage2">Update additional image url </label>
+                                    <input type="text" class="form-control" id="e-productImage2" name="e-productImage2">
+
+                                    <label class="mr-3" for="e-productImage3">Update additional image url </label>
+                                    <input type="text" class="form-control" id="e-productImage3" name="e-productImage3">
+
+                                    <label class="mr-3" for="e-productImage4">Update additional image url </label>
+                                    <input type="text" class="form-control" id="e-productImage4" name="e-productImage4">
+                                </form>
                             </div>
                             <div class="col-4">
-                                <label class="mr-3" for="a-name">Product name</label>
-                                <input type="text" id="a-name" name="productName" class="form-control"
-                                    placeholder="Include brand and model in name">
+                                <form id="editProductForm" class="p-5">
+                                    <label class="mr-4" for="e-productNameUpdate">Product Name</label>
+                                    <input type="text" id="e-productNameUpdate" name="e-productNameUpdate"
+                                        class="form-control">
 
-                                <label class="mr-3" for="a-price">Product price</label>
-                                <input type="text" id="a-price" name="productPrice" class="form-control">
+                                    <label class="mr-4" for="e-productPrice"> Product Price</label>
+                                    <input type="text" id="e-productPrice" name="e-productPrice" class="form-control">
 
-                                <select id="selectCategory" class="form-select" aria-label="Default select example">
-                                    <option selected>Category</option>
-                                    <option value="1">Wrist</option>
-                                    <option value="2">Pocket</option>
-                                    <option value="3">Wall</option>
-                                    <option value="4">Desk</option>
-                                </select>
+                                    <select id="e-productCategory" class="form-select"
+                                        aria-label="Default select example">
+                                        <option selected>Category</option>
+                                        <option value="1">Wrist</option>
+                                        <option value="2">Pocket</option>
+                                        <option value="3">Wall</option>
+                                        <option value="4">Desk</option>
+                                    </select>
 
-                                <select id="selectCondition" class="form-select" aria-label="Default select example">
-                                    <option selected>Condition</option>
-                                    <option value="5">New</option>
-                                    <option value="6">Used - Like New</option>
-                                    <option value="7">Used - Good</option>
-                                    <option value="8">Used - Fair</option>
-                                    <option value="9">Used - Needs Fixing</option>
-                                </select>
+                                    <select id="e-productCondition" class="form-select"
+                                        aria-label="Default select example">
+                                        <option selected>Condition</option>
+                                        <option value="5">New</option>
+                                        <option value="6">Used - Like New</option>
+                                        <option value="7">Used - Good</option>
+                                        <option value="8">Used - Fair</option>
+                                        <option value="9">Used - Needs Fixing</option>
+                                    </select>
+                                </form>
+
                             </div>
                             <div class="col-4">
-                                <label class="mr-3" for="a-description">Product description</label>
-                                <input type="text" class="form-control" id="a-description" name="a-description">
-                                <button id="addProduct" name="productButton" type="submit" class="btn btn-primary">Add
-                                    product</button>
+                                <form id="editProductForm" class="p-5">
+                                    <label class="mr-5" for="e-productDescription">Product Description</label>
+                                    <input type="text" class="form-control" id="e-productDescription"
+                                        name="e-productDescription">
+
+                                    <button id="editProduct" name="productButton" type="submit"
+                                        class="btn btn-primary">Edit
+                                        Product</button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
-                </form>
+                    <!-- Edit Form Ends -->
+                </div>
             </div>
         </div>
-        <!-- ADD LISTING FORM ENDS-->
+    </div>
+    <!-- MODALS END -->
 
 
-        <div class="tabs tab-right">
-            <nav>
-                <a href="#browse" id="browse-tab">Browse</a>
-                <a href="#listing" id="listing-tab">Listing</a> <!-- Hide/Show -->
-                <a href="#seller" id="seller-tab">Seller</a> <!-- Hide/Show -->
-                <a href="#add" id="add-tab"></a>
-                <a href="#collapseAddForm" id="add-tab" data-bs-toggle="collapse" role="button" aria-expanded="false"
-                    aria-controls="collapseAddForm"><i class="fa-solid fa-plus"></i>Add</a>
-            </nav>
-            <!-- BROWSE CONTENT -->
-            <h2>BROWSE CONTENT</h2>
-            <div class="content" id="browse">
-                <!-- Filters/Search -->
-                <div class="container" id="filters">
-                    <!-- Category -->
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" id="category" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Category
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item wrist" href="">Wrist</a></li>
-                            <li><a class="dropdown-item pocket" href="">Pocket</a></li>
-                            <li><a class="dropdown-item wall" href="">Wall</a></li>
-                            <li><a class="dropdown-item desk" href="">Desk</a></li>
-                            <li><a class="dropdown-item all" href="">All</a></li>
-                        </ul>
-                    </div>
 
-                    <!-- Condition -->
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" id="category" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Condition
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item new" href="">New</a></li>
-                            <li><a class="dropdown-item like-new" href="">Used - Like New</a></li>
-                            <li><a class="dropdown-item good" href="">Used - Good</a></li>
-                            <li><a class="dropdown-item fair" href="">Used - Fair</a></li>
-                            <li><a class="dropdown-item needs-fixing" href="">Used - Needs Fixing</a></li>
-                            <li><a class="dropdown-item all" href="">All</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Search -->
-                    <input class="form-control" type="text" placeholder="Search" aria-label="default input example"><i
-                        class="fa-solid fa-magnifying-glass"></i></input>
-                </div>
-
-                <div class="container text-center">
-
-                    <div class="row" id="result">
-                        <!-- Product Card -->
-                        <div class="col-4">
-                            <div class="card" style="width: 18rem;">
-                                <a href="#listing"><img
-                                        src="https://drive.google.com/uc?export=view&id=1soSjFqVQqi8l32JY8WhLs3tJjT-c6X6g"
-                                        class="card-img-top" alt="..."></a>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <a href="#listing" class="btn btn-primary card-title">Product Name</a>
-                                        <a href="#listing" class="btn btn-primary">Price</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product Card Ends -->
-
-                    </div>
-                </div>
-                <!-- Filters/Search ENDS -->
-            </div>
-            <!-- BROWSE CONTENT ENDS -->
-
-            <!-- LISTING CONTENT -->
-            <div class="content" id="listing">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4">
-                            <!-- Product Image Carousel -->
-                            <div id="carouselExampleIndicators" class="carousel slide">
-                                <div class="carousel-indicators">
-                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                        data-bs-slide-to="0" class="active" aria-current="true"
-                                        aria-label="Slide 1"></button>
-                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                        data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                        data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                        data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                </div>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://drive.google.com/uc?export=view&id=1qBtXnWt8JAQEHlDEnDoBSwnsHr56lrtz"
-                                            class="d-block w-100" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://drive.google.com/uc?export=view&id=1d1PaIwuBtjaXA1mTOfbtush8xLnftkFp"
-                                            class="d-block w-100" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://drive.google.com/uc?export=view&id=1ISQ-RzfBljdOM8WkkYTpDxH27fIbz9_a"
-                                            class="d-block w-100" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://drive.google.com/uc?export=view&id=1T2JPPwvJ_nV-BHjsRvvDq4LC88pI41MV"
-                                            class="d-block w-100" alt="...">
-                                    </div>
-                                </div>
-                                <button class="carousel-control-prev" type="button"
-                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                            <!-- Product Image Carousel ENDS -->
-                        </div>
-
-                        <!-- Product Info -->
-                        <div class="col-8">
-                            <h4>Product Name</h4>
-                            <h5>Product Price</h5>
-                            <h6>Specs:</h6>
-                            <p>Text goes here.</p>
-                        </div>
-                        <!-- Product Info ENDS -->
-                    </div>
-                </div>
-            </div>
-            <!-- LISTING CONTENT ENDS -->
-
-            <!-- SELLER CONTENT -->
-            <div class="content" id="seller">
-                <h2>SELLER CONTENT</h2>
-                <div class="container">
-                    <div class="row">
-                        <h4>About <span>USERNAME Goes Here</span></h4>
-                        <p>Text goes here (ABOUT).</p>
-                        <br>
-                        <br>
-                        <h4>Current Listings</h4>
-                        <div class="col-3">
-                            <div class="card" style="width: 18rem;">
-                                <a href="#listing"><img
-                                        src="https://drive.google.com/uc?export=view&id=1soSjFqVQqi8l32JY8WhLs3tJjT-c6X6g"
-                                        class="card-img-top" alt="..."></a>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <a href="#listing" class="btn btn-primary card-title">Product Name</a>
-                                        <a href="#listing" class="btn btn-primary">Price</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-
-                        </div>
-                        <div class="col-3">
-
-                        </div>
-                        <div class="col-3">
-
-                        </div>
-                        <!-- Comments -->
-                        <div id="comments">
-                            <h4>Comments</h4>
-                            <div class='new-comment'>
-                                <p>${question[i].text}</p>
-                                <h6 class='test-muted'>Posted by:
-                                    <span>${question[i].username}</span><br><span>${formattedDate}</span></h6>
-                            </div>
-                        </div>
-                        <div class="add-comment">
-                            <label for="newCommentText" class="form-label">New Comment</label>
-                            <textarea id="newCommentText" class="form-control" rows="3"></textarea>
-                            <button id="saveComment" class="btn btn-primary mt-3">Submit Comment</button>
-                        </div>
-                        <!-- Comments ENDS -->
-                    </div>
-                </div>
-            </div>
-            <!-- SELLER CONTENT ENDS -->
-
-
-            <!-- *** Maz added 7 April end *** -->
-            <button id="viewProducts" class="btn btn-primary" type="button">View All</button>
-
-            <div class="row" id="result">
-            </div>
-            <!-- *** Maz added 7 April end *** -->
-
-
-        </div>
-        <!-- Right Section ENDS -->
 
     </div>
     <!-- Body Container ENDS -->
