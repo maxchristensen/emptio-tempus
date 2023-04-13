@@ -141,33 +141,25 @@
                         <div class="container" id="filters">
                             <!-- Category -->
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" id="category" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Category
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item wrist" href="">Wrist</a></li>
-                                    <li><a class="dropdown-item pocket" href="">Pocket</a></li>
-                                    <li><a class="dropdown-item wall" href="">Wall</a></li>
-                                    <li><a class="dropdown-item desk" href="">Desk</a></li>
-                                    <li><a class="dropdown-item all" href="">All</a></li>
-                                </ul>
+                                <select class="form-select form-select-sm" id="categorySelect" aria-label=".form-select-sm example">
+                                    <option selected>Category</option>
+                                    <option value="wrist">Wrist</option>
+                                    <option value="pocket">Pocket</option>
+                                    <option value="wall">Wall</option>
+                                    <option value="desk">Desk</option>
+                                  </select>
                             </div>
 
                             <!-- Condition -->
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" id="category" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Condition
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item new" href="">New</a></li>
-                                    <li><a class="dropdown-item like-new" href="">Used - Like New</a></li>
-                                    <li><a class="dropdown-item good" href="">Used - Good</a></li>
-                                    <li><a class="dropdown-item fair" href="">Used - Fair</a></li>
-                                    <li><a class="dropdown-item needs-fixing" href="">Used - Needs Fixing</a></li>
-                                    <li><a class="dropdown-item all" href="">All</a></li>
-                                </ul>
+                                <select class="form-select form-select-sm" id="conditionSelect" aria-label=".form-select-sm example">
+                                    <option selected>Condition</option>
+                                    <option value="new">New</option>
+                                    <option value="like">USED - Like new</option>
+                                    <option value="good">USED - Good</option>
+                                    <option value="fair">USED - Fair</option>
+                                    <option value="fixing">USED - Needs Fixing</option>
+                                  </select>
                             </div>
 
                             <!-- Search -->
