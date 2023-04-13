@@ -115,7 +115,7 @@ $('#account-details').click(function(){
                         ` 
                         <!-- Product Card -->
                         <div class="col-4 listing">
-                            <div class="card cardlisting" value="${productsFromMongo[i]._id}"  style="width: 18rem;">
+                            <div class="card cardlisting" style="width: 18rem;">
                                 <<img
                                         src="${productsFromMongo[i].image1}"
                                         class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}">
@@ -124,6 +124,7 @@ $('#account-details').click(function(){
                                         <h5  href="#listing">${productsFromMongo[i].productName}</h5>
                                         <h6 href="#listing">${productsFromMongo[i].price}</h6>
                                     </div>
+                                    <button value=${productsFromMongo[i]._id} class="m-1 btn readmore btn-primary" type="button" name="button">View Listing</button>
                                 </div>
                             </div>
                         </div>
@@ -284,7 +285,7 @@ $('#account-details').click(function(){
 // get single product data on readmore click and populate read more modal
  
 function singleProduct() {
-    let readmore = document.querySelectorAll('.cardlisting');
+    let readmore = document.querySelectorAll('.readmore');
     let buttons = Array.from(readmore);
     buttons.forEach(function (button) {
         button.addEventListener('click', function () {
@@ -360,7 +361,6 @@ function singleProduct() {
                     </div>
                     `;
                     viewComments();
-                    addComment();
                 },
                 error: function () {
                     alert('Unable to find product');
