@@ -117,21 +117,22 @@ $(document).ready(function () {
                         ` 
                         <!-- Product Card -->
                         <div class="col-4 listing">
-                            <div class="card" style="width: 18rem;">
-                                <a href="#listing"><img
+                            <div class="card cardlisting" style="width: 18rem;">
+                                <<img
                                         src="${productsFromMongo[i].image1}"
-                                        class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}"></a>
+                                        class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}">
                                 <div class="card-body">
                                     <div class="row">
                                         <h5  href="#listing">${productsFromMongo[i].productName}</h5>
                                         <h6 href="#listing">${productsFromMongo[i].price}</h6>
                                     </div>
+                                    <button value=${productsFromMongo[i]._id} class="m-1 btn readmore btn-primary" type="button" name="button">View Listing</button>
                                 </div>
                             </div>
                         </div>
                         <!-- Product Card Ends -->
                     `;
-
+                    singleProduct();
                     editProducts(); /// *** Maz added 7 April ****** ///
                     deleteButtons(); /// *** Maz added 7 April ****** ///
                 }
@@ -280,8 +281,97 @@ $(document).ready(function () {
             });
         });
     }
-
     /// *** Maz added 7 April ****** ///
+
+   
+// get single product data on readmore click and populate read more modal
+ 
+function singleProduct() {
+    let readmore = document.querySelectorAll('.readmore');
+    let buttons = Array.from(readmore);
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            console.log(`readmore with is of ${this.value}`);
+            let productId = this.value;
+            $.ajax({
+                url: `http://${url}/singleProduct/${productId}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (product) {
+                    console.log(product);
+                    let singleListingBody = document.getElementById('result');
+                    singleListingBody.innerHTML = `
+                    <div class="content" id="listing">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <!-- Product Image Carousel -->
+                                    <div id="carouselExampleIndicators" class="carousel slide">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide-to="0" class="active" aria-current="true"
+                                                aria-label="Slide 1"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                        </div>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="${product.image1}"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="${product.image2}"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="${product.image3}"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="${product.image4}"
+                                                    class="d-block w-100" alt="...">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                    <!-- Product Image Carousel ENDS -->
+                                </div>
+
+                                <!-- Product Info -->
+                                <div class="col-8">
+                                    <h4>${product.productName}</h4>
+                                    <h5>${product.price}</h5>
+                                    <h6>Details:</h6>
+                                    <p>${product.description}</p>
+                                </div>
+                                <!-- Product Info ENDS -->
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    viewComments();
+                },
+                error: function () {
+                    alert('Unable to find product');
+                } //end of error
+            }); //end of ajax
+        }); // end of button listener
+    }); //end of for each
+}; //end of function
+
     // ---------------------- ADD USER API CALLS -------------------
     // Register User
     $('#r-submit').click(function (event) {
@@ -534,6 +624,8 @@ $(document).ready(function () {
                     }, // end of error    
                 });
             });
+
+        // filtering functionality -- Search bar
 
     $('#searchInput').keyup(function () {
         let search = $('#searchInput').val();
