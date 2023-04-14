@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-/*jshint -W069 */   /// *** Maz added 7 April *** /// removes dot notiation erros
+/*jshint -W069 */ /// *** Maz added 7 April *** /// removes dot notiation erros
 
 console.log('frontend script is working');
 
@@ -10,7 +10,7 @@ $(document).ready(function () {
     // ON CLICKS
 
     // Browse on-click - To make the listing & seller tab appear when a user clicks into a listing
-    $('#browse-tab').click(function(){
+    $('#browse-tab').click(function () {
         console.log('ayo this is working');
         let listingTab = document.getElementById('listing-tab');
         let sellerTab = document.getElementById('seller-tab');
@@ -19,29 +19,28 @@ $(document).ready(function () {
     });
 
     // Register on-click -  To make the add button appear when a user registers
-    $('#r-submit').click(function(){
+    $('#r-submit').click(function () {
         console.log('ayo this is working');
         let addTab = document.getElementById('add-tab');
         addTab.style.display = "inline-block";
     });
 
     // Login on-click - To make the add button appear when a user registers
-    $('#login-submit').click(function(){
+    $('#login-submit').click(function () {
         console.log('ayo this is working');
         let addTab = document.getElementById('add-tab');
         addTab.style.display = "inline-block";
     });
 
+    // populate account details modal with session storage details
+    $('#account-details').click(function () {
+        let accountModalBody = document.getElementById('accountModalBody');
+        let user = sessionStorage.getItem('userName');
+        let email = sessionStorage.getItem('userEmail');
+        let fullName = sessionStorage.getItem('fullName');
 
-// populate account details modal with session storage details
-$('#account-details').click(function(){
-    let accountModalBody = document.getElementById('accountModalBody');
-    let user = sessionStorage.getItem('userName');
-    let email = sessionStorage.getItem('userEmail');
-    let fullName = sessionStorage.getItem('fullName');
-
-    accountModalBody.innerHTML =
-    `
+        accountModalBody.innerHTML =
+            `
     <div class="container">
     <div class="row">
         <div class="col-8">
@@ -76,12 +75,15 @@ $('#account-details').click(function(){
                     data-bs-target="#editModal">
                     <i class="fa-solid fa-pen"></i>
                 </button>
-                <i class="fa-solid fa-trash"></i>
+                <button type="button" class="btn btn-secondary delete">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+                
             </div>
         </div>
     </div>                              
     `;
-});
+    });
 
     // Get Config.Json and variable from it
     $.ajax({
@@ -110,8 +112,8 @@ $('#account-details').click(function(){
             success: function (productsFromMongo) {
                 let results = document.getElementById('result');
                 results.innerHTML = '';
-                for (let i = 0; i < productsFromMongo.length; i++) { 
-                        results.innerHTML += 
+                for (let i = 0; i < productsFromMongo.length; i++) {
+                    results.innerHTML +=
                         ` 
                         <!-- Product Card -->
                         <div class="col-4 listing">
@@ -139,60 +141,60 @@ $('#account-details').click(function(){
                 alert('unable to get products');
             }, // end of error
         }); // end of ajax function
-} // end of getAllProducts function
+    } // end of getAllProducts function
 
-     //add a product form a click
- $('#addProduct').click(function (event) {
-    event.preventDefault();
-    // Create variables that link to each section in our form and grab the value from that
-    let productName = $('#a-productName').val();
-    let price = $('#a-price').val();
-    let image1 = $('#a-image1').val();
-    let image2 = $('#a-image2').val();
-    let image3 = $('#a-image3').val();
-    let image4 = $('#a-image4').val();
-    let description = $('#a-description').val();
-    let category = $('#a-category').val();
-    let condition = $('#a-condition').val();
-    let userid = sessionStorage.getItem('userID');
-    console.log(userid);
+    //add a product form a click
+    $('#addProduct').click(function (event) {
+        event.preventDefault();
+        // Create variables that link to each section in our form and grab the value from that
+        let productName = $('#a-productName').val();
+        let price = $('#a-price').val();
+        let image1 = $('#a-image1').val();
+        let image2 = $('#a-image2').val();
+        let image3 = $('#a-image3').val();
+        let image4 = $('#a-image4').val();
+        let description = $('#a-description').val();
+        let category = $('#a-category').val();
+        let condition = $('#a-condition').val();
+        let userid = sessionStorage.getItem('userID');
+        console.log(userid);
 
-    // run a check to make sure the user is logged in before it validates our form
-    if (!userid) {
-       alert('Please login or register before trying to create a listing');
-    } else {
-       // once login is verified, have the javascript check if all the fields are entered before pushing to the mongo
-        console.log(productName, price, image1, image2, image3, image4, description, category, condition);
-        if (productName == '' || price == '' || image1 == '' || category == '' || condition == '') {
-            alert('Please enter all the required fields');
+        // run a check to make sure the user is logged in before it validates our form
+        if (!userid) {
+            alert('Please login or register before trying to create a listing');
         } else {
-            $.ajax({
-                url: `http://${url}/addProduct`,
-                type: 'POST',
-                data: {
-                    productName: productName,
-                    price: price,
-                    image1: image1,
-                    image2: image2,
-                    image3: image3,
-                    image4: image4,
-                    description: description,
-                    category: category,
-                    condition: condition,
-                    user_id: userid
-                },
-                success: function (product) {
-                    console.log(product);
-                    alert('product added');
-                    getAllProducts();
-                },
-                error: function () {
-                    console.log('error: cannot call api');
-                } // End of error
-            }); // End of ajax
-        } // End of else
-    }
-}); // End of add Product Click
+            // once login is verified, have the javascript check if all the fields are entered before pushing to the mongo
+            console.log(productName, price, image1, image2, image3, image4, description, category, condition);
+            if (productName == '' || price == '' || image1 == '' || category == '' || condition == '') {
+                alert('Please enter all the required fields');
+            } else {
+                $.ajax({
+                    url: `http://${url}/addProduct`,
+                    type: 'POST',
+                    data: {
+                        productName: productName,
+                        price: price,
+                        image1: image1,
+                        image2: image2,
+                        image3: image3,
+                        image4: image4,
+                        description: description,
+                        category: category,
+                        condition: condition,
+                        user_id: userid
+                    },
+                    success: function (product) {
+                        console.log(product);
+                        alert('product added');
+                        getAllProducts();
+                    },
+                    error: function () {
+                        console.log('error: cannot call api');
+                    } // End of error
+                }); // End of ajax
+            } // End of else
+        }
+    }); // End of add Product Click
 
     // Giving our "Save Changes" button an id for each product
     function editProducts() {
@@ -284,18 +286,20 @@ $('#account-details').click(function(){
     // Register User
     $('#r-submit').click(function (event) {
         event.preventDefault();
+        let fullname = $('#r-fullname').val();
         let username = $('#r-username').val();
         let email = $('#r-email').val();
         let password = $('#r-password').val();
         console.log(username, email, password);
 
-        if (username == '' || email == '' || password == '') {
+        if (fullname == '' || username == '' || email == '' || password == '') {
             alert('Please enter all details');
         } else {
             $.ajax({
                 url: `http://${url}/registerUser`,
                 type: 'POST',
                 data: {
+                    fullname: fullname,
                     username: username,
                     email: email,
                     password: password
@@ -350,6 +354,7 @@ $('#account-details').click(function(){
                         $('#login-username').val('');
                         $('#password').val('');
                     } else {
+                        sessionStorage.setItem('fullName', user['fullname']);
                         sessionStorage.setItem('userID', user['_id']);
                         sessionStorage.setItem('userName', user['username']);
                         sessionStorage.setItem('userEmail', user['email']);
@@ -378,18 +383,18 @@ $('#account-details').click(function(){
 
     // Get Comments
 
-    function getComments(){
+    function getComments() {
         let commentsContainer = document.getElementById('comments');
         let productId = $('#viewComments').val();
         $.ajax({
             url: `http://${url}/allComments`,
             type: 'GET',
             dataType: 'json',
-            success: function(comments) {
+            success: function (comments) {
                 console.log(comments);
                 commentsContainer.innerHTML = '';
                 for (i = 0; i < comments.length; i++) {
-                    if (productId === comments[i].product_id){
+                    if (productId === comments[i].product_id) {
                         console.log(comments[i]);
                         let date = comments[i].time;
                         commentsContainer.innerHTML += `
@@ -398,10 +403,10 @@ $('#account-details').click(function(){
                         <h6 class="text-muted">Posted by: <span>${comments[i].username}</span><br><span>${comments[i].time}</span></h6>
                         </div>
                         `;
-                    }                  
+                    }
                 }
             },
-            error: function(){
+            error: function () {
                 console.log('error: cannot call comments api');
             }
         }); //end of ajax
@@ -409,8 +414,8 @@ $('#account-details').click(function(){
 
     //--------View comments------
 
-    function viewComments(){
-        $('#viewComments').click(function(){
+    function viewComments() {
+        $('#viewComments').click(function () {
             getComments();
         });
     }
@@ -432,34 +437,34 @@ $('#account-details').click(function(){
                 username: user,
                 product_id: productId,
             },
-            success: function(comment) {
+            success: function (comment) {
                 console.log(comment);
                 getComments();
             },
-            error: function(){
+            error: function () {
                 console.log('error: cannot post comment');
-            }//end of error
-        });//end of ajax
-    });//end of click
+            } //end of error
+        }); //end of ajax
+    }); //end of click
 
     // filter functionality
 
-        $('#categorySelect').change(function () {
-            let categoryChange = $('#categorySelect').val();
-            console.log(categoryChange);
-            $.ajax({
-                url: `http://${url}/productCategoryFilter`,
-                type: 'GET',
-                dataType: 'json',
-    
-                success: function (productsFromMongo) {
-                    let results = document.getElementById('result');
-                    results.innerHTML = '';
-                    for (let i = 0; i < productsFromMongo.length; i++) { 
-                        let mongoCategory = productsFromMongo[i].category;
-                        console.log(mongoCategory);
-                        if (categoryChange === mongoCategory) {
-                            results.innerHTML += `
+    $('#categorySelect').change(function () {
+        let categoryChange = $('#categorySelect').val();
+        console.log(categoryChange);
+        $.ajax({
+            url: `http://${url}/productCategoryFilter`,
+            type: 'GET',
+            dataType: 'json',
+
+            success: function (productsFromMongo) {
+                let results = document.getElementById('result');
+                results.innerHTML = '';
+                for (let i = 0; i < productsFromMongo.length; i++) {
+                    let mongoCategory = productsFromMongo[i].category;
+                    console.log(mongoCategory);
+                    if (categoryChange === mongoCategory) {
+                        results.innerHTML += `
                             <!-- Product Card -->
                         <div class="col-4 listing">
                             <div class="card" style="width: 18rem;">
@@ -476,14 +481,14 @@ $('#account-details').click(function(){
                         </div>
                         <!-- Product Card Ends -->
                         `;
-                        }
                     }
-                },
-                error: function () {
-                    alert('unable to filter products by category');
-                }, // end of error    
-            });
+                }
+            },
+            error: function () {
+                alert('unable to filter products by category');
+            }, // end of error    
         });
-    
+    });
+
 
 }); // Doc Ready function Ends
