@@ -579,6 +579,7 @@ function singleProduct() {
                 alert('unable to filter products by category');
             }, // end of error    
         });
+    });
     
             // filter functionality - By Condition
 
