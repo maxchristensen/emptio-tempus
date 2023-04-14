@@ -23,14 +23,14 @@ app.use(cors());
 
 app.get('/', (req, res) => res.send("Hello from the backend")); // Sent to backend on req
 
-/// *** Maz added 7 April start *** ///
+
 app.use(bodyParser.json()); // calling Body Parser method and urlencoded 
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
 app.use(cors()); // calling cors method with express
-/// *** Maz added 7 April end *** ///
+
 
 // Setup Mongoose Connection to MongoDB
 mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@cluster0.${config.MONGO_CLUSTER_NAME}.mongodb.net/${config.MONGO_DBNAME}?retryWrites=true&w=majority`, {
@@ -50,7 +50,7 @@ app.get('/allProductsFromDB', (req, res) => {
     })
 })
 
-/// *** Maz added 7 April start *** ///
+
 // ------ PRODUCT END POINTS START -------------
 
 // Post Method to CREATE a Product Start
@@ -118,17 +118,15 @@ app.delete('/deleteProduct/:id', (req, res) => {
     }).catch(err => res.send(err));
 });
 // End of DELETE End Point
-/// *** Maz added 7 April end *** ///
+
 
 // get single product by id
-
 app.get('/singleProduct/:id', (req,res) => {
     const idParam = req.params.id;
     Product.findById(idParam).then(result => {
         res.send(result)
     });
 });
-
 
 
 // ------- USER END POINTS START -------------
@@ -192,7 +190,7 @@ app.get('/allComments', (req, res) => {
     })
 })
 
-// ----create comment endpoint-----
+// ---- CREATE COMMENT ENDPOINT START -----
 
 app.post('/createComment', (req, res) => {
     const newComment = new Comment({
@@ -214,7 +212,7 @@ app.post('/createComment', (req, res) => {
         });
 }); // end of create
 
-// --------delete comments----
+// -------- DELETE COMMENTS START -------
 
 app.delete('deleteComments/:id', (req, res) => {
     Comment.findOne({
