@@ -123,8 +123,8 @@ $(document).ready(function () {
                         <!-- Product Card Ends -->
                     `;
                     singleProduct();
-                    editProducts(); /// *** Maz added 7 April ****** ///
-                    deleteButtons(); /// *** Maz added 7 April ****** ///
+                    editProducts();
+                    deleteButtons();
                 }
             }, // end of success
 
@@ -258,7 +258,6 @@ $(document).ready(function () {
             });
         });
     }
-    /// *** Maz added 7 April ****** ///
 
 
     // get single product data on readmore click and populate read more modal
@@ -392,7 +391,6 @@ $(document).ready(function () {
         let username = $('#login-username').val();
         let password = $('#login-password').val();
 
-
         if (username == '' || password == '') {
             alert('Please enter all details');
         } else {
@@ -432,7 +430,6 @@ $(document).ready(function () {
         alert('You are now logged out');
         window.location.href = '#';
     });
-    /// *** Maz added 7 April ****** ///
 
     // --------COMMENT AJAX FUNCTIONALITY---------
 
@@ -463,7 +460,7 @@ $(document).ready(function () {
         }); //end of ajax
     } //end of get comments
 
-    //--------View comments------
+    //-------- View comments ------
 
     function viewComments() {
         $('#viewComments').click(function () {
@@ -471,7 +468,7 @@ $(document).ready(function () {
         });
     }
 
-    // ------add comment------
+    // ------ Add Comment ------
     $('#saveComment').click(function () {
         let comment = $('#newCommentText').val();
         let user = sessionStorage.getItem('userName');
