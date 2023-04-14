@@ -447,7 +447,7 @@ $(document).ready(function () {
         }); //end of ajax
     }); //end of click
 
-    // filter functionality
+    // filter functionality - By category
 
     $('#categorySelect').change(function () {
         let categoryChange = $('#categorySelect').val();
@@ -465,6 +465,7 @@ $(document).ready(function () {
                     console.log(mongoCategory);
                     if (categoryChange === mongoCategory) {
                         results.innerHTML += `
+
                             <!-- Product Card -->
                         <div class="col-4 listing">
                             <div class="card" style="width: 18rem;">
@@ -488,7 +489,91 @@ $(document).ready(function () {
                 alert('unable to filter products by category');
             }, // end of error    
         });
-    });
+    
+            // filter functionality - By Condition
 
+            $('#conditionSelect').change(function () {
+                let conditionChange = $('#conditionSelect').val();
+                console.log(conditionChange);
+                $.ajax({
+                    url: `http://${url}/allProductsFromDB`,
+                    type: 'GET',
+                    data:{
+                        filter: $('#conditionSelect').val()
+                    },
+        
+                    success: function (productsFromMongo) {
+                        let results = document.getElementById('result');
+                        results.innerHTML = '';
+                        for (let i = 0; i < productsFromMongo.length; i++) { 
+                            let mongoCondition = productsFromMongo[i].condition;
+                            console.log(mongoCondition);
+                            if (conditionChange === mongoCondition) {
+                                results.innerHTML += `
+                                <!-- Product Card -->
+                            <div class="col-4 listing">
+                                <div class="card" style="width: 18rem;">
+                                    <a href="#listing"><img
+                                            src="${productsFromMongo[i].image1}"
+                                            class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}"></a>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <h5  href="#listing">${productsFromMongo[i].productName}</h5>
+                                            <h6 href="#listing">${productsFromMongo[i].price}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Card Ends -->
+                            `;
+                            }
+                        }
+                    },
+                    error: function () {
+                        alert('unable to filter products by condition');
+                    }, // end of error    
+                });
+            });
 
+    $('#searchInput').keyup(function () {
+        let search = $('#searchInput').val();
+        console.log(search);
+                $.ajax({
+                    url: `http://${url}/allProductsFromDB`,
+                    type: 'GET',
+                    data:{
+                        filter: $('#searchInput').val()
+                    },
+        
+                    success: function (filteredSearch) {
+                        let results = document.getElementById('result');
+                        results.innerHTML = '';
+                        for (let i = 0; i < filteredSearch.length; i++) {                            
+                            if ((filteredSearch[i].productName.toLowerCase().includes(search.toLowerCase())) === true) {
+                                console.log('searchbar working');
+                                results.innerHTML += `
+                                <!-- Product Card -->
+                            <div class="col-4 listing">
+                                <div class="card" style="width: 18rem;">
+                                    <a href="#listing"><img
+                                            src="${filteredSearch[i].image1}"
+                                            class="card-img-top" img="card-img" alt="${filteredSearch[i].productName}"></a>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <h5  href="#listing">${filteredSearch[i].productName}</h5>
+                                            <h6 href="#listing">${filteredSearch[i].price}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Card Ends -->
+                            `;
+                            }
+                        }
+                    },
+                    error: function () {
+                        alert('unable to filter products using Search Bar');
+                    }, // end of error    
+                });
+            });
 }); // Doc Ready function Ends
