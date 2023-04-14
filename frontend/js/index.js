@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-/*jshint -W069 */ /// *** Maz added 7 April *** /// removes dot notiation erros
+/*jshint -W069 */
 
 $(document).ready(function () {
 
@@ -9,10 +9,7 @@ $(document).ready(function () {
 
     // Browse on-click - To make the listing & seller tab appear when a user clicks into a listing
     $('#browse-tab').click(function () {
-        let listingTab = document.getElementById('listing-tab');
-        let sellerTab = document.getElementById('seller-tab');
-        listingTab.style.display = "inline-block";
-        sellerTab.style.display = "inline-block";
+        getAllProducts();
     });
 
     // Register on-click -  To make the add button appear when a user registers
@@ -89,8 +86,7 @@ $(document).ready(function () {
             url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
             getAllProducts();
         },
-        error: function (error) {
-        }
+        error: function (error) {}
     });
 
     // Get All products Function
@@ -110,7 +106,7 @@ $(document).ready(function () {
                         <!-- Product Card -->
                         <div class="col-4 listing">
                             <div class="card cardlisting" style="width: 18rem;">
-                                <<img
+                                <img
                                         src="${productsFromMongo[i].image1}"
                                         class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}">
                                 <div class="card-body">
@@ -119,6 +115,8 @@ $(document).ready(function () {
                                         <h6 href="#listing">${productsFromMongo[i].price}</h6>
                                     </div>
                                     <button value=${productsFromMongo[i]._id} class="m-1 btn readmore btn-primary" type="button" name="button">View Listing</button>
+                                    <button value=${productsFromMongo[i]._id} class="btn edit btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" type="button" name="button">Edit</button>
+                                    <button value=${productsFromMongo[i]._id} class="btn delete btn-primary" type="button" name="button">Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -178,8 +176,7 @@ $(document).ready(function () {
                         alert('product added');
                         getAllProducts();
                     },
-                    error: function () {
-                    } // End of error
+                    error: function () {} // End of error
                 }); // End of ajax
             } // End of else
         }
@@ -218,12 +215,12 @@ $(document).ready(function () {
                 url: `http://${url}/updateProduct/${productId}`,
                 type: 'PATCH',
                 data: {
-                    productName: productName,
+                    productName: productNameUpdate,
                     price: productPrice,
                     image1: productImage1,
-                    image2: productimage2,
-                    image3: productimage3,
-                    image4: productimage4,
+                    image2: productImage2,
+                    image3: productImage3,
+                    image4: productImage4,
                     description: productDescription,
                     category: productCategory,
                     condition: productCondition
@@ -231,8 +228,7 @@ $(document).ready(function () {
                 success: function (data) {
                     getAllProducts();
                 },
-                error: function () {
-                } // End of error
+                error: function () {} // End of error
             }); // End of ajax
         } // End of if
     }); // End of update click
@@ -256,8 +252,7 @@ $(document).ready(function () {
                             alert('Product Deleted');
                             getAllProducts();
                         },
-                        error: function () {
-                        } // error
+                        error: function () {} // error
                     }); // ajax
                 } // if
             });
@@ -265,22 +260,22 @@ $(document).ready(function () {
     }
     /// *** Maz added 7 April ****** ///
 
-   
-// get single product data on readmore click and populate read more modal
- 
-function singleProduct() {
-    let readmore = document.querySelectorAll('.readmore');
-    let buttons = Array.from(readmore);
-    buttons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            let productId = this.value;
-            $.ajax({
-                url: `http://${url}/singleProduct/${productId}`,
-                type: 'GET',
-                dataType: 'json',
-                success: function (product) {
-                    let singleListingBody = document.getElementById('result');
-                    singleListingBody.innerHTML = `
+
+    // get single product data on readmore click and populate read more modal
+
+    function singleProduct() {
+        let readmore = document.querySelectorAll('.readmore');
+        let buttons = Array.from(readmore);
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                let productId = this.value;
+                $.ajax({
+                    url: `http://${url}/singleProduct/${productId}`,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (product) {
+                        let singleListingBody = document.getElementById('result');
+                        singleListingBody.innerHTML = `
                     <div class="content" id="listing">
                         <div class="container">
                             <div class="row">
@@ -342,15 +337,15 @@ function singleProduct() {
                         </div>
                     </div>
                     `;
-                    viewComments();
-                },
-                error: function () {
-                    alert('Unable to find product');
-                } //end of error
-            }); //end of ajax
-        }); // end of button listener
-    }); //end of for each
-} //end of function
+                        viewComments();
+                    },
+                    error: function () {
+                        alert('Unable to find product');
+                    } //end of error
+                }); //end of ajax
+            }); // end of button listener
+        }); //end of for each
+    } //end of function
 
     // ---------------------- ADD USER API CALLS -------------------
     // Register User
@@ -386,8 +381,7 @@ function singleProduct() {
                         $('#r-password').val('');
                     } // else
                 },
-                error: function () {
-                } // error
+                error: function () {} // error
             }); // end of ajax
         } // end of else
     }); // end of submit user click
@@ -465,8 +459,7 @@ function singleProduct() {
                     }
                 }
             },
-            error: function () {
-            }
+            error: function () {}
         }); //end of ajax
     } //end of get comments
 
@@ -494,8 +487,7 @@ function singleProduct() {
             success: function (comment) {
                 getComments();
             },
-            error: function () {
-            } //end of error
+            error: function () {} //end of error
         }); //end of ajax
     }); //end of click
 
@@ -540,25 +532,25 @@ function singleProduct() {
             }, // end of error    
         });
     });
-    
-            // filter functionality - By Condition
 
-            $('#conditionSelect').change(function () {
-                let conditionChange = $('#conditionSelect').val();
-                $.ajax({
-                    url: `http://${url}/allProductsFromDB`,
-                    type: 'GET',
-                    data:{
-                        filter: $('#conditionSelect').val()
-                    },
-        
-                    success: function (productsFromMongo) {
-                        let results = document.getElementById('result');
-                        results.innerHTML = '';
-                        for (let i = 0; i < productsFromMongo.length; i++) { 
-                            let mongoCondition = productsFromMongo[i].condition;
-                            if (conditionChange === mongoCondition) {
-                                results.innerHTML += `
+    // filter functionality - By Condition
+
+    $('#conditionSelect').change(function () {
+        let conditionChange = $('#conditionSelect').val();
+        $.ajax({
+            url: `http://${url}/allProductsFromDB`,
+            type: 'GET',
+            data: {
+                filter: $('#conditionSelect').val()
+            },
+
+            success: function (productsFromMongo) {
+                let results = document.getElementById('result');
+                results.innerHTML = '';
+                for (let i = 0; i < productsFromMongo.length; i++) {
+                    let mongoCondition = productsFromMongo[i].condition;
+                    if (conditionChange === mongoCondition) {
+                        results.innerHTML += `
                                 <!-- Product Card -->
                             <div class="col-4 listing">
                                 <div class="card" style="width: 18rem;">
@@ -575,32 +567,32 @@ function singleProduct() {
                             </div>
                             <!-- Product Card Ends -->
                             `;
-                            }
-                        }
-                    },
-                    error: function () {
-                        alert('unable to filter products by condition');
-                    }, // end of error    
-                });
-            });
+                    }
+                }
+            },
+            error: function () {
+                alert('unable to filter products by condition');
+            }, // end of error    
+        });
+    });
 
-        // filtering functionality -- Search bar
+    // filtering functionality -- Search bar
 
     $('#searchInput').keyup(function () {
         let search = $('#searchInput').val();
-                $.ajax({
-                    url: `http://${url}/allProductsFromDB`,
-                    type: 'GET',
-                    data:{
-                        filter: $('#searchInput').val()
-                    },
-        
-                    success: function (filteredSearch) {
-                        let results = document.getElementById('result');
-                        results.innerHTML = '';
-                        for (let i = 0; i < filteredSearch.length; i++) {                            
-                            if ((filteredSearch[i].productName.toLowerCase().includes(search.toLowerCase())) === true) {
-                                results.innerHTML += `
+        $.ajax({
+            url: `http://${url}/allProductsFromDB`,
+            type: 'GET',
+            data: {
+                filter: $('#searchInput').val()
+            },
+
+            success: function (filteredSearch) {
+                let results = document.getElementById('result');
+                results.innerHTML = '';
+                for (let i = 0; i < filteredSearch.length; i++) {
+                    if ((filteredSearch[i].productName.toLowerCase().includes(search.toLowerCase())) === true) {
+                        results.innerHTML += `
                                 <!-- Product Card -->
                             <div class="col-4 listing">
                                 <div class="card" style="width: 18rem;">
@@ -617,12 +609,12 @@ function singleProduct() {
                             </div>
                             <!-- Product Card Ends -->
                             `;
-                            }
-                        }
-                    },
-                    error: function () {
-                        alert('unable to filter products using Search Bar');
-                    }, // end of error    
-                });
-            });
+                    }
+                }
+            },
+            error: function () {
+                alert('unable to filter products using Search Bar');
+            }, // end of error    
+        });
+    });
 }); // Doc Ready function Ends
