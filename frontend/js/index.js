@@ -1,8 +1,6 @@
 /*jshint esversion: 6 */
 /*jshint -W069 */ /// *** Maz added 7 April *** /// removes dot notiation erros
 
-console.log('frontend script is working');
-
 $(document).ready(function () {
 
     let url;
@@ -11,7 +9,6 @@ $(document).ready(function () {
 
     // Browse on-click - To make the listing & seller tab appear when a user clicks into a listing
     $('#browse-tab').click(function () {
-        console.log('ayo this is working');
         let listingTab = document.getElementById('listing-tab');
         let sellerTab = document.getElementById('seller-tab');
         listingTab.style.display = "inline-block";
@@ -20,14 +17,12 @@ $(document).ready(function () {
 
     // Register on-click -  To make the add button appear when a user registers
     $('#r-submit').click(function () {
-        console.log('ayo this is working');
         let addTab = document.getElementById('add-tab');
         addTab.style.display = "inline-block";
     });
 
     // Login on-click - To make the add button appear when a user registers
     $('#login-submit').click(function () {
-        console.log('ayo this is working');
         let addTab = document.getElementById('add-tab');
         addTab.style.display = "inline-block";
     });
@@ -91,13 +86,10 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (configData) {
-            console.log(configData.SERVER_URL, configData.SERVER_PORT);
             url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
-            console.log(url);
             getAllProducts();
         },
         error: function (error) {
-            console.log(error);
         }
     });
 
@@ -158,14 +150,12 @@ $(document).ready(function () {
         let category = $('#a-category').val();
         let condition = $('#a-condition').val();
         let userid = sessionStorage.getItem('userID');
-        console.log(userid);
 
         // run a check to make sure the user is logged in before it validates our form
         if (!userid) {
             alert('Please login or register before trying to create a listing');
         } else {
             // once login is verified, have the javascript check if all the fields are entered before pushing to the mongo
-            console.log(productName, price, image1, image2, image3, image4, description, category, condition);
             if (productName == '' || price == '' || image1 == '' || category == '' || condition == '') {
                 alert('Please enter all the required fields');
             } else {
@@ -185,12 +175,10 @@ $(document).ready(function () {
                         user_id: userid
                     },
                     success: function (product) {
-                        console.log(product);
                         alert('product added');
                         getAllProducts();
                     },
                     error: function () {
-                        console.log('error: cannot call api');
                     } // End of error
                 }); // End of ajax
             } // End of else
@@ -223,7 +211,6 @@ $(document).ready(function () {
         let productCategory = $('#e-productCategory').val();
         let productCondition = $('#e-productCondition').val();
         let userid = sessionStorage.getItem('userID');
-        console.log(productId, productNameUpdate, productPrice, productImage1, productImage2, productImage3, productImage4, productDescription, productCategory, productCondition);
         if (productId == '' || !userid) {
             alert('Please enter a product to update');
         } else {
@@ -242,11 +229,9 @@ $(document).ready(function () {
                     condition: productCondition
                 },
                 success: function (data) {
-                    console.log(data);
                     getAllProducts();
                 },
                 error: function () {
-                    console.log('error: cannot update post');
                 } // End of error
             }); // End of ajax
         } // End of if
@@ -261,7 +246,6 @@ $(document).ready(function () {
                 event.preventDefault();
                 let productId = this.value;
                 let userid = sessionStorage.getItem('userID');
-                console.log(productId);
                 if (productId == '' || !userid) {
                     alert('Please enter product id to delete');
                 } else {
@@ -269,12 +253,10 @@ $(document).ready(function () {
                         url: `http://${url}/deleteProduct/${productId}`,
                         type: 'DELETE',
                         success: function () {
-                            console.log('deleted');
                             alert('Product Deleted');
                             getAllProducts();
                         },
                         error: function () {
-                            console.log('error: cannot delete due to call on api');
                         } // error
                     }); // ajax
                 } // if
@@ -291,14 +273,12 @@ function singleProduct() {
     let buttons = Array.from(readmore);
     buttons.forEach(function (button) {
         button.addEventListener('click', function () {
-            console.log(`readmore with is of ${this.value}`);
             let productId = this.value;
             $.ajax({
                 url: `http://${url}/singleProduct/${productId}`,
                 type: 'GET',
                 dataType: 'json',
                 success: function (product) {
-                    console.log(product);
                     let singleListingBody = document.getElementById('result');
                     singleListingBody.innerHTML = `
                     <div class="content" id="listing">
@@ -370,7 +350,7 @@ function singleProduct() {
             }); //end of ajax
         }); // end of button listener
     }); //end of for each
-}; //end of function
+} //end of function
 
     // ---------------------- ADD USER API CALLS -------------------
     // Register User
@@ -380,7 +360,6 @@ function singleProduct() {
         let username = $('#r-username').val();
         let email = $('#r-email').val();
         let password = $('#r-password').val();
-        console.log(username, email, password);
 
         if (fullname == '' || username == '' || email == '' || password == '') {
             alert('Please enter all details');
@@ -395,12 +374,10 @@ function singleProduct() {
                     password: password
                 },
                 success: function (user) {
-                    console.log(user); // remove when dev is finished
                     if (user !== 'username already taken') {
                         sessionStorage.setItem('userID', user['_id']);
                         sessionStorage.setItem('userName', user['username']);
                         sessionStorage.setItem('userEmail', user['email']);
-                        console.log(sessionStorage);
                         alert('Thank you for registering. You have been logged in automatically');
                     } else {
                         alert('Username taken already. Please try again');
@@ -410,7 +387,6 @@ function singleProduct() {
                     } // else
                 },
                 error: function () {
-                    console.log('error: cannot call add user api');
                 } // error
             }); // end of ajax
         } // end of else
@@ -422,7 +398,6 @@ function singleProduct() {
         let username = $('#login-username').val();
         let password = $('#login-password').val();
 
-        console.log(username, password);
 
         if (username == '' || password == '') {
             alert('Please enter all details');
@@ -435,7 +410,6 @@ function singleProduct() {
                     password: password
                 },
                 success: function (user) {
-                    console.log(user);
 
                     if (user == 'User not found. Please register') {
                         alert('User not found. Please Register');
@@ -448,12 +422,10 @@ function singleProduct() {
                         sessionStorage.setItem('userID', user['_id']);
                         sessionStorage.setItem('userName', user['username']);
                         sessionStorage.setItem('userEmail', user['email']);
-                        console.log(sessionStorage);
                         alert(`Welcome back ${username.toUpperCase()}!`);
                     } // end of ifs
                 }, //success
                 error: function () {
-                    console.log('error: cannot call api');
                     alert('Unable to login - unable to call api');
                 } //error
             }); //end of ajax
@@ -464,7 +436,6 @@ function singleProduct() {
     $('#logout').click(function () {
         sessionStorage.clear();
         alert('You are now logged out');
-        console.log(sessionStorage);
         window.location.href = '#';
     });
     /// *** Maz added 7 April ****** ///
@@ -481,11 +452,9 @@ function singleProduct() {
             type: 'GET',
             dataType: 'json',
             success: function (comments) {
-                console.log(comments);
                 commentsContainer.innerHTML = '';
                 for (i = 0; i < comments.length; i++) {
                     if (productId === comments[i].product_id) {
-                        console.log(comments[i]);
                         let date = comments[i].time;
                         commentsContainer.innerHTML += `
                         <div class="new-comment">
@@ -497,7 +466,6 @@ function singleProduct() {
                 }
             },
             error: function () {
-                console.log('error: cannot call comments api');
             }
         }); //end of ajax
     } //end of get comments
@@ -512,13 +480,9 @@ function singleProduct() {
 
     // ------add comment------
     $('#saveComment').click(function () {
-        console.log("not working comments");
         let comment = $('#newCommentText').val();
         let user = sessionStorage.getItem('userName');
         let productId = $('#viewComments').val();
-        console.log(user);
-        console.log(comment);
-        console.log(productId);
         $.ajax({
             url: `http://${url}/createComment`,
             type: 'POST',
@@ -528,11 +492,9 @@ function singleProduct() {
                 product_id: productId,
             },
             success: function (comment) {
-                console.log(comment);
                 getComments();
             },
             error: function () {
-                console.log('error: cannot post comment');
             } //end of error
         }); //end of ajax
     }); //end of click
@@ -541,7 +503,6 @@ function singleProduct() {
 
     $('#categorySelect').change(function () {
         let categoryChange = $('#categorySelect').val();
-        console.log(categoryChange);
         $.ajax({
             url: `http://${url}/productCategoryFilter`,
             type: 'GET',
@@ -552,7 +513,6 @@ function singleProduct() {
                 results.innerHTML = '';
                 for (let i = 0; i < productsFromMongo.length; i++) {
                     let mongoCategory = productsFromMongo[i].category;
-                    console.log(mongoCategory);
                     if (categoryChange === mongoCategory) {
                         results.innerHTML += `
 
@@ -585,7 +545,6 @@ function singleProduct() {
 
             $('#conditionSelect').change(function () {
                 let conditionChange = $('#conditionSelect').val();
-                console.log(conditionChange);
                 $.ajax({
                     url: `http://${url}/allProductsFromDB`,
                     type: 'GET',
@@ -598,7 +557,6 @@ function singleProduct() {
                         results.innerHTML = '';
                         for (let i = 0; i < productsFromMongo.length; i++) { 
                             let mongoCondition = productsFromMongo[i].condition;
-                            console.log(mongoCondition);
                             if (conditionChange === mongoCondition) {
                                 results.innerHTML += `
                                 <!-- Product Card -->
@@ -630,7 +588,6 @@ function singleProduct() {
 
     $('#searchInput').keyup(function () {
         let search = $('#searchInput').val();
-        console.log(search);
                 $.ajax({
                     url: `http://${url}/allProductsFromDB`,
                     type: 'GET',
@@ -643,7 +600,6 @@ function singleProduct() {
                         results.innerHTML = '';
                         for (let i = 0; i < filteredSearch.length; i++) {                            
                             if ((filteredSearch[i].productName.toLowerCase().includes(search.toLowerCase())) === true) {
-                                console.log('searchbar working');
                                 results.innerHTML += `
                                 <!-- Product Card -->
                             <div class="col-4 listing">
