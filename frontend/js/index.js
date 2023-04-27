@@ -493,9 +493,11 @@ $(document).ready(function () {
     $('#categorySelect').change(function () {
         let categoryChange = $('#categorySelect').val();
         $.ajax({
-            url: `http://${url}/productCategoryFilter`,
+            url: `http://${url}/allProductsFromDB`,
             type: 'GET',
-            dataType: 'json',
+            data: {
+                filter: $('#categorySelect').val(),
+            },
 
             success: function (productsFromMongo) {
                 let results = document.getElementById('result');
@@ -504,7 +506,6 @@ $(document).ready(function () {
                     let mongoCategory = productsFromMongo[i].category;
                     if (categoryChange === mongoCategory) {
                         results.innerHTML += `
-
                             <!-- Product Card -->
                         <div class="col-4 listing">
                             <div class="card" style="width: 18rem;">
@@ -577,6 +578,7 @@ $(document).ready(function () {
 
     $('#searchInput').keyup(function () {
         let search = $('#searchInput').val();
+        console.log(search);
         $.ajax({
             url: `http://${url}/allProductsFromDB`,
             type: 'GET',
