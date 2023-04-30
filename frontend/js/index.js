@@ -333,10 +333,37 @@ $(document).ready(function () {
                                 </div>
                                 <!-- Product Info ENDS -->
                             </div>
+                            <!-- Comments -->
+                            <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                <button id="viewComments" value="${product._id}" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                View Comments
+                                </button>
+                                 </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div id="comments">
+                                            
+                                        </div>
+                                        <div class="add-comment">
+                                            <label for="exampleFormControlTextarea1" class="form-label">New Comment</label>
+                                            <textarea id="newCommentText" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <button id="saveComment" class="btn btn-primary mt-3">Save Comment</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                                <!-- Comments ENDS -->
                         </div>
                     </div>
                     `;
+                        getComments();
                         viewComments();
+                        saveComment();
                     },
                     error: function () {
                         alert('Unable to find product');
@@ -469,10 +496,14 @@ $(document).ready(function () {
     }
 
     // ------ Add Comment ------
+    function saveComment() {
     $('#saveComment').click(function () {
         let comment = $('#newCommentText').val();
         let user = sessionStorage.getItem('userName');
         let productId = $('#viewComments').val();
+        if (user == null) {
+            alert('Please log in to leave a comment');
+        } else {
         $.ajax({
             url: `http://${url}/createComment`,
             type: 'POST',
@@ -486,12 +517,16 @@ $(document).ready(function () {
             },
             error: function () {} //end of error
         }); //end of ajax
+    }
     }); //end of click
-
+}
     // filter functionality - By category
 
     $('#categorySelect').change(function () {
         let categoryChange = $('#categorySelect').val();
+        if (categoryChange === "All") {
+            getAllProducts();
+        } else {
         $.ajax({
             url: `http://${url}/allProductsFromDB`,
             type: 'GET',
@@ -517,11 +552,17 @@ $(document).ready(function () {
                                         <h5  href="#listing">${productsFromMongo[i].productName}</h5>
                                         <h6 href="#listing">${productsFromMongo[i].price}</h6>
                                     </div>
+                                    <button value=${productsFromMongo[i]._id} class="m-1 btn readmore btn-primary" type="button" name="button">View Listing</button>
+                                    <button value=${productsFromMongo[i]._id} class="btn edit btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" type="button" name="button">Edit</button>
+                                    <button value=${productsFromMongo[i]._id} class="btn delete btn-primary" type="button" name="button">Delete</button>
                                 </div>
                             </div>
                         </div>
                         <!-- Product Card Ends -->
                         `;
+                        singleProduct();
+                        editProducts();
+                        deleteButtons();
                     }
                 }
             },
@@ -529,12 +570,16 @@ $(document).ready(function () {
                 alert('unable to filter products by category');
             }, // end of error    
         });
+    }
     });
 
     // filter functionality - By Condition
 
     $('#conditionSelect').change(function () {
         let conditionChange = $('#conditionSelect').val();
+        if (conditionChange === "All") {
+            getAllProducts();
+        } else {
         $.ajax({
             url: `http://${url}/allProductsFromDB`,
             type: 'GET',
@@ -560,11 +605,17 @@ $(document).ready(function () {
                                             <h5  href="#listing">${productsFromMongo[i].productName}</h5>
                                             <h6 href="#listing">${productsFromMongo[i].price}</h6>
                                         </div>
+                                        <button value=${productsFromMongo[i]._id} class="m-1 btn readmore btn-primary" type="button" name="button">View Listing</button>
+                                    <button value=${productsFromMongo[i]._id} class="btn edit btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" type="button" name="button">Edit</button>
+                                    <button value=${productsFromMongo[i]._id} class="btn delete btn-primary" type="button" name="button">Delete</button>
                                     </div>
                                 </div>
                             </div>
                             <!-- Product Card Ends -->
                             `;
+                        singleProduct();
+                        editProducts();
+                        deleteButtons();
                     }
                 }
             },
@@ -572,6 +623,7 @@ $(document).ready(function () {
                 alert('unable to filter products by condition');
             }, // end of error    
         });
+    }
     });
 
     // filtering functionality -- Search bar
@@ -603,11 +655,17 @@ $(document).ready(function () {
                                             <h5  href="#listing">${filteredSearch[i].productName}</h5>
                                             <h6 href="#listing">${filteredSearch[i].price}</h6>
                                         </div>
+                                        <button value=${filteredSearch[i]._id} class="m-1 btn readmore btn-primary" type="button" name="button">View Listing</button>
+                                    <button value=${filteredSearch[i]._id} class="btn edit btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" type="button" name="button">Edit</button>
+                                    <button value=${filteredSearch[i]._id} class="btn delete btn-primary" type="button" name="button">Delete</button>
                                     </div>
                                 </div>
                             </div>
                             <!-- Product Card Ends -->
                             `;
+                        singleProduct();
+                        editProducts();
+                        deleteButtons();
                     }
                 }
             },
