@@ -105,7 +105,7 @@ $(document).ready(function () {
                         ` 
                         <!-- Product Card -->
                         <div class="col-4 listing">
-                            <div class="card cardlisting" style="width: 18rem;">
+                            <div class="card cardlisting">
                                 <img
                                         src="${productsFromMongo[i].image1}"
                                         class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}">
