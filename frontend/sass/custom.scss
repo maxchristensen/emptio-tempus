@@ -1,5 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Manrope:wght@300;400;600;800&display=swap');
 
+// Mixins
+@mixin modalPosition {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: none;
+}
+
+@mixin login-register {
+  padding: 10px;
+  width: 75vw;
+  height: 60vh;
+  background-color: $yellow;
+  color: $black;
+}
+
+@mixin ctaBtn {
+  color: $brown;
+  background-color: $white;
+  border-radius: 10px;
+}
+
+@mixin buyBtn {
+  color: $brown;
+  background-color: $yellow;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+@mixin loginBtn {
+  color: $white;
+  background-color: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+@mixin submitBtn {
+  color: $brown;
+  background-color: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+
+
 // COLOURS
 $black: #181817;
 $white: #F3EED3;
@@ -7,12 +55,17 @@ $yellow: #DBC043;
 $brown: #522100;
 
 // HEADINGS STYLING
-h1{
+h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 96px;
 }
 
-h2, h3, h4, h5, h6, p {
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   font-family: 'Manrope', sans-serif;
   color: $black;
 }
@@ -39,15 +92,52 @@ h5 {
 
 h6 {
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 p {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 200;
 
 }
 
 .dropdown {
   max-width: 200px;
+}
+
+#loginModal .modal-dialog {
+  @include modalPosition;
+
+  .modal-content {
+    @include login-register;
+
+    .modal-header {
+      border-bottom: none;
+    }
+
+    .col-8 {
+      border: solid 0.5px $black;
+      border-radius: 5px;
+      padding: 10px;
+
+      form label {
+        font-size: 20px;
+        font-weight: 200;
+      }
+      form input {
+        font-size: 16px;
+        font-weight: 200;
+        width: 80%;
+      }
+
+    }
+
+    .col-4 {
+      border: solid 0.5px $black;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+  }
+
 }
