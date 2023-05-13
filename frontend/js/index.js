@@ -21,61 +21,145 @@ $(document).ready(function () {
     // Login on-click - To make the add button appear when a user registers
     $('#login-submit').click(function () {
         let addTab = document.getElementById('add-tab');
+        let logout = document.getElementById('logout');
+        let accountDetails = document.getElementById('account-details');
         addTab.style.display = "inline-block";
+        
     });
 
     // populate account details modal with session storage details
     $('#account-details').click(function () {
-        let accountModalBody = document.getElementById('accountModalBody');
-        let user = sessionStorage.getItem('userName');
-        let email = sessionStorage.getItem('userEmail');
-        let fullName = sessionStorage.getItem('fullName');
+        openAccountModal();
 
-        accountModalBody.innerHTML =
-            `
-    <div class="container">
-    <div class="row">
-        <div class="col-8">
-            <!-- Account Information -->
-            <div class="account-fullname">
-                <h5>Full Name:</h5>
-                <p>${fullName}</p>
-            </div>
-            <div class="account-username">
-                <h5>Username:</h5>
-                <p>${user}</p>
-            </div>
-            <div class="account-email">
-                <h5>Email:</h5>
-                <p>${email}</p>
-            </div>
-            <div class="account-about">
-                <h5>About:</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non deleniti
-                    quod, repellat aliquid rem eum molestiae magnam, ducimus unde voluptatum
-                    provident? Recusandae beatae tempore nesciunt aliquam officia? Architecto,
-                    voluptatem.</p>
-            </div>
-        </div>
-        <div class="col-4">
-            <h5>Current Listings</h5>
-            <div class="editCurrentListing">
-                <h6>Product Name</h6>
-                <p>Product Price</p>
-                <!-- Edit Modal Btn -->
-                <button type="button" class="btn btn-primary edit" data-bs-toggle="modal"
-                    data-bs-target="#editModal">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
-                <button type="button" class="btn btn-secondary delete">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
+    //     let accountModalBody = document.getElementById('accountModalBody');
+    //     let user = sessionStorage.getItem('userName');
+    //     let email = sessionStorage.getItem('userEmail');
+    //     let fullName = sessionStorage.getItem('fullName');
+
+    //     accountModalBody.innerHTML =
+    //         `
+    // <div class="container">
+    // <div class="row">
+    //     <div class="col-8">
+    //         <!-- Account Information -->
+    //         <div class="account-fullname">
+    //             <h5>Full Name:</h5>
+    //             <p>${fullName}</p>
+    //         </div>
+    //         <div class="account-username">
+    //             <h5>Username:</h5>
+    //             <p>${user}</p>
+    //         </div>
+    //         <div class="account-email">
+    //             <h5>Email:</h5>
+    //             <p>${email}</p>
+    //         </div>
+    //         <div class="account-about">
+    //             <h5>About:</h5>
+    //             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non deleniti
+    //                 quod, repellat aliquid rem eum molestiae magnam, ducimus unde voluptatum
+    //                 provident? Recusandae beatae tempore nesciunt aliquam officia? Architecto,
+    //                 voluptatem.</p>
+    //         </div>
+    //     </div>
+    //     <div class="col-4">
+    //         <h5>Current Listings</h5>
+    //         <div class="editCurrentListing">
+    //             <h6>Product Name</h6>
+    //             <p>Product Price</p>
+    //             <!-- Edit Modal Btn -->
+    //             <button type="button" class="btn btn-primary edit" data-bs-toggle="modal"
+    //                 data-bs-target="#editModal">
+    //                 <i class="fa-solid fa-pen"></i>
+    //             </button>
+    //             <button type="button" class="btn btn-secondary delete">
+    //                 <i class="fa-solid fa-trash"></i>
+    //             </button>
                 
-            </div>
-        </div>
-    </div>                              
-    `;
+    //         </div>
+    //     </div>
+    // </div>                              
+    // `;
     });
+
+    function openAccountModal() {
+        $.ajax({
+            url: `http://${url}/allProductsFromDB`,
+            type: 'GET',
+            dataType: 'json',
+
+            success: function(productsFromMongo){
+                let accountModalBody = document.getElementById('accountModalBody');
+                let user = sessionStorage.getItem('userName');
+                let email = sessionStorage.getItem('userEmail');
+                let fullName = sessionStorage.getItem('fullName');
+                let userId = sessionStorage.getItem('userID');
+
+                accountModalBody.innerHTML = ''
+
+                for (let i = 0; i < productsFromMongo.length; i++) {
+                    const product = productsFromMongo[i];
+                    accountModalBody.innerHTML =
+                            `
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-8">
+                                <!-- Account Information -->
+                                <div class="account-fullname">
+                                    <h5>Full Name:</h5>
+                                    <p>${fullName}</p>
+                                </div>
+                                <div class="account-username">
+                                    <h5>Username:</h5>
+                                    <p>${user}</p>
+                                </div>
+                                <div class="account-email">
+                                    <h5>Email:</h5>
+                                    <p>${email}</p>
+                                </div>
+                                <div class="account-about">
+                                    <h5>About:</h5>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non deleniti
+                                        quod, repellat aliquid rem eum molestiae magnam, ducimus unde voluptatum
+                                        provident? Recusandae beatae tempore nesciunt aliquam officia? Architecto,
+                                        voluptatem.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-4" id="currentListings">
+                                <h5>Current Listings</h5>
+
+                        </div>
+                    </div>                              
+                    `;
+                    const currentListings = document.getElementById('currentListings')
+
+                    if (userId === product.user_id) {
+                        currentListings.innerHTML +=
+                        `
+                        <div class="editCurrentListing">
+                            <h6>${product.productName}</h6>
+                            <p>${product.price}</p>
+                            <!-- Edit Modal Btn -->
+                            <button type="button" class="btn btn-primary edit" data-bs-toggle="modal"
+                                data-bs-target="#editModal">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button type="button" class="btn btn-secondary delete">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                    </div>
+                        `
+                    } // end of if statement
+                    
+                } // end of for loop
+
+            }, // end of success
+            error: function(){
+
+            }, // end of error
+        }) // end of ajax
+    } // end of function
 
     // Get Config.Json and variable from it
     $.ajax({
