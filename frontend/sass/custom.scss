@@ -91,21 +91,18 @@ h5 {
 }
 
 h6 {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 p {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
+  text-justify: left;
 }
 
 .dropdown {
   max-width: 200px;
-}
-
-.container {
-  margin: 0;
 }
 
 // Tab Start
@@ -121,9 +118,18 @@ body {
   background: #F3EED3;
 }
 
+#result {
+  overflow-y: scroll;
+  height: 100vh;
+}
+
 .left-side {
   background-color: #181817;
   color: azure;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .right-side {
@@ -142,7 +148,7 @@ nav,
 .content {
   display: block;
   margin-bottom: 1em;
-  padding: 2em 3em;
+  padding: 1em 1em;
   border-color: #181817;
   border-radius: .20em;
   color: #181817;
@@ -202,6 +208,189 @@ nav a.active {
   nav a::before { transform-origin: bottom; }
 }
 
+//logo
+
+.logo-image {
+  width: 450px;
+  padding: 10px;
+}
+
+.personal-buttons {
+  justify-content: space-between;
+  padding: 2.5rem;
+
+  & button {
+    color: $white;
+
+  }
+}
+
+// card adjustments
+.listing, .card{
+  height: 450px;
+  background-color: transparent;
+  border: none;
+}
+
+.card-body {
+  padding: 5px;
+  height: 100px;
+  flex: none;
+}
+
+.btn {
+  margin: 0;
+}
+
+// search / filter adjustments
+.dropdown{
+  width: 300px;
+  margin-right: 20px;
+  padding: 6px 12px;
+  padding-top: 10px;
+}
+
+.form-select {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $black;
+}
+
+#searchInput {
+  background-color: transparent;
+  border: none;
+  width: 25rem;
+  border-bottom: 1px solid $black;
+}
+
+.fa-magnifying-glass {
+  font-size: 20px;
+  padding: 10px
+}
+
+//single listing adjustments
+.price-and-buy {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5rem;
+
+  & button {
+    padding: .3rem 2rem;
+    background-color: $yellow;
+    border-radius: 5px;
+    color: $brown;
+  }
+}
+
+#details {
+  text-align: left;
+}
+
+//clock styles
+
+.clock-container {
+  font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 25px;
+}
+
+.clock {
+  width: 400px;
+  height: 400px;
+
+  /* neumorphic boxshadow */
+  box-shadow: 5px 5px 20px #43497c,
+              -5px -5px 20px #555c9c;
+
+          /* make clock a circle */
+  border-radius: 50%;
+  border: 5px solid #333;
+
+  /* position relative to allow us to position absolute the numbers and hands */
+  position: relative;
+
+}
+
+.clock .number {
+  /*  setting our rotation variable to 0 as initial default state*/
+  --rotation: 0;
+  /* postion absolute to allow us to place numbers in the correct position */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;  /* will allow us to place all the numbers at the 12 o'clock spot */
+  transform: rotate(var(--rotation));
+}
+
+/* positioning the numbers */
+.clock .number1 { --rotation: 30deg; }
+.clock .number2 { --rotation: 60deg; }
+.clock .number3 { --rotation: 90deg; }
+.clock .number4 { --rotation: 120deg; }
+.clock .number5 { --rotation: 150deg; }
+.clock .number6 { --rotation: 180deg; }
+.clock .number7 { --rotation: 210deg; }
+.clock .number8 { --rotation: 240deg; }
+.clock .number9 { --rotation: 270deg; }
+.clock .number10 { --rotation: 300deg; }
+.clock .number11 { --rotation: 330deg; }
+
+
+.clock .hand {
+  /* set rotation to default/initial state  */
+  --rotation: 0;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  /* curve on the top of the hands */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /* transforms the origin to state where to start the rotation from - default is center of div */
+  transform-origin: bottom;
+  /* z index on the hands to allow us to see the hands on top of other objects */
+  z-index: 500;
+  /* translate x moves the hand back to the left of half its width, thus centering it */
+  /* rotate calc used to turn it into the correct degrees of rotation */
+  transform: translateX(-50%)rotate(calc(var(--rotation) * 1deg));
+}
+
+.clock::after {
+  content: '';
+  position: absolute;
+  background-color: $yellow;
+  z-index: 511;
+  height: 15px;
+  width: 15px;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+/* second hand */
+.clock .hand.seconds {
+  width: 5px;
+  height: 45%;
+  background-color: red;
+}
+
+/* minute hand */
+.clock .hand.minutes{
+  width: 7px;
+  height: 40%;
+  background-color: blue;
+}
+
+/* hour hand */
+.clock .hand.hours {
+  width: 10px;
+  height: 35%;
+  background-color: $white;
+=======
 #loginModal .modal-dialog {
   @include modalPosition;
 
@@ -236,5 +425,4 @@ nav a.active {
     }
 
   }
-
 }
