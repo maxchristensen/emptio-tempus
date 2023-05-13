@@ -188,22 +188,20 @@ $(document).ready(function () {
                     results.innerHTML +=
                         ` 
                         <!-- Product Card -->
-                        <div class="col-4 listing">
-                            <div class="card cardlisting" style="width: 18rem;">
-                                <img
-                                        src="${productsFromMongo[i].image1}"
+                        <button value=${productsFromMongo[i]._id} class="btn col-4 listing my-1 readmore" type="button" name="button">
+                            <div class="card cardlisting">
+                                <img src="${productsFromMongo[i].image1}"
                                         class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}">
                                 <div class="card-body">
                                     <div class="row">
-                                        <h5  href="#listing">${productsFromMongo[i].productName}</h5>
-                                        <h6 href="#listing">${productsFromMongo[i].price}</h6>
+                                        <h6  href="#listing">${productsFromMongo[i].productName}</h6>
+                                        <p href="#listing">${productsFromMongo[i].price}</p>
                                     </div>
-                                    <button value=${productsFromMongo[i]._id} class="m-1 btn readmore btn-primary" type="button" name="button">View Listing</button>
-                                    <button value=${productsFromMongo[i]._id} class="btn edit btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" type="button" name="button">Edit</button>
-                                    <button value=${productsFromMongo[i]._id} class="btn delete btn-primary" type="button" name="button">Delete</button>
+                                    
                                 </div>
+                                
                             </div>
-                        </div>
+                            </button>
                         <!-- Product Card Ends -->
                     `;
                     singleProduct();
@@ -411,14 +409,19 @@ $(document).ready(function () {
                                 <!-- Product Info -->
                                 <div class="col-8">
                                     <h4>${product.productName}</h4>
-                                    <h5>${product.price}</h5>
-                                    <h6>Details:</h6>
-                                    <p>${product.description}</p>
+                                    <div class="price-and-buy my-3">
+                                        <h5>${product.price}</h5>
+                                        <button class="btn buy-button">Buy</button>
+                                    </div>
+                                    <div class="d-flex mt-3" id="details">
+                                        <h6>Details:</h6>
+                                        <p class="px-3">${product.description}</p>
+                                    </div>
                                 </div>
                                 <!-- Product Info ENDS -->
                             </div>
                             <!-- Comments -->
-                            <div class="accordion" id="accordionExample">
+                            <div class="accordion mt-3" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                 <button id="viewComments" value="${product._id}" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -758,4 +761,32 @@ $(document).ready(function () {
             }, // end of error    
         });
     });
+
+    // clock function
+    // set an interval for how often a function runs in milliseconds
+setInterval(setClock, 1000);
+
+const hourHand = document.getElementById('hours');
+const minuteHand = document.getElementById('minutes');
+const secondHand = document.getElementById('seconds');
+
+// define the set clock function
+function setClock() {
+    const currentDate = new Date();
+    const secondsRatio = currentDate.getSeconds() / 60;
+    const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
+    const hoursRatio = (minutesRatio + currentDate.getHours()) /12;
+    //  because we don't want the hours or minutes to jump by minutes or hours, we want them to move gradually so we can call upon the previous rato to allow them to move smoothly
+
+    // call the set rotation function of each hand parsing in the correct elements
+    setRotation(secondHand, secondsRatio);
+    setRotation(minuteHand, minutesRatio);
+    setRotation(hourHand, hoursRatio);
+}   
+
+function setRotation(element, rotationRatio) {
+    element.style.setProperty('--rotation', rotationRatio * 360);
+}
+
+setClock()
 }); // Doc Ready function Ends
