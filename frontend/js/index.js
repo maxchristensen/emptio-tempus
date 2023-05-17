@@ -24,7 +24,7 @@ $(document).ready(function () {
         let logout = document.getElementById('logout');
         let accountDetails = document.getElementById('account-details');
         addTab.style.display = "inline-block";
-        
+
     });
 
     // populate account details modal with session storage details
@@ -38,7 +38,7 @@ $(document).ready(function () {
             type: 'GET',
             dataType: 'json',
 
-            success: function(productsFromMongo){
+            success: function (productsFromMongo) {
                 let accountModalBody = document.getElementById('accountModalBody');
                 let user = sessionStorage.getItem('userName');
                 let email = sessionStorage.getItem('userEmail');
@@ -46,10 +46,10 @@ $(document).ready(function () {
                 let userId = sessionStorage.getItem('userID');
                 let productId = sessionStorage.getItem('_id')
 
-                    accountModalBody.innerHTML = ``
+                accountModalBody.innerHTML = ``
 
-                    accountModalBody.innerHTML +=
-                            `
+                accountModalBody.innerHTML +=
+                    `
                     <div class="container">
                         <div class="row">
                             <div class="col-8">
@@ -88,7 +88,7 @@ $(document).ready(function () {
 
                     if (userId == product.user_id) {
                         currentListings.innerHTML +=
-                        `
+                            `
                         <div class="editCurrentListing">
                             <h6>${product.productName}</h6>
                             <p>${product.price}</p>
@@ -102,17 +102,17 @@ $(document).ready(function () {
                             </button>
                         </div>
                         `
-                        
+
                     } // end of if statement
-                    
+
                 } // end of for loop
                 editProducts();
                 deleteButtons();
             }, // end of success
-            error: function(){
+            error: function () {
 
             }, // end of error
-            
+
         }) // end of ajax
     } // end of function
 
@@ -543,29 +543,29 @@ $(document).ready(function () {
 
     // ------ Add Comment ------
     function saveComment() {
-    $('#saveComment').click(function () {
-        let comment = $('#newCommentText').val();
-        let user = sessionStorage.getItem('userName');
-        let productId = $('#viewComments').val();
-        if (user == null) {
-            alert('Please log in to leave a comment');
-        } else {
-        $.ajax({
-            url: `http://${url}/createComment`,
-            type: 'POST',
-            data: {
-                text: comment,
-                username: user,
-                product_id: productId,
-            },
-            success: function (comment) {
-                getComments();
-            },
-            error: function () {} //end of error
-        }); //end of ajax
+        $('#saveComment').click(function () {
+            let comment = $('#newCommentText').val();
+            let user = sessionStorage.getItem('userName');
+            let productId = $('#viewComments').val();
+            if (user == null) {
+                alert('Please log in to leave a comment');
+            } else {
+                $.ajax({
+                    url: `http://${url}/createComment`,
+                    type: 'POST',
+                    data: {
+                        text: comment,
+                        username: user,
+                        product_id: productId,
+                    },
+                    success: function (comment) {
+                        getComments();
+                    },
+                    error: function () {} //end of error
+                }); //end of ajax
+            }
+        }); //end of click
     }
-    }); //end of click
-}
     // filter functionality - By category
 
     $('#categorySelect').change(function () {
@@ -573,20 +573,20 @@ $(document).ready(function () {
         if (categoryChange === "All") {
             getAllProducts();
         } else {
-        $.ajax({
-            url: `http://${url}/allProductsFromDB`,
-            type: 'GET',
-            data: {
-                filter: $('#categorySelect').val(),
-            },
+            $.ajax({
+                url: `http://${url}/allProductsFromDB`,
+                type: 'GET',
+                data: {
+                    filter: $('#categorySelect').val(),
+                },
 
-            success: function (productsFromMongo) {
-                let results = document.getElementById('result');
-                results.innerHTML = '';
-                for (let i = 0; i < productsFromMongo.length; i++) {
-                    let mongoCategory = productsFromMongo[i].category;
-                    if (categoryChange === mongoCategory) {
-                        results.innerHTML += `
+                success: function (productsFromMongo) {
+                    let results = document.getElementById('result');
+                    results.innerHTML = '';
+                    for (let i = 0; i < productsFromMongo.length; i++) {
+                        let mongoCategory = productsFromMongo[i].category;
+                        if (categoryChange === mongoCategory) {
+                            results.innerHTML += `
                             <!-- Product Card -->
                         <div class="col-4 listing">
                             <div class="card" style="width: 18rem;">
@@ -606,17 +606,17 @@ $(document).ready(function () {
                         </div>
                         <!-- Product Card Ends -->
                         `;
-                        singleProduct();
-                        editProducts();
-                        deleteButtons();
+                            singleProduct();
+                            editProducts();
+                            deleteButtons();
+                        }
                     }
-                }
-            },
-            error: function () {
-                alert('unable to filter products by category');
-            }, // end of error    
-        });
-    }
+                },
+                error: function () {
+                    alert('unable to filter products by category');
+                }, // end of error    
+            });
+        }
     });
 
     // filter functionality - By Condition
@@ -626,20 +626,20 @@ $(document).ready(function () {
         if (conditionChange === "All") {
             getAllProducts();
         } else {
-        $.ajax({
-            url: `http://${url}/allProductsFromDB`,
-            type: 'GET',
-            data: {
-                filter: $('#conditionSelect').val()
-            },
+            $.ajax({
+                url: `http://${url}/allProductsFromDB`,
+                type: 'GET',
+                data: {
+                    filter: $('#conditionSelect').val()
+                },
 
-            success: function (productsFromMongo) {
-                let results = document.getElementById('result');
-                results.innerHTML = '';
-                for (let i = 0; i < productsFromMongo.length; i++) {
-                    let mongoCondition = productsFromMongo[i].condition;
-                    if (conditionChange === mongoCondition) {
-                        results.innerHTML += `
+                success: function (productsFromMongo) {
+                    let results = document.getElementById('result');
+                    results.innerHTML = '';
+                    for (let i = 0; i < productsFromMongo.length; i++) {
+                        let mongoCondition = productsFromMongo[i].condition;
+                        if (conditionChange === mongoCondition) {
+                            results.innerHTML += `
                                 <!-- Product Card -->
                             <div class="col-4 listing">
                                 <div class="card" style="width: 18rem;">
@@ -659,17 +659,17 @@ $(document).ready(function () {
                             </div>
                             <!-- Product Card Ends -->
                             `;
-                        singleProduct();
-                        editProducts();
-                        deleteButtons();
+                            singleProduct();
+                            editProducts();
+                            deleteButtons();
+                        }
                     }
-                }
-            },
-            error: function () {
-                alert('unable to filter products by condition');
-            }, // end of error    
-        });
-    }
+                },
+                error: function () {
+                    alert('unable to filter products by condition');
+                }, // end of error    
+            });
+        }
     });
 
     // filtering functionality -- Search bar
@@ -723,29 +723,59 @@ $(document).ready(function () {
 
     // clock function
     // set an interval for how often a function runs in milliseconds
-setInterval(setClock, 1000);
+    setInterval(setClock, 1000);
 
-const hourHand = document.getElementById('hours');
-const minuteHand = document.getElementById('minutes');
-const secondHand = document.getElementById('seconds');
+    const hourHand = document.getElementById('hours');
+    const minuteHand = document.getElementById('minutes');
+    const secondHand = document.getElementById('seconds');
 
-// define the set clock function
-function setClock() {
-    const currentDate = new Date();
-    const secondsRatio = currentDate.getSeconds() / 60;
-    const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
-    const hoursRatio = (minutesRatio + currentDate.getHours()) /12;
-    //  because we don't want the hours or minutes to jump by minutes or hours, we want them to move gradually so we can call upon the previous rato to allow them to move smoothly
+    // define the set clock function
+    function setClock() {
+        const currentDate = new Date();
+        const secondsRatio = currentDate.getSeconds() / 60;
+        const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
+        const hoursRatio = (minutesRatio + currentDate.getHours()) / 12;
+        //  because we don't want the hours or minutes to jump by minutes or hours, we want them to move gradually so we can call upon the previous rato to allow them to move smoothly
 
-    // call the set rotation function of each hand parsing in the correct elements
-    setRotation(secondHand, secondsRatio);
-    setRotation(minuteHand, minutesRatio);
-    setRotation(hourHand, hoursRatio);
-}   
+        // call the set rotation function of each hand parsing in the correct elements
+        setRotation(secondHand, secondsRatio);
+        setRotation(minuteHand, minutesRatio);
+        setRotation(hourHand, hoursRatio);
+    }
 
-function setRotation(element, rotationRatio) {
-    element.style.setProperty('--rotation', rotationRatio * 360);
-}
+    function setRotation(element, rotationRatio) {
+        element.style.setProperty('--rotation', rotationRatio * 360);
+    }
 
-setClock()
+    setClock()
+
+    // tab function
+    $(function () {
+        $('nav').each(function () {
+            let $active, $content, $links = $(this).find('a');
+
+            $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
+            $active.addClass('active');
+
+            $content = $($active[0].hash);
+
+            $links.not($active).each(function () {
+                $(this.hash).hide();
+            });
+
+            $(this).on('click', 'a', function (e) {
+                $active.removeClass('active');
+                $content.hide();
+
+                $active = $(this);
+                $content = $(this.hash);
+
+                $active.addClass('active');
+                $content.show();
+
+                e.preventDefault();
+            });
+        });
+    });
+    
 }); // Doc Ready function Ends
