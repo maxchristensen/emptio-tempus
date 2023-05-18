@@ -30,6 +30,57 @@ $(document).ready(function () {
     // populate account details modal with session storage details
     $('#account-details').click(function () {
         openAccountModal();
+
+        //     let accountModalBody = document.getElementById('accountModalBody');
+        //     let user = sessionStorage.getItem('userName');
+        //     let email = sessionStorage.getItem('userEmail');
+        //     let fullName = sessionStorage.getItem('fullName');
+
+        //     accountModalBody.innerHTML =
+        //         `
+        // <div class="container">
+        // <div class="row">
+        //     <div class="col-8">
+        //         <!-- Account Information -->
+        //         <div class="account-fullname">
+        //             <h5>Full Name:</h5>
+        //             <p>${fullName}</p>
+        //         </div>
+        //         <div class="account-username">
+        //             <h5>Username:</h5>
+        //             <p>${user}</p>
+        //         </div>
+        //         <div class="account-email">
+        //             <h5>Email:</h5>
+        //             <p>${email}</p>
+        //         </div>
+        //         <div class="account-about">
+        //             <h5>About:</h5>
+        //             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non deleniti
+        //                 quod, repellat aliquid rem eum molestiae magnam, ducimus unde voluptatum
+        //                 provident? Recusandae beatae tempore nesciunt aliquam officia? Architecto,
+        //                 voluptatem.</p>
+        //         </div>
+        //     </div>
+        //     <div class="col-4">
+        //         <h5>Current Listings</h5>
+        //         <div class="editCurrentListing">
+        //             <h6>Product Name</h6>
+        //             <p>Product Price</p>
+        //             <!-- Edit Modal Btn -->
+        //             <button type="button" class="btn btn-primary edit" data-bs-toggle="modal"
+        //                 data-bs-target="#editModal">
+        //                 <i class="fa-solid fa-pen"></i>
+        //             </button>
+        //             <button type="button" class="btn btn-secondary delete">
+        //                 <i class="fa-solid fa-trash"></i>
+        //             </button>
+
+        //         </div>
+        //     </div>
+        // </div>                              
+        // `;
+
     });
 
     function openAccountModal() {
@@ -46,10 +97,13 @@ $(document).ready(function () {
                 let userId = sessionStorage.getItem('userID');
                 let productId = sessionStorage.getItem('_id')
 
-                accountModalBody.innerHTML = ``
 
-                accountModalBody.innerHTML +=
-                    `
+                accountModalBody.innerHTML = '';
+
+                for (let i = 0; i < productsFromMongo.length; i++) {
+                    const product = productsFromMongo[i];
+                    accountModalBody.innerHTML =
+                        `
                     <div class="container">
                         <div class="row">
                             <div class="col-8">
@@ -81,10 +135,11 @@ $(document).ready(function () {
                             </div>
                     </div>                              
                     `;
+
                 for (let i = 0; i < productsFromMongo.length; i++) {
                     const product = productsFromMongo[i];
 
-                    const currentListings = document.getElementById('currentListings')
+                    const currentListings = document.getElementById('currentListings';
 
                     if (userId == product.user_id) {
                         currentListings.innerHTML +=
@@ -100,10 +155,12 @@ $(document).ready(function () {
                             <button value=${productsFromMongo[i]._id} type="button" class="btn btn-secondary delete">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
-                        </div>
-                        `
 
+                    </div>
+                        `;
                     } // end of if statement
+
+                } // end of for loop
 
                 } // end of for loop
                 editProducts();
@@ -113,7 +170,8 @@ $(document).ready(function () {
 
             }, // end of error
 
-        }) // end of ajax
+        });// end of ajax
+
     } // end of function
 
     // Get Config.Json and variable from it
@@ -385,7 +443,7 @@ $(document).ready(function () {
                                 <h2 class="accordion-header" id="headingOne">
                                 <button id="viewComments" value="${product._id}" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                View Comments
+                                View and Leave Comments
                                 </button>
                                  </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
@@ -403,12 +461,10 @@ $(document).ready(function () {
                                 </div>
                             </div>
                         </div>  
-                                <!-- Comments ENDS -->
-                        </div>
+                                <!-- Comments ENDS -->                     
                     </div>
                     `;
                         getComments();
-                        viewComments();
                         saveComment();
                     },
                     error: function () {
@@ -508,39 +564,40 @@ $(document).ready(function () {
 
     // Get Comments
 
-    function getComments() {
-        let commentsContainer = document.getElementById('comments');
-        let productId = $('#viewComments').val();
-        $.ajax({
-            url: `http://${url}/allComments`,
-            type: 'GET',
-            dataType: 'json',
-            success: function (comments) {
-                commentsContainer.innerHTML = '';
-                for (i = 0; i < comments.length; i++) {
-                    if (productId === comments[i].product_id) {
-                        let date = comments[i].time;
-                        commentsContainer.innerHTML += `
-                        <div class="new-comment">
-                        <p>${comments[i].text}</p>
-                        <h6 class="text-muted">Posted by: <span>${comments[i].username}</span><br><span>${comments[i].time}</span></h6>
-                        </div>
-                        `;
+        // Get Comments
+
+        function getComments() {
+            let commentsContainer = document.getElementById('comments');
+            let productId = $("#viewComments").val();
+            console.log(productId);
+            $.ajax({
+                url: `http://${url}/allComments`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (comments) {
+                    commentsContainer.innerHTML = '';
+                    for (i = 0; i < comments.length; i++) {
+                        if (productId === comments[i].product_id) {
+                            let date = comments[i].time;
+                            commentsContainer.innerHTML += `
+                            <div class="new-comment">
+                            <h6 class="text-muted">Comment By: <span>${comments[i].username}</span><br><span>${comments[i].time}</span></h6>
+                            <p>${comments[i].text}</p>
+                            </div>
+                            `;
+                        }
                     }
-                }
-            },
-            error: function () {}
-        }); //end of ajax
-    } //end of get comments
+                },
+                error: function () {}
+            }); //end of ajax
+        } //end of get comments
 
-    //-------- View comments ------
-
-    function viewComments() {
-        $('#viewComments').click(function () {
-            getComments();
-        });
-    }
-
+        function viewComments() {
+            $('#viewComments').click(function () {
+                getComments();
+            });
+        }
+    
     // ------ Add Comment ------
     function saveComment() {
         $('#saveComment').click(function () {
@@ -778,4 +835,5 @@ $(document).ready(function () {
         });
     });
     
+
 }); // Doc Ready function Ends
