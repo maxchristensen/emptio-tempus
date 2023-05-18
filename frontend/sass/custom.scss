@@ -241,8 +241,9 @@ nav a.active {
 //logo
 
 .logo-image {
-  width: 450px;
+  width: 400px;
   padding: 10px;
+  text-align: center;
 }
 
 .personal-buttons {
@@ -251,7 +252,6 @@ nav a.active {
 
   & button {
     color: $white;
-
   }
 }
 
@@ -315,6 +315,34 @@ nav a.active {
   text-align: left;
 }
 
+.comments-container {
+  min-height: 100px;
+}
+
+#viewComments {
+  height: 50px;
+  text-align: left;
+  background-color: #F3EED3;
+}
+
+#collapseOne {
+  background-color: #F3EED3;
+}
+
+.new-comment {
+  text-align: left;
+  position: relative;
+}
+
+.new-comment::before {
+  content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       border-bottom: 1px solid $yellow;
+       width: 75%;
+}
+
 //clock styles
 
 .clock-container {
@@ -337,7 +365,7 @@ nav a.active {
 
   /* make clock a circle */
   border-radius: 50%;
-  border: 5px solid #333;
+  border: 5px solid #F3EED3;
 
   /* position relative to allow us to position absolute the numbers and hands */
   position: relative;
@@ -437,14 +465,14 @@ nav a.active {
 .clock .hand.seconds {
   width: 5px;
   height: 45%;
-  background-color: red;
+  background-color: #F3EED3;
 }
 
 /* minute hand */
 .clock .hand.minutes {
   width: 7px;
   height: 40%;
-  background-color: blue;
+  background-color: #F3EED3;
 }
 
 /* hour hand */
@@ -647,5 +675,4 @@ nav a.active {
   border-top-right-radius: 8px;
   padding: 10px;
   width: 100%;
-  z-index: 99;
 }
