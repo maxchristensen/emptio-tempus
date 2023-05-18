@@ -80,6 +80,7 @@ $(document).ready(function () {
         //     </div>
         // </div>                              
         // `;
+
     });
 
     function openAccountModal() {
@@ -94,6 +95,8 @@ $(document).ready(function () {
                 let email = sessionStorage.getItem('userEmail');
                 let fullName = sessionStorage.getItem('fullName');
                 let userId = sessionStorage.getItem('userID');
+                let productId = sessionStorage.getItem('_id')
+
 
                 accountModalBody.innerHTML = '';
 
@@ -129,36 +132,46 @@ $(document).ready(function () {
                             <div class="col-4" id="currentListings">
                                 <h5>Current Listings</h5>
 
-                        </div>
+                            </div>
                     </div>                              
                     `;
-                    const currentListings = document.getElementById('currentListings');
 
-                    if (userId === product.user_id) {
+                for (let i = 0; i < productsFromMongo.length; i++) {
+                    const product = productsFromMongo[i];
+
+                    const currentListings = document.getElementById('currentListings';
+
+                    if (userId == product.user_id) {
                         currentListings.innerHTML +=
                             `
                         <div class="editCurrentListing">
                             <h6>${product.productName}</h6>
                             <p>${product.price}</p>
                             <!-- Edit Modal Btn -->
-                            <button type="button" class="btn btn-primary edit" data-bs-toggle="modal"
+                            <button value=${productsFromMongo[i]._id} type="button" class="btn btn-primary edit" data-bs-toggle="modal"
                                 data-bs-target="#editModal">
                                 <i class="fa-solid fa-pen"></i>
                             </button>
-                            <button type="button" class="btn btn-secondary delete">
+                            <button value=${productsFromMongo[i]._id} type="button" class="btn btn-secondary delete">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
+
                     </div>
                         `;
                     } // end of if statement
 
                 } // end of for loop
 
+                } // end of for loop
+                editProducts();
+                deleteButtons();
             }, // end of success
             error: function () {
 
             }, // end of error
+
         });// end of ajax
+
     } // end of function
 
     // Get Config.Json and variable from it
@@ -325,6 +338,8 @@ $(document).ready(function () {
                 let productId = this.value;
                 let userid = sessionStorage.getItem('userID');
                 if (productId == '' || !userid) {
+                    console.log(userid);
+                    console.log(productId);
                     alert('Please enter product id to delete');
                 } else {
                     $.ajax({
@@ -334,7 +349,9 @@ $(document).ready(function () {
                             alert('Product Deleted');
                             getAllProducts();
                         },
-                        error: function () {} // error
+                        error: function () {
+                            alert('Unable to find product');
+                        } // error
                     }); // ajax
                 } // if
             });
@@ -787,5 +804,36 @@ $(document).ready(function () {
         element.style.setProperty('--rotation', rotationRatio * 360);
     }
 
-    setClock();
+    setClock()
+
+    // tab function
+    $(function () {
+        $('nav').each(function () {
+            let $active, $content, $links = $(this).find('a');
+
+            $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
+            $active.addClass('active');
+
+            $content = $($active[0].hash);
+
+            $links.not($active).each(function () {
+                $(this.hash).hide();
+            });
+
+            $(this).on('click', 'a', function (e) {
+                $active.removeClass('active');
+                $content.hide();
+
+                $active = $(this);
+                $content = $(this.hash);
+
+                $active.addClass('active');
+                $content.show();
+
+                e.preventDefault();
+            });
+        });
+    });
+    
+
 }); // Doc Ready function Ends

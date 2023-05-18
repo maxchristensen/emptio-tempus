@@ -54,15 +54,15 @@
                 <!-- MODALS BTN -->
                 <!-- Login Modal Btn -->
                 <div class="mt-3 personal-buttons d-flex">
-                <button type="button" class="btn" data-bs-toggle="modal"
-                    data-bs-target="#loginModal">Login/Signup</button>
-                <!-- Logout Btn -->
-                <button id="logout" class="btn" type="button" name="button">Log Out</button>
-                <!-- Account Modal Btn -->
-                <button id="account-details" type="button" class="btn" data-bs-toggle="modal"
-                    data-bs-target="#accountModal">Account</button>
-                <!-- MODALS BTN ENDS -->
-            </div>
+                    <button type="button" class="btn" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Login/Signup</button>
+                    <!-- Logout Btn -->
+                    <button id="logout" class="btn" type="button" name="button">Log Out</button>
+                    <!-- Account Modal Btn -->
+                    <button id="account-details" type="button" class="btn" data-bs-toggle="modal"
+                        data-bs-target="#accountModal">Account</button>
+                    <!-- MODALS BTN ENDS -->
+                </div>
             </div>
             <!-- Left Section ENDS -->
 
@@ -129,14 +129,13 @@
 
 
                 <div class="tabs tab-right">
-                    <nav>
+                    <nav class="tabs-btn">
                         <a href="#browse" id="browse-tab">Browse</a>
                         <a href="#listing" id="listing-tab">Listing</a> <!-- Hide/Show -->
                         <a href="#seller" id="seller-tab">Seller</a> <!-- Hide/Show -->
-                        <a href="#collapseAddForm" id="add-tab" data-bs-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="collapseAddForm"><i
-                                class="fa-solid fa-plus"></i>Add</a>
                     </nav>
+                    <a class="tabs-btn" href="#collapseAddForm" id="add-tab" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="collapseAddForm"><i class="fa-solid fa-plus"></i>Add</a>
                     <!-- BROWSE CONTENT -->
                     <h2>BROWSE CONTENT</h2>
                     <div class="content" id="browse">
@@ -221,7 +220,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -410,14 +409,13 @@
 
     <!-- Body Container ENDS -->
 
-    
+
     <!-- Footer Start-->
     <div class="container">
         <div class="row">
-            <footer class="d-flex flex-wrap justify-content-between align-items-center">
-                <div class="col-md-3 d-flex justify-content-between align-items-center"> 
-                    <p class="mb-3 mb-md-0">Emptio Tempus 2023 ©</p>
-                </div>
+            <footer class="d-flex flex-wrap justify-content-between align-items-center" id="footer">
+                <p class="mb-3 mb-md-0">Emptio Tempus 2023 ©</p>
+                <!-- Footer Links Start -->
                 <ul class="nav col-md-4 justify-content-between align-items-center list-unstyled d-flex">
                     <li><a class="nav-link active" aria-current="page" href="#">T&C's</a></li>
                     <li><a class="nav-link active" aria-current="page" href="#">Privacy</a></li>
@@ -426,6 +424,7 @@
                     <li><i class="fa-brands fa-facebook"></i></li>
                     <li><i class="fa-brands fa-instagram"></i></li>
                 </ul>
+                <!-- Footer Links ends -->
             </footer>
         </div>
     </div>
