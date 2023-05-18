@@ -139,7 +139,7 @@ $(document).ready(function () {
                 for (let i = 0; i < productsFromMongo.length; i++) {
                     const product = productsFromMongo[i];
 
-                    const currentListings = document.getElementById('currentListings';
+                    const currentListings = document.getElementById('currentListings');
 
                     if (userId == product.user_id) {
                         currentListings.innerHTML +=
