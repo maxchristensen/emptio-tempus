@@ -10,8 +10,8 @@
 
 @mixin login-register {
   padding: 10px;
-  width: 75vw;
-  height: 60vh;
+  width: 65vw;
+  height: auto;
   background-color: $yellow;
   color: $black;
 }
@@ -20,6 +20,7 @@
   color: $brown;
   background-color: $white;
   border-radius: 10px;
+  width: 100px;
 }
 
 @mixin buyBtn {
@@ -124,24 +125,27 @@ body {
   font-size: 14px;
   // padding: 70px;
   background: $white;
+  overflow: scroll;
+  height: 100vh;
 }
 
 #result {
   overflow-y: scroll;
-  height: 100vh;
+  height: 76vh;
 }
 
 .left-side {
   background-color: $black;
   color: $white;
-  height: 100vh;
   display: flex;
+  height: 100vh;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .right-side {
   background-color: $white;
+  height: 100vh;
 }
 
 .tabs {
@@ -166,7 +170,7 @@ nav {
   position: relative;
   z-index: 1;
 
-  & > a {
+  &>a {
     position: relative;
     width: 10em;
     display: inline-block;
@@ -176,14 +180,17 @@ nav {
     margin: 0 -.3em;
   }
 
-  & > a::before {
+  &>a::before {
     border: .2em solid $white;
   }
 
   a::before {
     content: '';
     position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: -1;
     border-bottom: none;
     border-radius: .7em .8em 0 0;
@@ -202,18 +209,33 @@ nav a.active {
 }
 
 .tab-right {
-  nav { padding-left: 2.3em; }
-  nav a::before { transform-origin: bottom right; }
+  nav {
+    padding-left: 2.3em;
+  }
+
+  nav a::before {
+    transform-origin: bottom right;
+  }
 }
 
 .tab-left {
-  nav { padding-left: 2em; }
-  nav a::before { transform-origin: bottom left; }
+  nav {
+    padding-left: 2em;
+  }
+
+  nav a::before {
+    transform-origin: bottom left;
+  }
 }
 
 .tab-left-right {
-  nav { padding-left: 2em; }
-  nav a::before { transform-origin: bottom; }
+  nav {
+    padding-left: 2em;
+  }
+
+  nav a::before {
+    transform-origin: bottom;
+  }
 }
 
 //logo
@@ -234,7 +256,8 @@ nav a.active {
 }
 
 // card adjustments
-.listing, .card{
+.listing,
+.card {
   height: 450px;
   background-color: transparent;
   border: none;
@@ -251,7 +274,7 @@ nav a.active {
 }
 
 // search / filter adjustments
-.dropdown{
+.dropdown {
   width: 300px;
   margin-right: 20px;
   padding: 6px 12px;
@@ -283,10 +306,8 @@ nav a.active {
   padding: 0 5rem;
 
   & button {
-    padding: .3rem 2rem;
-    background-color: $yellow;
-    border-radius: 5px;
-    color: $brown;
+    @include buyBtn;
+    width: 100px;
   }
 }
 
@@ -298,12 +319,12 @@ nav a.active {
 
 .clock-container {
   font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 25px;
 }
 
 .clock {
@@ -312,9 +333,9 @@ nav a.active {
 
   /* neumorphic boxshadow */
   box-shadow: 5px 5px 20px #43497c,
-              -5px -5px 20px #555c9c;
+    -5px -5px 20px #555c9c;
 
-          /* make clock a circle */
+  /* make clock a circle */
   border-radius: 50%;
   border: 5px solid #333;
 
@@ -330,22 +351,55 @@ nav a.active {
   position: absolute;
   width: 100%;
   height: 100%;
-  text-align: center;  /* will allow us to place all the numbers at the 12 o'clock spot */
+  text-align: center;
+  /* will allow us to place all the numbers at the 12 o'clock spot */
   transform: rotate(var(--rotation));
 }
 
 /* positioning the numbers */
-.clock .number1 { --rotation: 30deg; }
-.clock .number2 { --rotation: 60deg; }
-.clock .number3 { --rotation: 90deg; }
-.clock .number4 { --rotation: 120deg; }
-.clock .number5 { --rotation: 150deg; }
-.clock .number6 { --rotation: 180deg; }
-.clock .number7 { --rotation: 210deg; }
-.clock .number8 { --rotation: 240deg; }
-.clock .number9 { --rotation: 270deg; }
-.clock .number10 { --rotation: 300deg; }
-.clock .number11 { --rotation: 330deg; }
+.clock .number1 {
+  --rotation: 30deg;
+}
+
+.clock .number2 {
+  --rotation: 60deg;
+}
+
+.clock .number3 {
+  --rotation: 90deg;
+}
+
+.clock .number4 {
+  --rotation: 120deg;
+}
+
+.clock .number5 {
+  --rotation: 150deg;
+}
+
+.clock .number6 {
+  --rotation: 180deg;
+}
+
+.clock .number7 {
+  --rotation: 210deg;
+}
+
+.clock .number8 {
+  --rotation: 240deg;
+}
+
+.clock .number9 {
+  --rotation: 270deg;
+}
+
+.clock .number10 {
+  --rotation: 300deg;
+}
+
+.clock .number11 {
+  --rotation: 330deg;
+}
 
 
 .clock .hand {
@@ -374,7 +428,7 @@ nav a.active {
   height: 15px;
   width: 15px;
   top: 50%;
-  left:50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
 }
@@ -387,7 +441,7 @@ nav a.active {
 }
 
 /* minute hand */
-.clock .hand.minutes{
+.clock .hand.minutes {
   width: 7px;
   height: 40%;
   background-color: blue;
@@ -410,27 +464,177 @@ nav a.active {
       border-bottom: none;
     }
 
-    .col-8 {
-      border: solid 0.5px $black;
+    .col-7 {
+      border: solid 1px $black;
       border-radius: 5px;
       padding: 10px;
+      margin-right: 50px;
 
       form label {
         font-size: 20px;
         font-weight: 200;
       }
+
       form input {
         font-size: 16px;
         font-weight: 200;
-        width: 80%;
+        border: none;
+        border-bottom: solid 1px $black;
+        background: none;
+        width: 98%;
+      }
+
+      #login-submit {
+        @include ctaBtn;
+        margin-top: 10px;
       }
 
     }
 
     .col-4 {
-      border: solid 0.5px $black;
+      border: solid 1px $black;
       border-radius: 5px;
       padding: 10px;
+
+      .btn {
+        @include ctaBtn;
+      }
+    }
+
+  }
+}
+
+#registerModal .modal-dialog {
+  @include modalPosition;
+
+  .modal-content {
+    @include login-register;
+    display: flex;
+
+    .modal-header {
+      border-bottom: none;
+    }
+
+    #registerForm {
+      border: solid 1px $black;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    form label {
+      font-size: 20px;
+      font-weight: 200;
+    }
+
+    form input {
+      font-size: 16px;
+      font-weight: 200;
+      border: none;
+      border-bottom: solid 1px $black;
+      background: none;
+    }
+
+    .btn {
+      @include ctaBtn;
+      margin-top: 10px;
+    }
+
+  }
+}
+
+#accountModal .modal-dialog {
+  @include modalPosition;
+
+  .modal-content {
+    @include login-register;
+
+    p,
+    h6 {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .modal-header {
+      border-bottom: none;
+    }
+
+    .col-7 {
+      border: solid 1px $black;
+      border-radius: 5px;
+      padding: 10px;
+      margin-right: 50px;
+    }
+
+    .col-4 {
+      border: solid 1px $black;
+      border-radius: 5px;
+      padding: 10px;
+
+      .editCurrentListing {
+        p {
+          margin-bottom: 0;
+        }
+      }
+
+      .btn {
+        @include buyBtn;
+        font-size: 16px;
+        border: none;
+        padding: 5px;
+      }
+    }
+
+  }
+}
+
+#editModal .modal-dialog {
+  @include modalPosition;
+
+  .modal-content {
+    @include login-register;
+
+    .modal-header {
+      border-bottom: 0;
+    }
+
+    .col-6 {
+      border: solid 1px $black;
+      border-radius: 5px;
+      padding: 10px;
+      margin-right: 50px;
+      margin-bottom: 10px;
+    }
+    
+    .col-5 {
+      border: solid 1px $black;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    form label {
+      font-size: 20px;
+      font-weight: 200;
+    }
+
+    form input {
+      font-size: 16px;
+      font-weight: 200;
+      border: none;
+      border-bottom: solid 1px $black;
+      background: none;
+    }
+
+    .form-select {
+      border-radius: 0;
+      margin: 30px 0;
+    }
+
+    .btn {
+      @include ctaBtn;
+      margin-top: 20px;
+      border: 0;
+      width: 150px;
     }
 
   }
@@ -438,9 +642,10 @@ nav a.active {
 
 /* footer style */
 #footer {
-  border: 2px solid $black;
+  border: 1px solid $black;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  padding: 1rem;
+  padding: 10px;
   width: 100%;
+  z-index: 99;
 }

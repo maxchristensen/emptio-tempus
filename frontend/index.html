@@ -245,7 +245,7 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-7">
                                 <!-- Login Section -->
                                 <h5>Login</h5>
                                 <!-- Login Form -->
@@ -257,14 +257,13 @@
                                     <label for="login-password" class="">Password</label>
                                     <input type="password" name="login-password" id="login-password"
                                         class="form-control" value="">
-                                    <button id="login-submit" name="button" type="submit"
-                                        class="btn bg-light text-dark btn-lg btn-dark mt-4">Login</button>
+                                    <button id="login-submit" name="button" type="submit" class="btn">Login</button>
                                 </form>
                             </div>
                             <div class="col-4">
                                 <h5>Would you like to create an account?</h5>
                                 <!-- Register Modal Btn -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <button type="button" class="btn" data-bs-toggle="modal"
                                     data-bs-target="#registerModal">Register</button>
                             </div>
                         </div>
@@ -280,40 +279,44 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title fs-5" id="registerModalLabel">New Account</h4>
+                    <h4 class="modal-title" id="registerModalLabel">New Account</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5>Register</h5>
                     <!-- Register Form -->
                     <!-- <form action="/loginUser" method="post"> -->
-                    <form id="registerForm" class="bg-light py-3 px-3 mt-5">
-                        <div class="form-group">
-                            <label for="r-fullname">Full Name</label>
-                            <input type="text" name="r-fullname" class="form-control" id="r-fullname">
-                        </div>
-                        <div class="form-group">
-                            <label for="r-username">Username</label>
-                            <input type="text" name="r-username" class="form-control" id="r-username">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="r-email">Email</label>
-                            <input type="email" name="r-email" class="form-control" id="r-email">
+                    <form id="registerForm" class="py-3 px-3">
+                        <h5>Register</h5>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="r-fullname">Full Name</label>
+                                <input type="text" name="r-fullname" class="form-control" id="r-fullname">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="r-username">Username</label>
+                                <input type="text" name="r-username" class="form-control" id="r-username">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="r-password">Password</label>
-                            <input type="password" autocomplete="new-password" name="r-password" class="form-control"
-                                id="r-password">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="r-email">Email</label>
+                                <input type="email" name="r-email" class="form-control" id="r-email">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="r-password">Password</label>
+                                <input type="password" autocomplete="new-password" name="r-password"
+                                    class="form-control" id="r-password">
+                            </div>
                         </div>
+
 
                         <div class="form-group">
                             <label for="r-about">About</label>
                             <input type="text" name="r-about" class="form-control" id="r-about">
                         </div>
 
-                        <button id="r-submit" name="r-button" type="button" class="btn btn-primary">Register</button>
+                        <button id="r-submit" name="r-button" type="button" class="btn">Register</button>
                     </form>
                 </div>
             </div>
@@ -325,7 +328,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title fs-5" id="accountModalLabel">Account</h4>
+                    <h4 class="modal-title" id="accountModalLabel">Account</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="accountModalBody">
@@ -341,15 +344,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title fs-5" id="editModalLabel">Edit Product</h4>
+                    <h4 class="modal-title" id="editModalLabel">Edit Product</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Edit Product Form Start -->
                     <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <form id="editProductForm" class="p-5">
+                        <form id="editProductForm">
+                            <div class="row">
+                                <div class="col-6">
                                     <label class="mr-3" for="e-productImage1">Update main image url</label>
                                     <input type="text" class="form-control" id="e-productImage1" name="e-productImage1">
 
@@ -361,7 +364,8 @@
 
                                     <label class="mr-3" for="e-productImage4">Update additional image url </label>
                                     <input type="text" class="form-control" id="e-productImage4" name="e-productImage4">
-
+                                </div>
+                                <div class="col-5">
                                     <label class="mr-4" for="e-productNameUpdate">Product Name</label>
                                     <input type="text" id="e-productNameUpdate" name="e-productNameUpdate"
                                         class="form-control">
@@ -387,17 +391,16 @@
                                         <option value="8">Used - Fair</option>
                                         <option value="9">Used - Needs Fixing</option>
                                     </select>
-
-                                    <label class="mr-5" for="e-productDescription">Product Description</label>
-                                    <input type="text" class="form-control" id="e-productDescription"
-                                        name="e-productDescription">
-
-                                    <button id="editProduct" name="productButton" type="submit"
-                                        class="btn btn-primary">Edit
-                                        Product</button>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+
+                            <label class="mr-5" for="e-productDescription">Product Description</label>
+                            <input type="text" class="form-control" id="e-productDescription"
+                                name="e-productDescription">
+
+                            <button id="editProduct" name="productButton" type="submit" class="btn btn-primary">Edit
+                                Product</button>
+                        </form>
                     </div>
                     <!-- Edit Form Ends -->
                 </div>
@@ -411,23 +414,19 @@
 
 
     <!-- Footer Start-->
-    <div class="container">
-        <div class="row">
-            <footer class="d-flex flex-wrap justify-content-between align-items-center" id="footer">
-                <p class="mb-3 mb-md-0">Emptio Tempus 2023 ©</p>
-                <!-- Footer Links Start -->
-                <ul class="nav col-md-4 justify-content-between align-items-center list-unstyled d-flex">
-                    <li><a class="nav-link active" aria-current="page" href="#">T&C's</a></li>
-                    <li><a class="nav-link active" aria-current="page" href="#">Privacy</a></li>
-                    <li><a class="nav-link active" aria-current="page" href="#">About</a></li>
-                    <li><a class="nav-link active" aria-current="page" href="#">Contact</a></li>
-                    <li><i class="fa-brands fa-facebook"></i></li>
-                    <li><i class="fa-brands fa-instagram"></i></li>
-                </ul>
-                <!-- Footer Links ends -->
-            </footer>
-        </div>
-    </div>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center" id="footer">
+        <p class="mb-3 mb-md-0">Emptio Tempus 2023 ©</p>
+        <!-- Footer Links Start -->
+        <ul class="nav col-md-4 justify-content-between align-items-center list-unstyled d-flex">
+            <li><a class="nav-link active" aria-current="page" href="#">T&C's</a></li>
+            <li><a class="nav-link active" aria-current="page" href="#">Privacy</a></li>
+            <li><a class="nav-link active" aria-current="page" href="#">About</a></li>
+            <li><a class="nav-link active" aria-current="page" href="#">Contact</a></li>
+            <li><i class="fa-brands fa-facebook"></i></li>
+            <li><i class="fa-brands fa-instagram"></i></li>
+        </ul>
+        <!-- Footer Links ends -->
+    </footer>
     <!-- Footer ENDS -->
 
 

@@ -52,7 +52,7 @@ $(document).ready(function () {
                     `
                     <div class="container">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-7">
                                 <!-- Account Information -->
                                 <div class="account-fullname">
                                     <h5>Full Name:</h5>
