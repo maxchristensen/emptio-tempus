@@ -123,7 +123,6 @@ p {
 
 body {
   font-size: 14px;
-  // padding: 70px;
   background: $white;
   overflow: scroll;
   height: 100vh;
@@ -138,7 +137,6 @@ body {
   background-color: $black;
   color: $white;
   display: flex;
-  height: 100vh;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -146,10 +144,8 @@ body {
 .right-side {
   background-color: $white;
   height: 100vh;
-}
-
-.tabs {
-  margin-bottom: 30px;
+  overflow: scroll;
+  padding-left: 0;
 }
 
 nav,
@@ -166,22 +162,34 @@ nav,
   color: $black;
 }
 
+.add-toggle-btn {
+  position: absolute;
+}
+
+
 nav {
+  a {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
   position: relative;
   z-index: 1;
+  border-bottom: solid 1px $brown;
 
   &>a {
     position: relative;
-    width: 10em;
+    width: 150px;
+    height: 50px;
     display: inline-block;
-    padding: .9em 3em .7em;
+    padding: 10px 45px;
     color: $white;
     text-decoration: none;
-    margin: 0 -.3em;
+    margin-right: 25px;
   }
 
   &>a::before {
-    border: .2em solid $white;
+    border: 1px solid $brown;
   }
 
   a::before {
@@ -194,7 +202,7 @@ nav {
     z-index: -1;
     border-bottom: none;
     border-radius: .7em .8em 0 0;
-    background: $brown;
+    background: $yellow;
     transform: scale(1.2, 1.3) perspective(.4em) rotateX(3deg);
   }
 }
@@ -203,14 +211,14 @@ nav a.active {
   z-index: 2;
 
   &::before {
-    background-color: $white;
-    margin-bottom: -.08em;
+    background-color: $brown;
+    color: $white;
   }
 }
 
 .tab-right {
   nav {
-    padding-left: 2.3em;
+    padding-left: 30px;
   }
 
   nav a::before {
@@ -219,22 +227,82 @@ nav a.active {
 }
 
 .tab-left {
-  nav {
-    padding-left: 2em;
-  }
-
   nav a::before {
     transform-origin: bottom left;
   }
 }
 
 .tab-left-right {
-  nav {
-    padding-left: 2em;
-  }
-
   nav a::before {
     transform-origin: bottom;
+  }
+}
+
+.tabs-btn {
+  display: flex;
+}
+
+.add-toggle-btn {
+  text-decoration: none;
+  text-align: center;
+  color: $brown;
+  background-color: $yellow;
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  padding: 15px 15px 10.5px 15px;
+  font-size: 15px;
+  z-index: 99;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#addBody {
+  height: auto;
+  background-color: $yellow;
+  color: $black;
+  margin: 0;
+  padding: 25px 25px 65px;
+  border-radius: 0px;
+  margin-bottom: -50px;
+
+  .col-4 {
+    border: solid 1px $black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 15px;
+  }
+
+  .col-3 {
+    border: solid 1px $black;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  form label {
+    font-size: 20px;
+    font-weight: 200;
+  }
+
+  form input {
+    font-size: 16px;
+    font-weight: 200;
+    border: none;
+    border-bottom: solid 1px $black;
+    background: none;
+    border-radius: 0;
+  }
+
+  .form-select {
+    border-radius: 0;
+    margin: 30px 0;
+  }
+
+  .btn {
+    @include ctaBtn;
+    border: 0;
+    margin-top: 15px;
+    width: auto;
   }
 }
 
@@ -243,7 +311,7 @@ nav a.active {
 .logo-image {
   width: 400px;
   padding: 10px;
-  text-align: center;
+  margin: auto;
 }
 
 .personal-buttons {
@@ -336,11 +404,11 @@ nav a.active {
 
 .new-comment::before {
   content: '';
-       position: absolute;
-       top: 0;
-       left: 0;
-       border-bottom: 1px solid $yellow;
-       width: 75%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid $yellow;
+  width: 75%;
 }
 
 //clock styles
@@ -632,7 +700,7 @@ nav a.active {
       margin-right: 50px;
       margin-bottom: 10px;
     }
-    
+
     .col-5 {
       border: solid 1px $black;
       border-radius: 5px;
@@ -651,6 +719,7 @@ nav a.active {
       border: none;
       border-bottom: solid 1px $black;
       background: none;
+      border-radius: 0;
     }
 
     .form-select {
