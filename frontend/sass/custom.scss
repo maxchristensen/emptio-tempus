@@ -332,12 +332,12 @@ nav a.active {
   height: 450px;
   background-color: transparent;
   border: none;
+  max-width: 300px;
 }
 
 .card-body {
   padding: 5px;
   height: 100px;
-  flex: none;
 }
 
 .btn {
