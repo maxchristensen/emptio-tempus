@@ -399,7 +399,8 @@ $(document).ready(function () {
                                         results.innerHTML += `
                     <h2>Sorry, you need to be logged in to see your current listings</h2>
                     `;
-                    return
+                      return
+
                                     }
                     } // end of success
                             },
