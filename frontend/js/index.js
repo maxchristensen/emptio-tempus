@@ -376,7 +376,7 @@ $(document).ready(function () {
                                         results.innerHTML +=
                                             ` 
                         <!-- Product Card -->
-                        <button value=${productsFromMongo[i]._id} class="btn col-4 listing my-1 readmore" type="button" name="button">
+                        <button value=${productsFromMongo[i]._id} class="btn col-4 listing my-1" type="button" name="button">
                             <div class="card cardlisting">
                                 <img src="${productsFromMongo[i].image1}"
                                         class="card-img-top" img="card-img" alt="${productsFromMongo[i].productName}">
