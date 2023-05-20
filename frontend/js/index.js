@@ -93,9 +93,10 @@ $(document).ready(function () {
                 let accountModalBody = document.getElementById('accountModalBody');
                 let user = sessionStorage.getItem('userName');
                 let email = sessionStorage.getItem('userEmail');
-                let fullName = sessionStorage.getItem('fullName');
+                let fullname = sessionStorage.getItem('fullname');
                 let userId = sessionStorage.getItem('userID');
-                let productId = sessionStorage.getItem('_id')
+                let about = sessionStorage.getItem('about');
+                let productId = sessionStorage.getItem('_id');
 
 
                 accountModalBody.innerHTML = '';
@@ -110,7 +111,7 @@ $(document).ready(function () {
                                 <!-- Account Information -->
                                 <div class="account-fullname">
                                     <h5>Full Name:</h5>
-                                    <p>${fullName}</p>
+                                    <p>${fullname}</p>
                                 </div>
                                 <div class="account-username">
                                     <h5>Username:</h5>
@@ -122,10 +123,7 @@ $(document).ready(function () {
                                 </div>
                                 <div class="account-about">
                                     <h5>About:</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non deleniti
-                                        quod, repellat aliquid rem eum molestiae magnam, ducimus unde voluptatum
-                                        provident? Recusandae beatae tempore nesciunt aliquam officia? Architecto,
-                                        voluptatem.</p>
+                                    <p>${about}</p>
                                 </div>
                             </div>
 
@@ -483,6 +481,7 @@ $(document).ready(function () {
         let username = $('#r-username').val();
         let email = $('#r-email').val();
         let password = $('#r-password').val();
+        let about = $('#r-about').val();
 
         if (fullname == '' || username == '' || email == '' || password == '') {
             alert('Please enter all details');
@@ -494,7 +493,8 @@ $(document).ready(function () {
                     fullname: fullname,
                     username: username,
                     email: email,
-                    password: password
+                    password: password,
+                    about: about
                 },
                 success: function (user) {
                     if (user !== 'username already taken') {
@@ -804,7 +804,7 @@ $(document).ready(function () {
         element.style.setProperty('--rotation', rotationRatio * 360);
     }
 
-    setClock()
+    setClock();
 
     // tab function
     $(function () {
