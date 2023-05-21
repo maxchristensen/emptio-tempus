@@ -599,6 +599,9 @@ $(document).ready(function () {
                         sessionStorage.setItem('userName', user['username']);
                         sessionStorage.setItem('userEmail', user['email']);
                         alert(`Welcome back ${username.toUpperCase()}!`);
+
+                        $('#loginBtn').hide();
+                        $('#logout').show();
                     } // end of ifs
                 }, //success
                 error: function () {
@@ -613,6 +616,8 @@ $(document).ready(function () {
         sessionStorage.clear();
         alert('You are now logged out');
         window.location.href = '#';
+        $('#loginBtn').show();
+        $('#logout').hide();
     });
 
     // --------COMMENT AJAX FUNCTIONALITY---------
