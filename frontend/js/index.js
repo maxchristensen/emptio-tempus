@@ -363,7 +363,6 @@ $(document).ready(function () {
     $('#listing-tab').click(function () {
         let results = document.getElementById('listingResults');
         let userId = sessionStorage.getItem('userID');
-        console.log(userId);
         $.ajax({
             url: `http://${url}/allProductsFromDB`,
             type: 'GET',
@@ -372,7 +371,6 @@ $(document).ready(function () {
                 results.innerHTML = '';
                 for (let i = 0; i < productsFromMongo.length; i++) {
                     if (userId == productsFromMongo[i].user_id) {
-                        console.log(userId);
                         results.innerHTML +=
                             ` 
                         <!-- Product Card -->
@@ -410,6 +408,43 @@ $(document).ready(function () {
 
         }); // end of ajax function
     }); // end of getAllProducts function
+
+                 // populate sellers information
+    // get single product data on readmore click and populate read more modal
+
+    $('#seller-tab').click(function () {
+        let results = document.getElementById('sellerInfo');
+        let userId = sessionStorage.getItem('userID');
+            $.ajax({
+                    url: `http://${url}/allUsersFromDB`,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (sellerInformation) {
+                        results.innerHTML = '';
+                        for (let i = 0; i < sellerInformation.length; i++) {
+                            if (userId == sellerInformation[i]._id) {
+                                results.innerHTML +=` 
+                <!-- seller information -->
+                <h2 class="seller-fullname">Full Name: ${sellerInformation[i].fullname}</h2>
+                <h4 class="seller-username">Username: ${sellerInformation[i].username}</h4>
+                <h4 class="seller-email">Email Adress: ${sellerInformation[i].email}</h4>
+                <h5 class="seller-about">About Me:${sellerInformation[i].about}</h5>
+            `;
+                            } else if (userId == null) {
+                                results.innerHTML += `
+            <h2>Sorry, you need to be logged in to see your current Information</h2>
+            `;
+              return;
+
+                            }
+            } // end of success
+                    },
+                        error: function () {
+                                alert('unable to get sellers Information');
+                            }, // end of error
+
+                    }); // end of ajax function
+            }); // end of get seller information function
 
 
     // get single product data on readmore click and populate read more modal
