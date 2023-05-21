@@ -251,7 +251,7 @@ nav a.active {
   background-color: $yellow;
   position: absolute;
   top: 2px;
-  right: -12px;
+  right: 1px;
   padding: 15px 15px 10.5px 15px;
   font-size: 15px;
   z-index: 99;
@@ -267,6 +267,7 @@ nav a.active {
   padding: 25px 25px 65px;
   border-radius: 0px;
   margin-bottom: -50px;
+  max-width: 100vw;
 
   .col-4 {
     border: solid 1px $black;
@@ -446,8 +447,8 @@ nav a.active {
   height: 400px;
 
   /* neumorphic boxshadow */
-  box-shadow: 5px 5px 20px #43497c,
-    -5px -5px 20px #555c9c;
+  box-shadow: 5px 5px 20px #abab87,
+    -5px -5px 20px #abab87;
 
   /* make clock a circle */
   border-radius: 50%;
