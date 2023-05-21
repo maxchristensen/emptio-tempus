@@ -178,7 +178,12 @@ app.post('/loginUser', (req, res) => {
 
 // ------- USER END POINTS END -------------
 
-
+//Get all users - used to get logged in users information to display under seller tab
+app.get('/allUsersFromDB', (req, res) => {
+    User.find().then(result => {
+        res.send(result)
+    })
+})
 
 // ------ COMMENT END POINTS START ---------
 
