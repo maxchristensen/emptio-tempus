@@ -349,32 +349,56 @@ $(document).ready(function () {
                             alert('Product Deleted');
                             getAllProducts();
                         },
-                        error: function () {
-                            alert('Unable to find product');
-                        } // error
-                    }); // ajax
-                } // if
-            });
-        });
-    }
+                        error: function () {} // End of error
+                    }); // End of ajax
+                } // End of if
+            }); // End of update click
 
-    // populate sellers listings
+            // DELETE PRODUCT
+            function deleteButtons() {
+                let deleteButtons = document.querySelectorAll('.delete');
+                let buttons = Array.from(deleteButtons);
+                buttons.forEach(function (button) {
+                    button.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        let productId = this.value;
+                        let userid = sessionStorage.getItem('userID');
+                        if (productId == '' || !userid) {
+                            console.log(userid);
+                            console.log(productId);
+                            alert('Please enter product id to delete');
+                        } else {
+                            $.ajax({
+                                url: `http://${url}/deleteProduct/${productId}`,
+                                type: 'DELETE',
+                                success: function () {
+                                    alert('Product Deleted');
+                                    getAllProducts();
+                                },
+                                error: function () {
+                                    alert('Unable to find product');
+                                } // error
+                            }); // ajax
+                        } // if
+                    });
+                });
+            }
 
-    $('#listing-tab').click(function () {
-        let results = document.getElementById('listingResults');
-        let userId = sessionStorage.getItem('userID');
-        console.log(userId);
-        $.ajax({
-            url: `http://${url}/allProductsFromDB`,
-            type: 'GET',
-            dataType: 'json',
-            success: function (productsFromMongo) {
-                results.innerHTML = '';
-                for (let i = 0; i < productsFromMongo.length; i++) {
-                    if (userId == productsFromMongo[i].user_id) {
-                        console.log(userId);
-                        results.innerHTML +=
-                            ` 
+            // populate sellers listings
+
+            $('#listing-tab').click(function () {
+                let results = document.getElementById('listingResults');
+                let userId = sessionStorage.getItem('userID');
+                    $.ajax({
+                            url: `http://${url}/allProductsFromDB`,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function (productsFromMongo) {
+                                results.innerHTML = '';
+                                for (let i = 0; i < productsFromMongo.length; i++) {
+                                    if (userId == productsFromMongo[i].user_id) {
+                                        results.innerHTML +=
+                                            ` 
                         <!-- Product Card -->
                         <button value=${productsFromMongo[i]._id} class="btn col-4 listing my-1" type="button" name="button">
                             <div class="card cardlisting">
@@ -399,34 +423,73 @@ $(document).ready(function () {
                         results.innerHTML += `
                     <h2>Sorry, you need to be logged in to see your current listings</h2>
                     `;
-                        return
 
-                    }
-                } // end of success
-            },
-            error: function () {
-                alert('unable to get sellers products');
-            }, // end of error
+                      return;
 
-        }); // end of ajax function
-    }); // end of getAllProducts function
+                                    }
+                    } // end of success
+                            },
+                                error: function () {
+                                        alert('unable to get sellers products');
+                                    }, // end of error
+
+                            }); // end of ajax function
+                    }); // end of get seller listings function
+
+                 // populate sellers information
+
+            $('#seller-tab').click(function () {
+                let results = document.getElementById('sellerInfo');
+                let userId = sessionStorage.getItem('userID');
+                console.log(userId);
+                    $.ajax({
+                            url: `http://${url}/allUsersFromDB`,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function (sellerInformation) {
+                                results.innerHTML = '';
+                                for (let i = 0; i < sellerInformation.length; i++) {
+                                    if (userId == sellerInformation[i]._id) {
+                                        results.innerHTML +=` 
+                        <!-- seller information -->
+                        <h2 class="seller-fullname">Full Name: ${sellerInformation[i].fullname}</h2>
+                        <h4 class="seller-username">Username: ${sellerInformation[i].username}</h4>
+                        <h4 class="seller-email">Email Adress: ${sellerInformation[i].email}</h4>
+                        <h5 class="seller-about">About Me:${sellerInformation[i].about}</h5>
+                    `;
+                                    } else if (userId == null) {
+                                        results.innerHTML += `
+                    <h2>Sorry, you need to be logged in to see your current Information</h2>
+                    `;
+                      return;
+
+                                    }
+                    } // end of success
+                            },
+                                error: function () {
+                                        alert('unable to get sellers Information');
+                                    }, // end of error
+
+                            }); // end of ajax function
+                    }); // end of get seller information function
 
 
-    // get single product data on readmore click and populate read more modal
+    
+                // get single product data on readmore click and populate read more modal
 
-    function singleProduct() {
-        let readmore = document.querySelectorAll('.readmore');
-        let buttons = Array.from(readmore);
-        buttons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                let productId = this.value;
-                $.ajax({
-                    url: `http://${url}/singleProduct/${productId}`,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (product) {
-                        let singleListingBody = document.getElementById('result');
-                        singleListingBody.innerHTML = `
+                function singleProduct() {
+                    let readmore = document.querySelectorAll('.readmore');
+                    let buttons = Array.from(readmore);
+                    buttons.forEach(function (button) {
+                        button.addEventListener('click', function () {
+                            let productId = this.value;
+                            $.ajax({
+                                url: `http://${url}/singleProduct/${productId}`,
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function (product) {
+                                    let singleListingBody = document.getElementById('result');
+                                    singleListingBody.innerHTML = `
                     <div class="content" id="listing">
                         <div class="container">
                             <div class="row">
