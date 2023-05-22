@@ -8,7 +8,6 @@ $(document).ready(function () {
     let url;
 
     // ON CLICKS
-
     // Browse on-click - To make the listing & seller tab appear when a user clicks into a listing
     $('#browse-tab').click(function () {
         getAllProducts();
@@ -26,63 +25,11 @@ $(document).ready(function () {
         let logout = document.getElementById('logout');
         let accountDetails = document.getElementById('account-details');
         addTab.style.display = "inline-block";
-
     });
 
     // populate account details modal with session storage details
     $('#account-details').click(function () {
-        openAccountModal();
-
-        //     let accountModalBody = document.getElementById('accountModalBody');
-        //     let user = sessionStorage.getItem('userName');
-        //     let email = sessionStorage.getItem('userEmail');
-        //     let fullName = sessionStorage.getItem('fullName');
-
-        //     accountModalBody.innerHTML =
-        //         `
-        // <div class="container">
-        // <div class="row">
-        //     <div class="col-8">
-        //         <!-- Account Information -->
-        //         <div class="account-fullname">
-        //             <h5>Full Name:</h5>
-        //             <p>${fullName}</p>
-        //         </div>
-        //         <div class="account-username">
-        //             <h5>Username:</h5>
-        //             <p>${user}</p>
-        //         </div>
-        //         <div class="account-email">
-        //             <h5>Email:</h5>
-        //             <p>${email}</p>
-        //         </div>
-        //         <div class="account-about">
-        //             <h5>About:</h5>
-        //             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non deleniti
-        //                 quod, repellat aliquid rem eum molestiae magnam, ducimus unde voluptatum
-        //                 provident? Recusandae beatae tempore nesciunt aliquam officia? Architecto,
-        //                 voluptatem.</p>
-        //         </div>
-        //     </div>
-        //     <div class="col-4">
-        //         <h5>Current Listings</h5>
-        //         <div class="editCurrentListing">
-        //             <h6>Product Name</h6>
-        //             <p>Product Price</p>
-        //             <!-- Edit Modal Btn -->
-        //             <button type="button" class="btn btn-primary edit" data-bs-toggle="modal"
-        //                 data-bs-target="#editModal">
-        //                 <i class="fa-solid fa-pen"></i>
-        //             </button>
-        //             <button type="button" class="btn btn-secondary delete">
-        //                 <i class="fa-solid fa-trash"></i>
-        //             </button>
-
-        //         </div>
-        //     </div>
-        // </div>                              
-        // `;
-
+        openAccountModal();        
     });
 
     function openAccountModal() {
@@ -99,7 +46,6 @@ $(document).ready(function () {
                 let userId = sessionStorage.getItem('userID');
                 let about = sessionStorage.getItem('about');
                 let productId = sessionStorage.getItem('_id');
-
 
                 accountModalBody.innerHTML = '';
 
@@ -397,7 +343,7 @@ $(document).ready(function () {
                         results.innerHTML += `
                     <h2>Sorry, you need to be logged in to see your current listings</h2>
                     `;
-                        return
+                        return;
 
                     }
                 } // end of success
@@ -430,7 +376,7 @@ $(document).ready(function () {
                 <h4 class="seller-email">Email Adress: ${sellerInformation[i].email}</h4>
                 <h5 class="seller-about">About Me:${sellerInformation[i].about}</h5>
             `;
-                            } else if (userId == null) {
+                } else if (userId == null) {
                                 results.innerHTML += `
             <h2>Sorry, you need to be logged in to see your current Information</h2>
             `;
@@ -928,6 +874,5 @@ $(document).ready(function () {
             });
         });
     });
-
 
 }); // Doc Ready function Ends

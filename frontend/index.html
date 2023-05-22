@@ -16,19 +16,19 @@
 </head>
 
 <body>
-    <!-- Body Container -->
+    <!-- Body Container Start -->
     <div class="body-container">
 
         <div class="row">
 
-            <!-- Left Section -->
+            <!-- LEFT SECTION START -->
             <div class="col-4 left-side">
 
-                <!-- Logo -->
+                <!-- Logo Start-->
                 <img src="img/emptio-tempus-logo.png" class="logo-image" alt="Emptio Tempus Logo">
-                <!-- Logo ENDS -->
+                <!-- Logo Ends -->
 
-                <!-- Clock -->
+                <!-- Clock Start -->
                 <div class="clock-container">
                     <div class="clock">
                         <div class="hand hours" id="hours"></div>
@@ -48,25 +48,25 @@
                         <div class="number number12">XII</div>
                     </div>
                 </div>
+                <!-- Clock Ends -->
 
-                <!-- Clock ENDS -->
-
-                <!-- MODALS BTN -->
-                <!-- Login Modal Btn -->
+                <!-- Modal Buttons Start -->
+                <!-- Login Modal Button Start-->
                 <div class="mt-3 personal-buttons d-flex">
                     <button id="loginBtn" type="button" class="btn" data-bs-toggle="modal"
                         data-bs-target="#loginModal">Login/Signup</button>
-                    <!-- Logout Btn -->
                     <button id="logout" class="btn" type="button" name="button">Logout</button>
-                    <!-- Account Modal Btn -->
+                    <!-- Logout Button Ends -->
+                    <!-- Account Modal Button Start -->
                     <button id="account-details" type="button" class="btn" data-bs-toggle="modal"
                         data-bs-target="#accountModal">Account</button>
-                    <!-- MODALS BTN ENDS -->
+                    <!-- Account Modal Button Ends -->
                 </div>
+                <!-- Modal Buttons Ends -->              
             </div>
-            <!-- Left Section ENDS -->
+            <!-- LEFT SECTION ENDS -->
 
-            <!-- Right Section -->
+            <!-- RIGHT SECTION START -->
             <div class="col-8 right-side">
                 <!-- ADD PRODUCT FORM -->
                 <div class="collapse" id="collapseAddForm">
@@ -134,10 +134,11 @@
                         <a href="#listing" id="listing-tab">Listing</a> <!-- Hide/Show -->
                         <a href="#seller" id="seller-tab">Seller</a> <!-- Hide/Show -->
                     </nav>
-                    <a class="tabs-btn add-toggle-btn" href="#collapseAddForm" id="add-tab" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="collapseAddForm"><i class="fa-solid fa-plus"></i>  Add</a>
+                    <a class="tabs-btn add-toggle-btn" href="#collapseAddForm" id="add-tab" data-bs-toggle="collapse"
+                        role="button" aria-expanded="false" aria-controls="collapseAddForm"><i
+                            class="fa-solid fa-plus"></i> Add</a>
                     <!-- BROWSE CONTENT -->
-                    
+
                     <div class="content" id="browse">
                         <h2>BROWSE CONTENT</h2>
                         <!-- Filters/Search -->
@@ -203,7 +204,6 @@
                         <div class="container">
                             <div class="row">
                                 <div id="sellerInfo">
-
                                 </div>
                             </div>
                         </div>
@@ -211,10 +211,10 @@
                     <!-- SELLER CONTENT ENDS -->
                 </div>
             </div>
-            <!-- Right Section ENDS -->
+            <!-- RIGHT SECTION ENDS -->
         </div>
     </div>
-
+    <!-- Body Container Ends -->
 
 
     <!-- MODALS -->
@@ -391,10 +391,8 @@
             </div>
         </div>
     </div>
+    <!-- EDIT LISTING MODAL ENDS  -->
     <!-- MODALS END -->
-
-
-    <!-- Body Container ENDS -->
 
 
     <!-- Footer Start-->
@@ -414,10 +412,6 @@
     <!-- Footer ENDS -->
 
 
-
-
-
-
     <!-- Jquery 3.6.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
@@ -431,5 +425,4 @@
     <script src="js/index.js"></script>
 
 </body>
-
 </html>
